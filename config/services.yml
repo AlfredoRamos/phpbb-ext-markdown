@@ -1,0 +1,5 @@
+services:
+    alfredoramos.markdown.listener:
+        class: alfredoramos\markdown\event\listener
+        tags:
+            - { name: event.listener }

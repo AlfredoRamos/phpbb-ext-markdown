@@ -1,0 +1,38 @@
+{
+	"name": "alfredoramos/markdown",
+	"type": "phpbb-extension",
+	"description": "Markdown extension for phpBB",
+	"homepage": "https://github.com/AlfredoRamos/phpbb-ext-markdown",
+	"version": "0.1.0-dev",
+	"time": "2019-01-20",
+	"keywords": ["phpbb", "extension", "markdown", "litedown"],
+	"license": "GPL-2.0-only",
+	"authors": [
+		{
+			"name": "Alfredo Ramos",
+			"email": "alfredo.ramos@yandex.com",
+			"homepage": "https://github.com/AlfredoRamos",
+			"role": "Lead Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.6",
+		"composer/installers": "^1.6.0"
+	},
+	"require-dev": {
+		"phing/phing": "^2.16.0",
+		"pear/archive_tar": "^1.4.0"
+	},
+	"extra": {
+		"display-name": "Markdown",
+		"soft-require": {
+			"phpbb/phpbb": "~3.2.0"
+		},
+		"version-check": {
+			"host": "alfredoramos.github.io",
+			"directory": "/phpbb-extensions",
+			"filename": "markdown.json",
+			"ssl": true
+		}
+	}
+}
