@@ -29,7 +29,10 @@ class listener_test extends phpbb_test_case
 	public function test_suscribed_events()
 	{
 		$this->assertSame(
-			['core.text_formatter_s9e_configure_after'],
+			[
+				'core.acp_board_config_edit_add',
+				'core.text_formatter_s9e_configure_after'
+			],
 			array_keys(listener::getSubscribedEvents())
 		);
 	}

@@ -3,3 +3,13 @@ services:
         class: alfredoramos\markdown\event\listener
         tags:
             - { name: event.listener }
+
+    alfredoramos.markdown.controller.markdown:
+        class: alfredoramos\markdown\controller\markdown
+        arguments:
+            - '@controller.helper'
+            - '@phpbb.help.manager'
+            - '@template'
+            - '@language'
+            - '%core.root_path%'
+            - '%core.php_ext%'
