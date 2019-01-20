@@ -13,6 +13,20 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class listener implements EventSubscriberInterface
 {
+	protected $config;
+
+	/**
+	 * Listener constructor.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		global $config;
+
+		$this->config = $config;
+	}
+
 	/**
 	 * Assign functions defined in this class to event listeners in the core.
 	 *
@@ -22,7 +36,9 @@ class listener implements EventSubscriberInterface
 	{
 		return [
 			'core.acp_board_config_edit_add' => 'acp_markdown_configuration',
-			'core.text_formatter_s9e_configure_after' => 'configure_markdown'
+			'core.permissions' => 'acp_markdown_permissions',
+			'core.text_formatter_s9e_configure_after' => 'configure_markdown',
+			'core.text_formatter_s9e_parser_setup' => 'enable_markdown'
 		];
 	}
 
@@ -62,7 +78,28 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	 * Enable markdown.
+	 * Add Markdown permissions.
+	 *
+	 * @param object $event
+	 *
+	 * @return void
+	 */
+	public function acp_markdown_permissions($event)
+	{
+		$permissions = $event['permissions'];
+		$permissions['f_markdown'] = [
+			'lang' => 'ACL_F_MARKDOWN',
+			'cat' => 'content'
+		];
+		$permissions['u_pm_markdown'] = [
+			'lang' => 'ACL_U_PM_MARKDOWN',
+			'cat' => 'pm'
+		];
+		$event['permissions'] = $permissions;
+	}
+
+	/**
+	 * Configure markdown.
 	 *
 	 * @param object $event
 	 *
@@ -70,6 +107,27 @@ class listener implements EventSubscriberInterface
 	 */
 	public function configure_markdown($event)
 	{
+		if (empty($this->config['allow_markdown']))
+		{
+			unset($event['configurator']->Litedown);
+			return;
+		}
+
 		$event['configurator']->Litedown;
+	}
+
+	/**
+	 * Enable markdown.
+	 *
+	 * @param object $event
+	 *
+	 * @return void
+	 */
+	public function enable_markdown($event)
+	{
+		if (empty($this->config['allow_markdown']))
+		{
+			$event['parser']->get_parser()->disablePlugin('Litedown');
+		}
 	}
 }
