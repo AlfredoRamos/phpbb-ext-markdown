@@ -10,6 +10,7 @@
 namespace alfredoramos\markdown\tests\event;
 
 use phpbb_test_case;
+use phpbb\auth\auth;
 use phpbb\config\config;
 use phpbb\user;
 use phpbb\request\request;
@@ -24,6 +25,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class listener_test extends phpbb_test_case
 {
+	protected $auth;
+
 	protected $config;
 
 	protected $user;
@@ -40,6 +43,7 @@ class listener_test extends phpbb_test_case
 	{
 		parent::setUp();
 
+		$this->auth = $this->getMockBuilder(auth::class)->getMock();
 		$this->config = $this->getMockBuilder(config::class)
 			->disableOriginalConstructor()->getMock();
 		$this->user = $this->getMockBuilder(user::class)
@@ -58,6 +62,7 @@ class listener_test extends phpbb_test_case
 		$this->assertInstanceOf(
 			EventSubscriberInterface::class,
 			new listener(
+				$this->auth,
 				$this->config,
 				$this->user,
 				$this->request,
@@ -72,12 +77,15 @@ class listener_test extends phpbb_test_case
 	{
 		$this->assertSame(
 			[
+				'core.user_setup',
 				'core.acp_board_config_edit_add',
 				'core.permissions',
 				'core.text_formatter_s9e_configure_after',
 				'core.text_formatter_s9e_parser_setup',
 				'core.ucp_prefs_post_data',
-				'core.ucp_prefs_post_update_data'
+				'core.ucp_prefs_post_update_data',
+				'core.posting_modify_message_text',
+				'core.posting_modify_template_vars'
 			],
 			array_keys(listener::getSubscribedEvents())
 		);

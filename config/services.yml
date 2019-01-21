@@ -2,6 +2,7 @@ services:
     alfredoramos.markdown.listener:
         class: alfredoramos\markdown\event\listener
         arguments:
+            - '@auth'
             - '@config'
             - '@user'
             - '@request'

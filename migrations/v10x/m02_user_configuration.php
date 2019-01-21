@@ -11,7 +11,7 @@ namespace alfredoramos\markdown\migrations\v10x;
 
 use phpbb\db\migration\migration;
 
-class m02_markdown_user_config extends migration
+class m02_user_configuration extends migration
 {
 	public function effectively_installed()
 	{

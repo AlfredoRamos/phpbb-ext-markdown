@@ -11,7 +11,7 @@ namespace alfredoramos\markdown\migrations\v10x;
 
 use phpbb\db\migration\migration;
 
-class m00_markdown_config extends migration
+class m00_board_configuration extends migration
 {
 	/**
 	 * Add Markdown configuration.
