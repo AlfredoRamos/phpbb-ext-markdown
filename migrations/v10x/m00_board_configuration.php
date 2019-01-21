@@ -24,6 +24,10 @@ class m00_board_configuration extends migration
 			[
 				'config.add',
 				['allow_markdown', 1]
+			],
+			[
+				'config.add',
+				['allow_sig_markdown', 1]
 			]
 		];
 	}

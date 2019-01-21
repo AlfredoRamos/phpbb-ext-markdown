@@ -11,25 +11,45 @@ namespace alfredoramos\markdown\includes;
 
 class helper
 {
-	public function acp_configuration($display_vars = [])
+	public function acp_configuration($display_vars = [], $mode = '')
 	{
-		if (empty($display_vars) || empty($display_vars['vars']))
+		if (empty($display_vars) || empty($display_vars['vars']) || empty($mode))
 		{
 			return [];
 		}
 
-		$display_vars['vars'] = $this->array_insert_after(
-			$display_vars['vars'],
-			'allow_pm_report',
-			[
-				'allow_markdown' => [
-					'lang' => 'ALLOW_MARKDOWN',
-					'validate' => 'bool',
-					'type' => 'radio:yes_no',
-					'explain' => false
-				]
-			]
-		);
+		switch ($mode)
+		{
+			case 'features':
+				$display_vars['vars'] = $this->array_insert_after(
+					$display_vars['vars'],
+					'allow_pm_report',
+					[
+						'allow_markdown' => [
+							'lang' => 'ALLOW_MARKDOWN',
+							'validate' => 'bool',
+							'type' => 'radio:yes_no',
+							'explain' => false
+						]
+					]
+				);
+			break;
+
+			case 'signature':
+				$display_vars['vars'] = $this->array_insert_after(
+					$display_vars['vars'],
+					'allow_sig',
+					[
+						'allow_sig_markdown' => [
+							'lang' => 'ALLOW_SIG_MARKDOWN',
+							'validate' => 'bool',
+							'type' => 'radio:yes_no',
+							'explain' => false
+						]
+					]
+				);
+			break;
+		}
 
 		return $display_vars;
 	}

@@ -85,7 +85,8 @@ class listener_test extends phpbb_test_case
 				'core.ucp_prefs_post_data',
 				'core.ucp_prefs_post_update_data',
 				'core.posting_modify_message_text',
-				'core.posting_modify_template_vars'
+				'core.ucp_pm_compose_modify_parse_before',
+				'core.ucp_profile_modify_signature'
 			],
 			array_keys(listener::getSubscribedEvents())
 		);
