@@ -15,6 +15,14 @@ class listener implements EventSubscriberInterface
 {
 	protected $config;
 
+	protected $user;
+
+	protected $request;
+
+	protected $template;
+
+	protected $language;
+
 	/**
 	 * Listener constructor.
 	 *
@@ -22,9 +30,13 @@ class listener implements EventSubscriberInterface
 	 */
 	public function __construct()
 	{
-		global $config;
+		global $config, $user, $request, $template, $phpbb_container;
 
 		$this->config = $config;
+		$this->user = $user;
+		$this->request = $request;
+		$this->template = $template;
+		$this->language = $phpbb_container->get('language');
 	}
 
 	/**
@@ -38,7 +50,9 @@ class listener implements EventSubscriberInterface
 			'core.acp_board_config_edit_add' => 'acp_markdown_configuration',
 			'core.permissions' => 'acp_markdown_permissions',
 			'core.text_formatter_s9e_configure_after' => 'configure_markdown',
-			'core.text_formatter_s9e_parser_setup' => 'enable_markdown'
+			'core.text_formatter_s9e_parser_setup' => 'enable_markdown',
+			'core.ucp_prefs_post_data' => 'ucp_markdown_configuration',
+			'core.ucp_prefs_post_update_data' => 'ucp_markdown_configuration_data'
 		];
 	}
 
@@ -129,5 +143,33 @@ class listener implements EventSubscriberInterface
 		{
 			$event['parser']->get_parser()->disablePlugin('Litedown');
 		}
+	}
+
+	/**
+	 * Markdown configuration.
+	 *
+	 * @param object $event
+	 *
+	 * @return void
+	 */
+	public function ucp_markdown_configuration($event)
+	{
+		$this->language->add_lang('ucp/markdown', 'alfredoramos/markdown');
+
+		$event['data'] = array_merge([
+			'markdown' => $this->request->variable(
+				'markdown',
+				(bool) $this->user->data['user_allow_markdown']
+			)
+		], $event['data']);
+
+		$this->template->assign_var('S_MARKDOWN', $event['data']['markdown']);
+	}
+
+	public function ucp_markdown_configuration_data($event)
+	{
+		$event['sql_ary'] = array_merge([
+			'user_allow_markdown' => !empty($event['data']['markdown'])
+		], $event['sql_ary']);
 	}
 }

@@ -33,7 +33,9 @@ class listener_test extends phpbb_test_case
 				'core.acp_board_config_edit_add',
 				'core.permissions',
 				'core.text_formatter_s9e_configure_after',
-				'core.text_formatter_s9e_parser_setup'
+				'core.text_formatter_s9e_parser_setup',
+				'core.ucp_prefs_post_data',
+				'core.ucp_prefs_post_update_data'
 			],
 			array_keys(listener::getSubscribedEvents())
 		);
