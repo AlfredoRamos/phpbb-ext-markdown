@@ -10,6 +10,12 @@
 namespace alfredoramos\markdown\event;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use phpbb\config\config;
+use phpbb\user;
+use phpbb\request\request;
+use phpbb\template\template;
+use phpbb\language\language;
+use alfredoramos\markdown\includes\helper;
 
 class listener implements EventSubscriberInterface
 {
@@ -23,20 +29,21 @@ class listener implements EventSubscriberInterface
 
 	protected $language;
 
+	protected $helper;
+
 	/**
 	 * Listener constructor.
 	 *
 	 * @return void
 	 */
-	public function __construct()
+	public function __construct(config $config, user $user, request $request, template $template, language $language, helper $helper)
 	{
-		global $config, $user, $request, $template, $phpbb_container;
-
 		$this->config = $config;
 		$this->user = $user;
 		$this->request = $request;
 		$this->template = $template;
-		$this->language = $phpbb_container->get('language');
+		$this->language = $language;
+		$this->helper = $helper;
 	}
 
 	/**
@@ -70,25 +77,7 @@ class listener implements EventSubscriberInterface
 			return;
 		}
 
-		// Insert after BBCode configuration
-		$display_vars = $event['display_vars'];
-		$keys = array_keys($display_vars['vars']);
-		$index = array_search('allow_bbcode', $keys);
-		$position = ($index === false) ? count($display_vars['vars']) : $index + 1;
-		$display_vars['vars'] = array_merge(
-			array_slice($display_vars['vars'], 0, $position),
-			[
-				'allow_markdown' => [
-					'lang' => 'ALLOW_MARKDOWN',
-					'validate' => 'bool',
-					'type' => 'radio:yes_no',
-					'explain' => false
-				]
-			],
-			array_slice($display_vars['vars'], $position)
-		);
-
-		$event['display_vars'] = $display_vars;
+		$event['display_vars'] = $this->helper->acp_configuration($event['display_vars']);
 	}
 
 	/**
@@ -166,6 +155,13 @@ class listener implements EventSubscriberInterface
 		$this->template->assign_var('S_MARKDOWN', $event['data']['markdown']);
 	}
 
+	/**
+	 * Markdown configuration data.
+	 *
+	 * @param object $event
+	 *
+	 * @return void;
+	 */
 	public function ucp_markdown_configuration_data($event)
 	{
 		$event['sql_ary'] = array_merge([

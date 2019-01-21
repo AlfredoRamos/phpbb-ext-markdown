@@ -28,4 +28,15 @@ class m02_markdown_user_config extends migration
 			]
 		];
 	}
+
+	public function revert_schema()
+	{
+		return [
+			'drop_columns' => [
+				USERS_TABLE => [
+					'user_allow_markdown'
+				]
+			]
+		];
+	}
 }

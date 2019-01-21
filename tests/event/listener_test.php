@@ -10,6 +10,12 @@
 namespace alfredoramos\markdown\tests\event;
 
 use phpbb_test_case;
+use phpbb\config\config;
+use phpbb\user;
+use phpbb\request\request;
+use phpbb\template\template;
+use phpbb\language\language;
+use alfredoramos\markdown\includes\helper;
 use alfredoramos\markdown\event\listener;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -18,11 +24,47 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class listener_test extends phpbb_test_case
 {
+	protected $config;
+
+	protected $user;
+
+	protected $request;
+
+	protected $template;
+
+	protected $language;
+
+	protected $helper;
+
+	public function setUp()
+	{
+		parent::setUp();
+
+		$this->config = $this->getMockBuilder(config::class)
+			->disableOriginalConstructor()->getMock();
+		$this->user = $this->getMockBuilder(user::class)
+			->disableOriginalConstructor()->getMock();
+		$this->request = $this->getMockBuilder(request::class)
+		   ->disableOriginalConstructor()->getMock();
+		$this->template = $this->getMockBuilder(template::class)->getMock();
+		$this->language = $this->getMockBuilder(language::class)
+		   ->disableOriginalConstructor()->getMock();
+		$this->helper = $this->getMockBuilder(helper::class)
+			->disableOriginalConstructor()->getMock();
+	}
+
 	public function test_instance()
 	{
 		$this->assertInstanceOf(
 			EventSubscriberInterface::class,
-			new listener
+			new listener(
+				$this->config,
+				$this->user,
+				$this->request,
+				$this->template,
+				$this->language,
+				$this->helper
+			)
 		);
 	}
 

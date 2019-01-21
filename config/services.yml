@@ -1,6 +1,13 @@
 services:
     alfredoramos.markdown.listener:
         class: alfredoramos\markdown\event\listener
+        arguments:
+            - '@config'
+            - '@user'
+            - '@request'
+            - '@template'
+            - '@language'
+            - '@alfredoramos.markdown.helper'
         tags:
             - { name: event.listener }
 
@@ -13,3 +20,6 @@ services:
             - '@language'
             - '%core.root_path%'
             - '%core.php_ext%'
+
+    alfredoramos.markdown.helper:
+        class: alfredoramos\markdown\includes\helper
