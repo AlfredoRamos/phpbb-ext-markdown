@@ -15,6 +15,7 @@ use phpbb\config\config;
 use phpbb\user;
 use phpbb\request\request;
 use phpbb\template\template;
+use phpbb\routing\helper as routing_helper;
 use phpbb\language\language;
 use alfredoramos\markdown\includes\helper;
 use alfredoramos\markdown\event\listener;
@@ -35,6 +36,8 @@ class listener_test extends phpbb_test_case
 
 	protected $template;
 
+	protected $routing_helper;
+
 	protected $language;
 
 	protected $helper;
@@ -51,6 +54,8 @@ class listener_test extends phpbb_test_case
 		$this->request = $this->getMockBuilder(request::class)
 		   ->disableOriginalConstructor()->getMock();
 		$this->template = $this->getMockBuilder(template::class)->getMock();
+		$this->routing_helper = $this->getMockBuilder(routing_helper::class)
+		   ->disableOriginalConstructor()->getMock();
 		$this->language = $this->getMockBuilder(language::class)
 		   ->disableOriginalConstructor()->getMock();
 		$this->helper = $this->getMockBuilder(helper::class)
@@ -82,9 +87,11 @@ class listener_test extends phpbb_test_case
 				'core.permissions',
 				'core.text_formatter_s9e_configure_after',
 				'core.text_formatter_s9e_parser_setup',
+				'core.ucp_display_module_before',
 				'core.ucp_prefs_post_data',
 				'core.ucp_prefs_post_update_data',
 				'core.posting_modify_message_text',
+				'core.posting_modify_template_vars',
 				'core.ucp_pm_compose_modify_parse_before',
 				'core.ucp_profile_modify_signature'
 			],
