@@ -186,7 +186,7 @@ class listener implements EventSubscriberInterface
 		{
 			$allowed = $allowed && !empty($this->auth->acl_get('u_pm_markdown'));
 		}
-		elseif ($event['id'] === 'ucp_profile' && $event['mode'] === 'signature')
+		else if ($event['id'] === 'ucp_profile' && $event['mode'] === 'signature')
 		{
 			$allowed = $allowed && !empty($this->config['allow_sig_markdown']);
 		}

@@ -72,6 +72,7 @@ class listener_test extends phpbb_test_case
 				$this->user,
 				$this->request,
 				$this->template,
+				$this->routing_helper,
 				$this->language,
 				$this->helper
 			)
