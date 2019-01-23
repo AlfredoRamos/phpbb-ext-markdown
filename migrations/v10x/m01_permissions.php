@@ -27,10 +27,11 @@ class m01_permissions extends migration
 			['permission.permission_set', ['ROLE_FORUM_POLLS', 'f_markdown']],
 			['permission.permission_set', ['ROLE_FORUM_FULL', 'f_markdown']],
 
+			['permission.add', ['u_markdown']],
+			['permission.permission_set', ['REGISTERED', 'u_markdown', 'group']],
+
 			['permission.add', ['u_pm_markdown']],
-			['permission.permission_set', ['REGISTERED', 'u_pm_markdown', 'group']],
-			['permission.permission_set', ['ROLE_USER_STANDARD', 'u_pm_markdown']],
-			['permission.permission_set', ['ROLE_USER_FULL', 'u_pm_markdown']]
+			['permission.permission_set', ['REGISTERED', 'u_pm_markdown', 'group']]
 		];
 	}
 }

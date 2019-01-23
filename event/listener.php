@@ -55,6 +55,7 @@ class listener implements EventSubscriberInterface
 		$this->language = $language;
 		$this->helper = $helper;
 		$this->markdown_enabled = !empty($this->config['allow_markdown']) &&
+			!empty($this->auth->acl_get('u_markdown')) &&
 			!empty($this->user->data['user_allow_markdown']);
 	}
 
@@ -131,6 +132,10 @@ class listener implements EventSubscriberInterface
 		$permissions['f_markdown'] = [
 			'lang' => 'ACL_F_MARKDOWN',
 			'cat' => 'content'
+		];
+		$permissions['u_markdown'] = [
+			'lang' => 'ACL_U_MARKDOWN',
+			'cat' => 'post'
 		];
 		$permissions['u_pm_markdown'] = [
 			'lang' => 'ACL_U_PM_MARKDOWN',
@@ -282,6 +287,8 @@ class listener implements EventSubscriberInterface
 	{
 		// There is not template event to send this value,
 		// added just for future references
+		// https://tracker.phpbb.com/browse/PHPBB3-15949
+		// https://github.com/phpbb/phpbb/pull/5519
 		$event['enable_markdown'] = empty($this->request->is_set_post('disable_markdown'));
 
 		$this->markdown_enabled = $this->markdown_enabled &&
