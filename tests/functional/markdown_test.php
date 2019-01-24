@@ -137,9 +137,12 @@ EOT;
 		));
 
 		$expected = <<<EOT
-<div class="content"><p>Code:</p>
+<p>Code:</p>
 
-<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>echo 'message';</code></pre></div>
+<div class="codebox">
+<p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p>
+<pre><code>echo 'message';</code></pre>
+</div>
 
 <p>Inline <code>code</code></p>
 EOT;
