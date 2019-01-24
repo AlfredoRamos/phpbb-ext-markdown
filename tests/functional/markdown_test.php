@@ -56,4 +56,35 @@ class markdown_test extends phpbb_functional_test_case
 		$this->assertTrue($form->has('markdown'));
 		$this->assertSame('1', $form->get('markdown')->getValue());
 	}
+
+	public function test_ucp_private_message()
+	{
+		$crawler = self::request('GET', sprintf(
+			'ucp.php?i=pm&mode=compose&sid=%s',
+			$this->sid
+		));
+
+		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
+
+		$this->assertSame(1, $crawler->filter('#markdown_status')->count());
+		$this->assertTrue($form->has('disable_markdown'));
+
+	}
+
+	public function test_ucp_signature()
+	{
+		$crawler = self::request('GET', sprintf(
+			'ucp.php?i=ucp_profile&mode=signature&sid=%s',
+			$this->sid
+		));
+
+		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
+
+		$this->assertSame(1, $crawler->filter('#markdown_status')->count());
+
+		// Has not been implemented
+		// https://tracker.phpbb.com/browse/PHPBB3-15949
+		// https://github.com/phpbb/phpbb/pull/5519
+		//$this->assertTrue($form->has('disable_markdown'));
+	}
 }
