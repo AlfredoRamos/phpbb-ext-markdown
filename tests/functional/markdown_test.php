@@ -66,7 +66,11 @@ class markdown_test extends phpbb_functional_test_case
 
 		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
 
-		$this->assertSame(1, $crawler->filter('#markdown_status')->count());
+		$this->assertSame(1, $crawler->filter('#markdown-status')->count());
+		$this->assertSame(
+			'/app.php/help/markdown',
+			$crawler->filter('#markdown-status > a')->getRawUri()
+		);
 		$this->assertTrue($form->has('disable_markdown'));
 
 	}
@@ -80,11 +84,71 @@ class markdown_test extends phpbb_functional_test_case
 
 		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
 
-		$this->assertSame(1, $crawler->filter('#markdown_status')->count());
+		$this->assertSame(1, $crawler->filter('#markdown-status')->count());
+		$this->assertSame(
+			'/app.php/help/markdown',
+			$crawler->filter('#markdown-status > a')->getRawUri()
+		);
 
 		// Has not been implemented
 		// https://tracker.phpbb.com/browse/PHPBB3-15949
 		// https://github.com/phpbb/phpbb/pull/5519
 		//$this->assertTrue($form->has('disable_markdown'));
+	}
+
+	public function test_post_reply()
+	{
+		$crawler = self::request('GET', sprintf(
+			'posting.php?mode=reply&f=2&t=1&sid=%s',
+			$this->sid
+		));
+
+		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
+
+		$this->assertSame(1, $crawler->filter('#markdown-status')->count());
+		$this->assertSame(
+			'/app.php/help/markdown',
+			$crawler->filter('#markdown-status > a')->getRawUri()
+		);
+		$this->assertTrue($form->has('disable_markdown'));
+	}
+
+	public function test_post_markdown()
+	{
+		$md = <<<EOT
+Code:
+
+```php
+echo 'message';
+```
+
+Inline `code`
+EOT;
+		$post = $this->create_topic(
+			2,
+			'Markdown functional test 1',
+			$md
+		);
+
+		$crawler = self::request('GET', sprintf(
+			'viewtopic.php?t=%d&sid=%s',
+			$post['topic_id'],
+			$this->sid
+		));
+
+		$expected = <<<EOT
+<div class="content"><p>Code:</p>
+
+<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>echo 'message';</code></pre></div>
+
+<p>Inline <code>code</code></p>
+EOT;
+
+		$result = $crawler->filter(sprintf(
+			'#post_content%d .content',
+			$post['topic_id']
+		));
+
+		$this->assertContains($expected, $result->html());
 	}
 }
