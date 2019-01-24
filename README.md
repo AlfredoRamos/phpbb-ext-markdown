@@ -31,6 +31,7 @@ It uses the plugin Litedown from [s9e/TextFormatter](https://github.com/s9e/Text
 [![Board features](https://i.imgur.com/PSGGuM3b.png)](https://i.imgur.com/PSGGuM3.png)
 [![User posting defaults](https://i.imgur.com/zWhjOfVb.png)](https://i.imgur.com/zWhjOfV.png)
 [![Markdown post](https://i.imgur.com/kba871fb.png)](https://i.imgur.com/kba871f.png)
+
 [![Markdown private message](https://i.imgur.com/HGvlwhIb.png)](https://i.imgur.com/HGvlwhI.png)
 [![Markdown signature](https://i.imgur.com/svBmgYXb.png)](https://i.imgur.com/svBmgYX.png)
 [![Posting editor option](https://i.imgur.com/1Z7CDDrb.png)](https://i.imgur.com/1Z7CDDr.png)
