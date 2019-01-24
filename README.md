@@ -26,6 +26,17 @@ Write Markdown text in posts, signature or private messages and it will be conve
 
 It uses the plugin Litedown from [s9e/TextFormatter](https://github.com/s9e/TextFormatter). You can read more about the supported syntax in the official documentation: [Litedown: Syntax](https://s9etextformatter.readthedocs.io/Plugins/Litedown/Syntax/)
 
+### Preview
+
+[![Board features](https://i.imgur.com/PSGGuM3b.png)](https://i.imgur.com/PSGGuM3.png)
+[![User posting defaults](https://i.imgur.com/zWhjOfVb.png)](https://i.imgur.com/zWhjOfV.png)
+[![Markdown post](https://i.imgur.com/kba871fb.png)](https://i.imgur.com/kba871f.png)
+[![Markdown private message](https://i.imgur.com/HGvlwhIb.png)](https://i.imgur.com/HGvlwhI.png)
+[![Markdown signature](https://i.imgur.com/svBmgYXb.png)](https://i.imgur.com/svBmgYX.png)
+[![Posting editor option](https://i.imgur.com/1Z7CDDrb.png)](https://i.imgur.com/1Z7CDDr.png)
+
+*(Click to view in full size)*
+
 ### Configuration
 
 #### Administrator
