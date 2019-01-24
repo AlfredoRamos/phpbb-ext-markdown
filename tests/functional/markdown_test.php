@@ -82,7 +82,7 @@ class markdown_test extends phpbb_functional_test_case
 			$this->sid
 		));
 
-		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
+		//$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
 
 		$this->assertSame(1, $crawler->filter('#markdown-status')->count());
 		$this->assertSame(
@@ -115,7 +115,7 @@ class markdown_test extends phpbb_functional_test_case
 
 	public function test_post_markdown()
 	{
-		$md = <<<EOT
+		$markdown = <<<EOT
 Code:
 
 ```php
@@ -127,7 +127,7 @@ EOT;
 		$post = $this->create_topic(
 			2,
 			'Markdown functional test 1',
-			$md
+			$markdown
 		);
 
 		$crawler = self::request('GET', sprintf(
