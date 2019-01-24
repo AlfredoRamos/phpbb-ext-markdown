@@ -11,6 +11,14 @@ namespace alfredoramos\markdown\includes;
 
 class helper
 {
+	/**
+	 * Insert template variables in ACP.
+	 *
+	 * @param array		$display_vars
+	 * @param string	$mode
+	 *
+	 * @return array
+	 */
 	public function acp_configuration($display_vars = [], $mode = '')
 	{
 		if (empty($display_vars) || empty($display_vars['vars']) || empty($mode))

@@ -13,11 +13,21 @@ use phpbb\db\migration\migration;
 
 class m02_user_configuration extends migration
 {
+	/**
+	 * Check configuration data exist.
+	 *
+	 * @return bool
+	 */
 	public function effectively_installed()
 	{
 		return $this->db_tools->sql_column_exists(USERS_TABLE, 'user_allow_markdown');
 	}
 
+	/**
+	 * Add user configuration.
+	 *
+	 * @return array
+	 */
 	public function update_schema()
 	{
 		return [
@@ -29,6 +39,11 @@ class m02_user_configuration extends migration
 		];
 	}
 
+	/**
+	 * Revert user configuration.
+	 *
+	 * @return array
+	 */
 	public function revert_schema()
 	{
 		return [

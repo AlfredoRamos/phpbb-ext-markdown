@@ -21,26 +21,44 @@ use alfredoramos\markdown\includes\helper;
 
 class listener implements EventSubscriberInterface
 {
+	/** @var \phpbb\auth\auth */
 	protected $auth;
 
+	/** @var \phpbb\config\config */
 	protected $config;
 
+	/** @var \phpbb\user */
 	protected $user;
 
+	/** @var \phpbb\request\request */
 	protected $request;
 
+	/** @var \phpbb\template\template */
 	protected $template;
 
+	/** @var \phpbb\routing\helper */
 	protected $routing_helper;
 
+	/** @var \phpbb\language\language */
 	protected $language;
 
+	/** @var \alfredoramos\markdown\includes\helper */
 	protected $helper;
 
+	/** @var bool */
 	private $markdown_enabled;
 
 	/**
 	 * Listener constructor.
+	 *
+	 * @param \phpbb\auth\auth			$auth
+	 * @param \phpbb\config\config		$config
+	 * @param \phpbb\user				$user
+	 * @param \phpbb\request\request	$request
+	 * @param \phpbb\template\template	$template
+	 * @param \phpbb\routing\helper		$routing_helper
+	 * @param \phpbb\language\language	$language
+	 * @param \alfredoramos\markdown\includes\helper	$helper
 	 *
 	 * @return void
 	 */
@@ -177,6 +195,13 @@ class listener implements EventSubscriberInterface
 		}
 	}
 
+	/**
+	 * Check Markdown status in the UCP.
+	 *
+	 * @param object $event
+	 *
+	 * @return void
+	 */
 	public function ucp_markdown_status($event)
 	{
 		if (($event['id'] !== 'ucp_prefs' && $event['mode' !== 'post']) &&
@@ -242,6 +267,13 @@ class listener implements EventSubscriberInterface
 		], $event['sql_ary']);
 	}
 
+	/**
+	 * Check Markdown forum permissions.
+	 *
+	 * @param object $event
+	 *
+	 * @return void
+	 */
 	public function check_forum_permissions($event)
 	{
 		$event['post_data'] = array_merge([
@@ -258,6 +290,13 @@ class listener implements EventSubscriberInterface
 		);
 	}
 
+	/**
+	 * Set template variables in posting editor.
+	 *
+	 * @param object $event
+	 *
+	 * @return void
+	 */
 	public function posting_template_variables($event)
 	{
 		$allowed = !empty($this->config['allow_markdown']) &&
@@ -273,6 +312,13 @@ class listener implements EventSubscriberInterface
 		], $event['page_data']);
 	}
 
+	/**
+	 * Check Markdown private messages permissions.
+	 *
+	 * @param object $event
+	 *
+	 * @return void
+	 */
 	public function check_pm_permissions($event)
 	{
 		$event['enable_markdown'] = empty($this->request->is_set_post('disable_markdown'));
@@ -287,6 +333,13 @@ class listener implements EventSubscriberInterface
 		);
 	}
 
+	/**
+	 * Check Markdown signature permissions.
+	 *
+	 * @param object $event
+	 *
+	 * @return void
+	 */
 	public function check_signature_permissions($event)
 	{
 		// There is not template event to send this value,
