@@ -179,7 +179,8 @@ class listener implements EventSubscriberInterface
 
 	public function ucp_markdown_status($event)
 	{
-		if (($event['id'] !== 'pm' && $event['mode'] !== 'compose') &&
+		if (($event['id'] !== 'ucp_prefs' && $event['mode' !== 'post']) &&
+			($event['id'] !== 'pm' && $event['mode'] !== 'compose') &&
 			($event['id'] !== 'ucp_profile' && $event['mode'] !== 'signature'))
 		{
 			return;
@@ -196,11 +197,14 @@ class listener implements EventSubscriberInterface
 			$allowed = $allowed && !empty($this->config['allow_sig_markdown']);
 		}
 
-		$this->template->assign_var('MARKDOWN_STATUS', $this->language->lang(
-			'MARKDOWN_STATUS_FORMAT',
-			$this->routing_helper->route('alfredoramos_markdown_help'),
-			$allowed ? $this->language->lang('MARKDOWN_IS_ON') : $this->language->lang('MARKDOWN_IS_OFF')
-		));
+		$this->template->assign_vars([
+			'S_MARKDOWN_ALLOWED' => $allowed,
+			'MARKDOWN_STATUS', $this->language->lang(
+				'MARKDOWN_STATUS_FORMAT',
+				$this->routing_helper->route('alfredoramos_markdown_help'),
+				$allowed ? $this->language->lang('MARKDOWN_IS_ON') : $this->language->lang('MARKDOWN_IS_OFF')
+			)
+		]);
 	}
 
 	/**
