@@ -199,7 +199,7 @@ class listener implements EventSubscriberInterface
 
 		$this->template->assign_vars([
 			'S_MARKDOWN_ALLOWED' => $allowed,
-			'MARKDOWN_STATUS', $this->language->lang(
+			'MARKDOWN_STATUS' => $this->language->lang(
 				'MARKDOWN_STATUS_FORMAT',
 				$this->routing_helper->route('alfredoramos_markdown_help'),
 				$allowed ? $this->language->lang('MARKDOWN_IS_ON') : $this->language->lang('MARKDOWN_IS_OFF')
