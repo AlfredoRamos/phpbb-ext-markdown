@@ -52,6 +52,31 @@ class markdown extends controller
 			]
 		);
 
+		$this->manager->add_block(
+			'HELP_MARKDOWN_BLOCK_LIST',
+			true,
+			[
+				'HELP_MARKDOWN_UNORDERED_LIST_QUESTION' => 'HELP_MARKDOWN_UNORDERED_LIST_ANSWER',
+				'HELP_MARKDOWN_ORDERED_LIST_QUESTION' => 'HELP_MARKDOWN_ORDERED_LIST_ANSWER'
+			]
+		);
+
+		$this->manager->add_block(
+			'HELP_MARKDOWN_BLOCK_LINK',
+			true,
+			[
+				'HELP_MARKDOWN_LINK_QUESTION' => 'HELP_MARKDOWN_LINK_ANSWER'
+			]
+		);
+
+		$this->manager->add_block(
+			'HELP_MARKDOWN_BLOCK_IMAGE',
+			true,
+			[
+				'HELP_MARKDOWN_IMAGE_QUESTION' => 'HELP_MARKDOWN_IMAGE_ANSWER'
+			]
+		);
+
 		return $this->language->lang('MARKDOWN_GUIDE');
 	}
 }
