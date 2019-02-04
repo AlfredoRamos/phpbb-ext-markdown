@@ -24,7 +24,7 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, [
-	'MARKDOWN_STATUS_FORMAT' => '<a href="%s">Markdown</a> is: <em>%s</em>',
+	'MARKDOWN_STATUS_FORMAT' => '<a href="%s">Markdown</a> is <em>%s</em>',
 	'MARKDOWN_IS_ON' => 'ON',
 	'MARKDOWN_IS_OFF' => 'OFF',
 	'DISABLE_MARKDOWN' => 'Disable Markdown'
