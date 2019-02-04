@@ -41,12 +41,14 @@ $lang = array_merge($lang, [
 	'HELP_MARKDOWN_TEXT_SUBSCRIPT_ANSWER' => 'To create subscript text, enclose it in a pair of<code>~</code>, e.g.<pre class="markdown-demo"><code class="markdown" data-lang="markdown">H~2~O</code></pre> will become<br /><br />H<sub>2</sub>O',
 	'HELP_MARKDOWN_TEXT_SUPERSCRIPT_QUESTION' => 'Creating superscript text',
 	'HELP_MARKDOWN_TEXT_SUPERSCRIPT_ANSWER' => 'To create a superscript text, add <code>^</code> before the text, e.g.<pre class="markdown-demo"><code class="markdown" data-lang="markdown">2^n</code></pre> will become<br /><br />2<sup>n</sup>',
+	'HELP_MARKDOWN_TEXT_HEADER_QUESTION' => 'Creating headers',
+	'HELP_MARKDOWN_TEXT_HEADER_ANSWER' => 'To create headers, add from 1 up to 6 <code>#</code> followed by a space before the text. The higher the number, the smaller the text would be, e.g.<pre class="markdown-demo"><code class="markdown" data-lang="markdown"># H1<br />## H2<br />### H3<br />#### H4<br />##### H5<br />###### H6</code></pre> will become<br /><br /><h1>H1</h1><h2>H2</h2><h3>H3</h3><h4>H4</h4><h5>H5</h5><h6>H6</h6>',
 
 	'HELP_MARKDOWN_BLOCK_CODE' => 'Quoting and outputting fixed-width text',
 	'HELP_MARKDOWN_QUOTE_QUESTION' => 'Quoting text in replies',
 	'HELP_MARKDOWN_QUOTE_ANSWER' => 'To quote text, add <code>&gt;</code> and optionally an space before the text line, e.g.<pre class="markdown-demo"><code class="markdown" data-lang="markdown">&gt; Quotted text</code></pre> will become <blockquote class="uncited"><div>Quotted text<p></p></div></blockquote>',
 	'HELP_MARKDOWN_CODE_QUESTION' => 'Outputting code',
-	'HELP_MARKDOWN_CODE_ANSWER' => 'To create code, enclose it in a pair of <code>```</code> or <code>~~~</code>, or alternatively add 4 empty spaces before each line. You can also specify the language in the first marker, e.g.<pre class="markdown-demo"><code class="markdown" data-lang="markdown">```ruby<br />chars = [*letters,*letters.map(&:upcase),*numbers,*symbols].to_a.shuffle!<br />```</code></pre> will become <pre class="markdown-demo"><code class="ruby" data-lang="ruby">chars = [*letters,*letters.map(&:upcase),*numbers,*symbols].to_a.shuffle!</code></pre>',
+	'HELP_MARKDOWN_CODE_ANSWER' => 'To create code, enclose it in a pair of <code>```</code> or <code>~~~</code>, or alternatively add 4 empty spaces before each line. You can also specify the language in the first marker, e.g.<pre class="markdown-demo"><code class="markdown" data-lang="markdown">```ruby<br />puts "Hello #{user}!"<br />```</code></pre> will become <pre class="markdown-demo"><code class="ruby" data-lang="ruby">puts "Hello #{user}!"</code></pre>',
 	'HELP_MARKDOWN_CODE_INLINE_QUESTION' => 'Outputting inline code',
 	'HELP_MARKDOWN_CODE_INLINE_ANSWER' => 'To create inline code, enclose it in pair of <code>`</code> or <code>``</code>, e.g.<pre class="markdown-demo"><code class="markdown" data-lang="markdown">`&lt;div&gt;` tag</code></pre> or <pre class="markdown-demo"><code class="markdown" data-lang="markdown">``&lt;div&gt;`` tag</code></pre> will become<br /><br /><code>&lt;div&gt;</code> tag',
 
