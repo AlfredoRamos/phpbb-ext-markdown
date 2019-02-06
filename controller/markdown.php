@@ -78,6 +78,15 @@ class markdown extends controller
 			]
 		);
 
+		$this->manager->add_block(
+			'HELP_MARKDOWN_BLOCK_EXTRA',
+			true,
+			[
+				'HELP_MARKDOWN_TABLE_QUESTION' => 'HELP_MARKDOWN_TABLE_ANSWER',
+				'HELP_MARKDOWN_HORIZONTAL_RULE_QUESTION' => 'HELP_MARKDOWN_HORIZONTAL_RULE_ANSWER'
+			]
+		);
+
 		return $this->language->lang('MARKDOWN_GUIDE');
 	}
 }

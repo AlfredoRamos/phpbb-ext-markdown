@@ -171,13 +171,17 @@ class listener implements EventSubscriberInterface
 	 */
 	public function configure_markdown($event)
 	{
+		$configurator = $event['configurator'];
+
 		if (!$this->markdown_enabled)
 		{
-			unset($event['configurator']->Litedown);
+			unset($configurator->Litedown);
+			unset($configurator->PipeTables);
 			return;
 		}
 
-		$event['configurator']->Litedown;
+		$configurator->Litedown;
+		$configurator->PipeTables;
 	}
 
 	/**
@@ -191,7 +195,9 @@ class listener implements EventSubscriberInterface
 	{
 		if (!$this->markdown_enabled)
 		{
-			$event['parser']->get_parser()->disablePlugin('Litedown');
+			$parser = $event['parser']->get_parser();
+			$parser->disablePlugin('Litedown');
+			$parser->disablePlugin('PipeTables');
 		}
 	}
 

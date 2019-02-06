@@ -64,5 +64,11 @@ $lang = array_merge($lang, [
 
 	'HELP_MARKDOWN_BLOCK_IMAGE' => 'Showing images',
 	'HELP_MARKDOWN_IMAGE_QUESTION' => 'Adding images',
-	'HELP_MARKDOWN_IMAGE_ANSWER' => 'To show an image, add an exclamation mark followed by the image alternate text inside square brackets and then the image URL inside parenthesis, e.g.<pre class="markdown-demo"><code class="markdown" data-lang="markdown">![phpBB](https://www.phpbb.com/assets/images/images/logos/blue/160x52.png)</code></pre> will become<br /><br /><img src="https://www.phpbb.com/assets/images/images/logos/blue/160x52.png" alt="phpBB" />'
+	'HELP_MARKDOWN_IMAGE_ANSWER' => 'To show an image, add an exclamation mark followed by the image alternate text inside square brackets and then the image URL inside parenthesis, e.g.<pre class="markdown-demo"><code class="markdown" data-lang="markdown">![phpBB](https://www.phpbb.com/assets/images/images/logos/blue/160x52.png)</code></pre> will become<br /><br /><img src="https://www.phpbb.com/assets/images/images/logos/blue/160x52.png" alt="phpBB" />',
+
+	'HELP_MARKDOWN_BLOCK_EXTRA' => 'Extras',
+	'HELP_MARKDOWN_TABLE_QUESTION' => 'Creating tables',
+	'HELP_MARKDOWN_TABLE_ANSWER' => 'To create tables, add a line of text divided with <code>|</code>, after that a new line with <code>-</code> and optionally <code>:</code> to the left, on both sides or to the right to align the text accordingly, again divided with <code>|</code>. All successive lines will be rendered as table rows, e.g.<pre class="markdown-demo"><code class="markdown" data-lang="markdown">| Left | Center | Right |<br />|:-----|:------:|------:|<br />|   x  |    x   |   x   |</code></pre> or <pre class="markdown-demo"><code class="markdown" data-lang="markdown">Left|Center|Right<br />:-|:-:|-:<br />x|x|x</code></pre> will become<br /><br /><table><thead><tr><th style="text-align:left">Left</th><th style="text-align:center">Center</th><th style="text-align:right">Right</th></tr></thead><tbody><tr><td style="text-align:left">x</td><td style="text-align:center">x</td><td style="text-align:right">x</td></tr></tbody></table>',
+	'HELP_MARKDOWN_HORIZONTAL_RULE_QUESTION' => 'Creating horizontal rules',
+	'HELP_MARKDOWN_HORIZONTAL_RULE_ANSWER' => 'To create a horizontal rule, add at least 3 <code>*</code>, <code>-</code> or <code>_</code> optionally separated with a space, e.g.<pre class="markdown-demo"><code class="markdown" data-lang="markdown">***<br />* * *<br />---<br />- - -<br />___<br />_ _ _</code></pre> will become<br /><br /><hr />'
 ]);
