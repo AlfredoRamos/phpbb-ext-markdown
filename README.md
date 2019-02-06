@@ -24,7 +24,10 @@ Markdown extension for phpBB.
 
 Write Markdown text in posts, signature or private messages and it will be converted as HTML. It can be used instead of or alongside BBCodes.
 
-It uses the plugin Litedown from [s9e/TextFormatter](https://github.com/s9e/TextFormatter). You can read more about the supported syntax in the official documentation: [Litedown: Syntax](https://s9etextformatter.readthedocs.io/Plugins/Litedown/Syntax/)
+It uses the plugins Litedown and PipeTables from [s9e/TextFormatter](https://github.com/s9e/TextFormatter). You can read more about the supported syntax in the official documentation:
+
+- [Litedown: Syntax](https://s9etextformatter.readthedocs.io/Plugins/Litedown/Syntax/)
+- [PipeTables: Syntax](https://s9etextformatter.readthedocs.io/Plugins/PipeTables/Syntax/)
 
 ### Preview
 
