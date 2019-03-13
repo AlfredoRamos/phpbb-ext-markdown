@@ -283,7 +283,7 @@ class listener implements EventSubscriberInterface
 	public function check_forum_permissions($event)
 	{
 		$event['post_data'] = array_merge([
-			'enable_markdown' => empty($this->request->is_set_post('disable_markdown'))
+			'enable_markdown' => empty($this->request->variable('disable_markdown', false))
 		], $event['post_data']);
 
 		$this->markdown_enabled = $this->markdown_enabled &&
@@ -327,7 +327,7 @@ class listener implements EventSubscriberInterface
 	 */
 	public function check_pm_permissions($event)
 	{
-		$event['enable_markdown'] = empty($this->request->is_set_post('disable_markdown'));
+		$event['enable_markdown'] = empty($this->request->variable('disable_markdown', false));
 
 		$this->markdown_enabled = $this->markdown_enabled &&
 			!empty($this->auth->acl_get('u_pm_markdown')) &&
@@ -352,7 +352,7 @@ class listener implements EventSubscriberInterface
 		// added just for future references
 		// https://tracker.phpbb.com/browse/PHPBB3-15949
 		// https://github.com/phpbb/phpbb/pull/5519
-		$event['enable_markdown'] = empty($this->request->is_set_post('disable_markdown'));
+		$event['enable_markdown'] = empty($this->request->variable('disable_markdown', false));
 
 		$this->markdown_enabled = $this->markdown_enabled &&
 			!empty($this->config['allow_sig_markdown']) &&

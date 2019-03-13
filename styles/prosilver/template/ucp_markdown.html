@@ -3,7 +3,13 @@
 		<label for="markdown1">{{ lang('DEFAULT_MARKDOWN') }}{{ lang('COLON') }}</label>
 	</dt>
 	<dd>
-		<label for="markdown1"><input type="radio" id="markdown1" name="markdown" value="1"{% if S_MARKDOWN %} checked="checked"{% endif %} /> {{ lang('YES') }}</label>
-		<label for="markdown0"><input type="radio" id="markdown0" name="markdown" value="0"{% if not S_MARKDOWN %} checked="checked"{% endif %} /> {{ lang('NO') }}</label>
+		<label for="markdown1">
+			<input type="radio" id="markdown1" name="markdown" value="1"{% if S_MARKDOWN %} checked="checked"{% endif %} />
+			{{ lang('YES') }}
+		</label>
+		<label for="markdown0">
+			<input type="radio" id="markdown0" name="markdown" value="0"{% if not S_MARKDOWN %} checked="checked"{% endif %} />
+			{{ lang('NO') }}
+		</label>
 	</dd>
 </dl>
