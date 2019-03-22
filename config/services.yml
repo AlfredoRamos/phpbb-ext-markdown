@@ -15,6 +15,13 @@ services:
 
     alfredoramos.markdown.controller.markdown:
         class: alfredoramos\markdown\controller\markdown
+        arguments:
+            - '@controller.helper'
+            - '@phpbb.help.manager'
+            - '@template'
+            - '@language'
+            - '%core.root_path%'
+            - '%core.php_ext%'
 
     alfredoramos.markdown.helper:
         class: alfredoramos\markdown\includes\helper
