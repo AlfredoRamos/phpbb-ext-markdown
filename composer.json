@@ -23,6 +23,9 @@
 		"phing/phing": "^2.16.0",
 		"pear/archive_tar": "^1.4.0"
 	},
+	"suggest": {
+		"s9e/highlighter": "To add code syntax highlighting"
+	},
 	"extra": {
 		"display-name": "Markdown",
 		"soft-require": {
