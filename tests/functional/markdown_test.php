@@ -68,10 +68,10 @@ class markdown_test extends phpbb_functional_test_case
 
 		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
 
-		$this->assertSame(1, $crawler->filter('#markdown-status')->count());
+		$this->assertSame(1, $crawler->filter('.markdown-status')->count());
 		$this->assertSame(
 			'/app.php/help/markdown',
-			$crawler->filter('#markdown-status > a')->attr('href')
+			$crawler->filter('.markdown-status > a')->attr('href')
 		);
 		$this->assertTrue($form->has('disable_markdown'));
 
@@ -86,10 +86,10 @@ class markdown_test extends phpbb_functional_test_case
 
 		//$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
 
-		$this->assertSame(1, $crawler->filter('#markdown-status')->count());
+		$this->assertSame(1, $crawler->filter('.markdown-status')->count());
 		$this->assertSame(
 			'/app.php/help/markdown',
-			$crawler->filter('#markdown-status > a')->attr('href')
+			$crawler->filter('.markdown-status > a')->attr('href')
 		);
 
 		// Has not been implemented
@@ -107,10 +107,10 @@ class markdown_test extends phpbb_functional_test_case
 
 		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
 
-		$this->assertSame(1, $crawler->filter('#markdown-status')->count());
+		$this->assertSame(1, $crawler->filter('.markdown-status')->count());
 		$this->assertSame(
 			'/app.php/help/markdown',
-			$crawler->filter('#markdown-status > a')->attr('href')
+			$crawler->filter('.markdown-status > a')->attr('href')
 		);
 		$this->assertTrue($form->has('disable_markdown'));
 	}

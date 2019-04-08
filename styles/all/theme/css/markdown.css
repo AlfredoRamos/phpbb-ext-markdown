@@ -5,6 +5,12 @@
  * @license GPL-2.0-only
  */
 
+@media (max-width: 700px) {
+	.markdown-status {
+		display: none;
+	}
+}
+
 pre.markdown-demo {
 	margin: 1em 0;
 }

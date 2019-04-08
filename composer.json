@@ -24,6 +24,7 @@
 		"pear/archive_tar": "^1.4.0"
 	},
 	"suggest": {
+		"s9e/highlighter": "To add code syntax highlighting",
 		"alfredoramos/highlightjs": "To add code syntax highlighting and optionally line numbers"
 	},
 	"extra": {
