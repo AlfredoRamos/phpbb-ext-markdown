@@ -46,7 +46,7 @@ $lang = array_merge($lang, [
 
 	'HELP_MARKDOWN_BLOCK_CODE' => 'Quoting and outputting fixed-width text',
 	'HELP_MARKDOWN_QUOTE_QUESTION' => 'Quoting text in replies',
-	'HELP_MARKDOWN_QUOTE_ANSWER' => 'To quote text, add <code>&gt;</code> and optionally an space before the text line, e.g.<pre class="markdown-demo"><code class="language-markdown">&gt; Quotted text</code></pre> will become <blockquote class="uncited"><div>Quotted text<p></p></div></blockquote>',
+	'HELP_MARKDOWN_QUOTE_ANSWER' => 'To quote text, add <code>&gt;</code> and optionally an space before the text line, e.g.<pre class="markdown-demo"><code class="language-markdown">&gt; Quoted text</code></pre> will become <blockquote class="uncited"><div>Quoted text<p></p></div></blockquote>',
 	'HELP_MARKDOWN_CODE_QUESTION' => 'Outputting code',
 	'HELP_MARKDOWN_CODE_ANSWER' => 'To output code, enclose it in a pair of <code>```</code> or <code>~~~</code>, or alternatively add 4 empty spaces before each line. You can also specify the language in the first marker, e.g.<pre class="markdown-demo"><code class="language-markdown">```ruby<br />puts "Hello #{user}!"<br />```</code></pre> will become <pre class="markdown-demo"><code class="ruby" data-lang="ruby">puts "Hello #{user}!"</code></pre>',
 	'HELP_MARKDOWN_CODE_INLINE_QUESTION' => 'Outputting inline code',
