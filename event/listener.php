@@ -146,20 +146,32 @@ class listener implements EventSubscriberInterface
 	 */
 	public function acp_markdown_permissions($event)
 	{
-		$permissions = $event['permissions'];
-		$permissions['f_markdown'] = [
-			'lang' => 'ACL_F_MARKDOWN',
-			'cat' => 'content'
-		];
-		$permissions['u_markdown'] = [
-			'lang' => 'ACL_U_MARKDOWN',
-			'cat' => 'post'
-		];
-		$permissions['u_pm_markdown'] = [
-			'lang' => 'ACL_U_PM_MARKDOWN',
-			'cat' => 'pm'
-		];
-		$event['permissions'] = $permissions;
+		$event->update_subarray(
+			'permissions',
+			'f_markdown',
+			[
+				'lang' => 'ACL_F_MARKDOWN',
+				'cat' => 'content'
+			]
+		);
+
+		$event->update_subarray(
+			'permissions',
+			'u_markdown',
+			[
+				'lang' => 'ACL_U_MARKDOWN',
+				'cat' => 'post'
+			]
+		);
+
+		$event->update_subarray(
+			'permissions',
+			'u_pm_markdown',
+			[
+				'lang' => 'ACL_U_PM_MARKDOWN',
+				'cat' => 'pm'
+			]
+		);
 	}
 
 	/**
