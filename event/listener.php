@@ -96,7 +96,7 @@ class listener implements EventSubscriberInterface
 			'core.posting_modify_message_text' => 'check_forum_permissions',
 			'core.posting_modify_template_vars' => 'posting_template_variables',
 			'core.ucp_pm_compose_modify_parse_before' => 'check_pm_permissions',
-			'core.ucp_profile_modify_signature' => 'check_signature_permissions'
+			'core.message_parser_check_message' => 'check_signature_permissions'
 		];
 	}
 
@@ -348,19 +348,23 @@ class listener implements EventSubscriberInterface
 	 */
 	public function check_signature_permissions($event)
 	{
-		// There is not template event to send this value,
-		// added just for future references
+		if (!in_array($event['mode'], ['sig', 'text_reparser.user_signature'], true))
+		{
+			return;
+		}
+
+		// It needs phpBB v3.2.6-RC1 or greater
 		// https://tracker.phpbb.com/browse/PHPBB3-15949
 		// https://github.com/phpbb/phpbb/pull/5519
-		$event['enable_markdown'] = empty($this->request->variable('disable_markdown', false));
+		$event['allow_markdown'] = empty($this->request->variable('disable_markdown', false));
 
 		$this->markdown_enabled = $this->markdown_enabled &&
 			!empty($this->config['allow_sig_markdown']) &&
-			!empty($event['enable_markdown']);
+			!empty($event['allow_markdown']);
 
 		$this->template->assign_var(
 			'S_MARKDOWN_CHECKED',
-			empty($event['enable_markdown']) ? ' checked="checked"' : ''
+			empty($event['allow_markdown']) ? ' checked="checked"' : ''
 		);
 	}
 }

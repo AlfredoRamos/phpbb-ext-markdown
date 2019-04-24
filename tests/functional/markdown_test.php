@@ -84,7 +84,7 @@ class markdown_test extends phpbb_functional_test_case
 			$this->sid
 		));
 
-		//$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
+		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
 
 		$this->assertSame(1, $crawler->filter('.markdown-status')->count());
 		$this->assertSame(
@@ -92,10 +92,10 @@ class markdown_test extends phpbb_functional_test_case
 			$crawler->filter('.markdown-status > a')->attr('href')
 		);
 
-		// Has not been implemented
+		// It needs phpBB v3.2.6-RC1 or greater
 		// https://tracker.phpbb.com/browse/PHPBB3-15949
 		// https://github.com/phpbb/phpbb/pull/5519
-		//$this->assertTrue($form->has('disable_markdown'));
+		$this->assertTrue($form->has('disable_markdown'));
 	}
 
 	public function test_post_reply()
