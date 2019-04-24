@@ -348,6 +348,11 @@ class listener implements EventSubscriberInterface
 	 */
 	public function check_signature_permissions($event)
 	{
+		if (!in_array($event['mode'], ['sig', 'text_reparser.user_signature'], true))
+		{
+			return;
+		}
+
 		// It needs phpBB v3.2.6-RC1 or greater
 		// https://tracker.phpbb.com/browse/PHPBB3-15949
 		// https://github.com/phpbb/phpbb/pull/5519
@@ -356,8 +361,6 @@ class listener implements EventSubscriberInterface
 		$this->markdown_enabled = $this->markdown_enabled &&
 			!empty($this->config['allow_sig_markdown']) &&
 			!empty($event['allow_markdown']);
-
-		($this->markdown_enabled) ? $this->helper->enable_markdown() : $this->helper->disable_markdown();
 
 		$this->template->assign_var(
 			'S_MARKDOWN_CHECKED',

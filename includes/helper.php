@@ -62,26 +62,6 @@ class helper
 		return $display_vars;
 	}
 
-	public function enable_markdown()
-	{
-		global $phpbb_container;
-
-		$parser = $phpbb_container->get('text_formatter.parser')->get_parser();
-
-		$parser->enablePlugin('Litedown');
-		$parser->enablePlugin('PipeTables');
-	}
-
-	public function disable_markdown()
-	{
-		global $phpbb_container;
-
-		$parser = $phpbb_container->get('text_formatter.parser')->get_parser();
-
-		$parser->disablePlugin('Litedown');
-		$parser->disablePlugin('PipeTables');
-	}
-
 	/**
 	 * Insert a pair of key/value after given key.
 	 *
