@@ -46,6 +46,54 @@ class markdown_test extends phpbb_functional_test_case
 		$this->assertSame('1', $form->get('config[allow_markdown]')->getValue());
 	}
 
+	public function test_acp_post_settings()
+	{
+		$this->admin_login();
+
+		$crawler = self::request('GET', sprintf(
+			'adm/index.php?i=acp_board&mode=post&sid=%s',
+			$this->sid
+		));
+
+		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
+
+		$this->assertSame(1, $crawler->filter('#allow_post_markdown')->count());
+		$this->assertTrue($form->has('config[allow_post_markdown]'));
+		$this->assertSame('1', $form->get('config[allow_post_markdown]')->getValue());
+	}
+
+	public function test_acp_private_message_settings()
+	{
+		$this->admin_login();
+
+		$crawler = self::request('GET', sprintf(
+			'adm/index.php?i=acp_board&mode=message&sid=%s',
+			$this->sid
+		));
+
+		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
+
+		$this->assertSame(1, $crawler->filter('#allow_pm_markdown')->count());
+		$this->assertTrue($form->has('config[allow_pm_markdown]'));
+		$this->assertSame('1', $form->get('config[allow_pm_markdown]')->getValue());
+	}
+
+	public function test_acp_signature_settings()
+	{
+		$this->admin_login();
+
+		$crawler = self::request('GET', sprintf(
+			'adm/index.php?i=acp_board&mode=signature&sid=%s',
+			$this->sid
+		));
+
+		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
+
+		$this->assertSame(1, $crawler->filter('#allow_sig_markdown')->count());
+		$this->assertTrue($form->has('config[allow_sig_markdown]'));
+		$this->assertSame('1', $form->get('config[allow_sig_markdown]')->getValue());
+	}
+
 	public function test_ucp_posting_defaults()
 	{
 		$crawler = self::request('GET', sprintf(
