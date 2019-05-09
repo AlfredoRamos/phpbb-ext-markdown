@@ -25,6 +25,7 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, [
 	'ACL_F_MARKDOWN' => 'Puede usar Markdown',
-	'ACL_U_MARKDOWN' => 'Puede usar Markdown',
-	'ACL_U_PM_MARKDOWN' => 'Puede usar Markdown en mensajes privados'
+	'ACL_U_POST_MARKDOWN' => 'Puede usar Markdown',
+	'ACL_U_PM_MARKDOWN' => 'Puede usar Markdown en mensajes privados',
+	'ACL_U_SIG_MARKDOWN' => 'Puede usar Markdown en la firma del usuario'
 ]);
