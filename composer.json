@@ -3,9 +3,9 @@
 	"type": "phpbb-extension",
 	"description": "Markdown extension for phpBB",
 	"homepage": "https://github.com/AlfredoRamos/phpbb-ext-markdown",
-	"version": "0.8.0-beta",
-	"time": "2019-04-24",
-	"keywords": ["phpbb", "extension", "markdown", "litedown"],
+	"version": "0.9.0-beta",
+	"time": "2019-05-09",
+	"keywords": ["phpbb", "extension", "markdown", "litedown", "pipetables"],
 	"license": "GPL-2.0-only",
 	"authors": [
 		{
