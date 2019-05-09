@@ -247,6 +247,28 @@ EOT;
 		$this->assertContains($expected, $result->html());
 	}
 
+	public function test_user_signature()
+	{
+		$crawler = self::request('GET', sprintf(
+			'ucp.php?i=ucp_profile&mode=signature&sid=%s',
+			$this->sid
+		));
+
+		$markdown = '**Markdown** ~~test~~';
+
+		$form = $crawler->selectButton($this->lang('PREVIEW'))->form([
+			'signature' => $markdown
+		]);
+
+		$crawler = self::submit($form);
+
+		$expected = '<p><strong>Markdown</strong> <del>test</del></p>';
+
+		$result = $crawler->filter('.postbody .signature');
+
+		$this->assertContains($expected, $result->html());
+	}
+
 	public function test_markdown_help_page()
 	{
 		$crawler = self::request('GET', 'app.php/help/markdown');
