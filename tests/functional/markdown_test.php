@@ -205,6 +205,48 @@ EOT;
 		$this->assertContains($expected, $result->html());
 	}
 
+	public function test_private_message()
+	{
+		$markdown = <<<EOT
+Code:
+
+```php
+echo 'message';
+```
+
+Inline `code`
+EOT;
+		$private_message = $this->create_private_message(
+			'Markdown private message test 1',
+			$markdown,
+			[2]
+		);
+
+		$crawler = self::request('GET', sprintf(
+			'ucp.php?i=pm&mode=view&p=%d&sid=%s',
+			$private_message,
+			$this->sid
+		));
+
+		$expected = <<<EOT
+<p>Code:</p>
+
+<div class="codebox">
+<p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p>
+<pre><code>echo 'message';</code></pre>
+</div>
+
+<p>Inline <code>code</code></p>
+EOT;
+
+		$result = $crawler->filter(sprintf(
+			'#post-%d .content',
+			$private_message
+		));
+
+		$this->assertContains($expected, $result->html());
+	}
+
 	public function test_markdown_help_page()
 	{
 		$crawler = self::request('GET', 'app.php/help/markdown');
