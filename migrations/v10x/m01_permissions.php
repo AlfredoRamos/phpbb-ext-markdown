@@ -27,15 +27,15 @@ class m01_permissions extends migration
 			['permission.permission_set', ['ROLE_FORUM_POLLS', 'f_markdown']],
 			['permission.permission_set', ['ROLE_FORUM_FULL', 'f_markdown']],
 
-			['permission.add', ['u_markdown']],
-			['permission.permission_set', ['ROLE_USER_STANDARD', 'u_markdown']],
-			['permission.permission_set', ['ROLE_USER_FULL', 'u_markdown']],
-			['permission.permission_set', ['ROLE_MOD_STANDARD', 'u_markdown']],
-			['permission.permission_set', ['ROLE_MOD_FULL', 'u_markdown']],
-			['permission.permission_set', ['ROLE_ADMIN_STANDARD', 'u_markdown']],
-			['permission.permission_set', ['ROLE_ADMIN_FULL', 'u_markdown']],
-			['permission.permission_set', ['REGISTERED_COPPA', 'u_markdown', 'group']],
-			['permission.permission_set', ['REGISTERED', 'u_markdown', 'group']],
+			['permission.add', ['u_post_markdown']],
+			['permission.permission_set', ['ROLE_USER_STANDARD', 'u_post_markdown']],
+			['permission.permission_set', ['ROLE_USER_FULL', 'u_post_markdown']],
+			['permission.permission_set', ['ROLE_MOD_STANDARD', 'u_post_markdown']],
+			['permission.permission_set', ['ROLE_MOD_FULL', 'u_post_markdown']],
+			['permission.permission_set', ['ROLE_ADMIN_STANDARD', 'u_post_markdown']],
+			['permission.permission_set', ['ROLE_ADMIN_FULL', 'u_post_markdown']],
+			['permission.permission_set', ['REGISTERED_COPPA', 'u_post_markdown', 'group']],
+			['permission.permission_set', ['REGISTERED', 'u_post_markdown', 'group']],
 
 			['permission.add', ['u_pm_markdown']],
 			['permission.permission_set', ['ROLE_USER_STANDARD', 'u_pm_markdown']],
@@ -45,7 +45,17 @@ class m01_permissions extends migration
 			['permission.permission_set', ['ROLE_ADMIN_STANDARD', 'u_pm_markdown']],
 			['permission.permission_set', ['ROLE_ADMIN_FULL', 'u_pm_markdown']],
 			['permission.permission_set', ['REGISTERED_COPPA', 'u_pm_markdown', 'group']],
-			['permission.permission_set', ['REGISTERED', 'u_pm_markdown', 'group']]
+			['permission.permission_set', ['REGISTERED', 'u_pm_markdown', 'group']],
+
+			['permission.add', ['u_sig_markdown']],
+			['permission.permission_set', ['ROLE_USER_STANDARD', 'u_sig_markdown']],
+			['permission.permission_set', ['ROLE_USER_FULL', 'u_sig_markdown']],
+			['permission.permission_set', ['ROLE_MOD_STANDARD', 'u_sig_markdown']],
+			['permission.permission_set', ['ROLE_MOD_FULL', 'u_sig_markdown']],
+			['permission.permission_set', ['ROLE_ADMIN_STANDARD', 'u_sig_markdown']],
+			['permission.permission_set', ['ROLE_ADMIN_FULL', 'u_sig_markdown']],
+			['permission.permission_set', ['REGISTERED_COPPA', 'u_sig_markdown', 'group']],
+			['permission.permission_set', ['REGISTERED', 'u_sig_markdown', 'group']]
 		];
 	}
 }

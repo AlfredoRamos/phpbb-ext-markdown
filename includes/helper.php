@@ -26,6 +26,13 @@ class helper
 			return [];
 		}
 
+		// Common field options
+		$options = [
+			'validate' => 'bool',
+			'type' => 'radio:yes_no',
+			'explain' => false
+		];
+
 		switch ($mode)
 		{
 			case 'features':
@@ -33,12 +40,36 @@ class helper
 					$display_vars['vars'],
 					'allow_pm_report',
 					[
-						'allow_markdown' => [
-							'lang' => 'ALLOW_MARKDOWN',
-							'validate' => 'bool',
-							'type' => 'radio:yes_no',
-							'explain' => false
-						]
+						'allow_markdown' => array_merge(
+							['lang' => 'ALLOW_MARKDOWN'],
+							$options
+						)
+					]
+				);
+			break;
+
+			case 'post':
+				$display_vars['vars'] = $this->array_insert_after(
+					$display_vars['vars'],
+					'allow_forum_notify',
+					[
+						'allow_post_markdown' => array_merge(
+							['lang' => 'ALLOW_POST_MARKDOWN'],
+							$options
+						)
+					]
+				);
+			break;
+
+			case 'message':
+				$display_vars['vars'] = $this->array_insert_after(
+					$display_vars['vars'],
+					'allow_mass_pm',
+					[
+						'allow_pm_markdown' => array_merge(
+							['lang' => 'ALLOW_PM_MARKDOWN'],
+							$options
+						)
 					]
 				);
 			break;
@@ -48,12 +79,10 @@ class helper
 					$display_vars['vars'],
 					'allow_sig',
 					[
-						'allow_sig_markdown' => [
-							'lang' => 'ALLOW_SIG_MARKDOWN',
-							'validate' => 'bool',
-							'type' => 'radio:yes_no',
-							'explain' => false
-						]
+						'allow_sig_markdown' => array_merge(
+							['lang' => 'ALLOW_SIG_MARKDOWN'],
+							$options
+						)
 					]
 				);
 			break;
