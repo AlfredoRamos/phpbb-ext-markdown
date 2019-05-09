@@ -9,160 +9,19 @@
 
 namespace alfredoramos\markdown\tests\functional;
 
-use phpbb_functional_test_case;
-
 /**
  * @group functional
  */
-class markdown_test extends phpbb_functional_test_case
+class markdown_test extends abstract_functional_test_case
 {
-	static protected function setup_extensions()
-	{
-		return ['alfredoramos/markdown'];
-	}
-
 	public function setUp()
 	{
 		parent::setUp();
 
 		$this->add_lang_ext('alfredoramos/markdown', [
-			'acp/info_acp_markdown',
+			'posting',
 			'help/markdown'
 		]);
-
-		$this->login();
-	}
-
-	public function test_acp_board_features()
-	{
-		$this->admin_login();
-
-		$crawler = self::request('GET', sprintf(
-			'adm/index.php?i=acp_board&mode=features&sid=%s',
-			$this->sid
-		));
-
-		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
-
-		$this->assertContains(
-			$this->lang('ALLOW_MARKDOWN'),
-			$crawler->filter('label[for="allow_markdown"]')->text()
-		);
-		$this->assertSame(1, $crawler->filter('#allow_markdown')->count());
-		$this->assertTrue($form->has('config[allow_markdown]'));
-		$this->assertSame('1', $form->get('config[allow_markdown]')->getValue());
-	}
-
-	public function test_acp_post_settings()
-	{
-		$this->admin_login();
-
-		$crawler = self::request('GET', sprintf(
-			'adm/index.php?i=acp_board&mode=post&sid=%s',
-			$this->sid
-		));
-
-		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
-
-		$this->assertContains(
-			$this->lang('ALLOW_POST_MARKDOWN'),
-			$crawler->filter('label[for="allow_post_markdown"]')->text()
-		);
-		$this->assertSame(1, $crawler->filter('#allow_post_markdown')->count());
-		$this->assertTrue($form->has('config[allow_post_markdown]'));
-		$this->assertSame('1', $form->get('config[allow_post_markdown]')->getValue());
-	}
-
-	public function test_acp_private_message_settings()
-	{
-		$this->admin_login();
-
-		$crawler = self::request('GET', sprintf(
-			'adm/index.php?i=acp_board&mode=message&sid=%s',
-			$this->sid
-		));
-
-		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
-
-		$this->assertContains(
-			$this->lang('ALLOW_PM_MARKDOWN'),
-			$crawler->filter('label[for="allow_pm_markdown"]')->text()
-		);
-		$this->assertSame(1, $crawler->filter('#allow_pm_markdown')->count());
-		$this->assertTrue($form->has('config[allow_pm_markdown]'));
-		$this->assertSame('1', $form->get('config[allow_pm_markdown]')->getValue());
-	}
-
-	public function test_acp_signature_settings()
-	{
-		$this->admin_login();
-
-		$crawler = self::request('GET', sprintf(
-			'adm/index.php?i=acp_board&mode=signature&sid=%s',
-			$this->sid
-		));
-
-		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
-
-		$this->assertContains(
-			$this->lang('ALLOW_SIG_MARKDOWN'),
-			$crawler->filter('label[for="allow_sig_markdown"]')->text()
-		);
-		$this->assertSame(1, $crawler->filter('#allow_sig_markdown')->count());
-		$this->assertTrue($form->has('config[allow_sig_markdown]'));
-		$this->assertSame('1', $form->get('config[allow_sig_markdown]')->getValue());
-	}
-
-	public function test_ucp_posting_defaults()
-	{
-		$crawler = self::request('GET', sprintf(
-			'ucp.php?i=ucp_prefs&mode=post&sid=%s',
-			$this->sid
-		));
-
-		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
-
-		$this->assertTrue($form->has('markdown'));
-		$this->assertSame('1', $form->get('markdown')->getValue());
-	}
-
-	public function test_ucp_private_message()
-	{
-		$crawler = self::request('GET', sprintf(
-			'ucp.php?i=pm&mode=compose&sid=%s',
-			$this->sid
-		));
-
-		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
-
-		$this->assertSame(1, $crawler->filter('.markdown-status')->count());
-		$this->assertSame(
-			'/app.php/help/markdown',
-			$crawler->filter('.markdown-status > a')->attr('href')
-		);
-		$this->assertTrue($form->has('disable_markdown'));
-
-	}
-
-	public function test_ucp_signature()
-	{
-		$crawler = self::request('GET', sprintf(
-			'ucp.php?i=ucp_profile&mode=signature&sid=%s',
-			$this->sid
-		));
-
-		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
-
-		$this->assertSame(1, $crawler->filter('.markdown-status')->count());
-		$this->assertSame(
-			'/app.php/help/markdown',
-			$crawler->filter('.markdown-status > a')->attr('href')
-		);
-
-		// It needs phpBB v3.2.6-RC1 or greater
-		// https://tracker.phpbb.com/browse/PHPBB3-15949
-		// https://github.com/phpbb/phpbb/pull/5519
-		$this->assertTrue($form->has('disable_markdown'));
 	}
 
 	public function test_post_reply()
@@ -262,28 +121,6 @@ EOT;
 			'#post-%d .content',
 			$private_message
 		));
-
-		$this->assertContains($expected, $result->html());
-	}
-
-	public function test_user_signature()
-	{
-		$crawler = self::request('GET', sprintf(
-			'ucp.php?i=ucp_profile&mode=signature&sid=%s',
-			$this->sid
-		));
-
-		$markdown = '**Markdown** ~~test~~';
-
-		$form = $crawler->selectButton($this->lang('PREVIEW'))->form([
-			'signature' => $markdown
-		]);
-
-		$crawler = self::submit($form);
-
-		$expected = '<p><strong>Markdown</strong> <del>test</del></p>';
-
-		$result = $crawler->filter('.postbody .signature');
 
 		$this->assertContains($expected, $result->html());
 	}
