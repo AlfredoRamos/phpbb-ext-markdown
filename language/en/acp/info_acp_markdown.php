@@ -25,5 +25,7 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, [
 	'ALLOW_MARKDOWN' => 'Allow Markdown',
+	'ALLOW_POST_MARKDOWN' => 'Allow Markdown in posts',
+	'ALLOW_PM_MARKDOWN' => 'Allow Markdown in private messages',
 	'ALLOW_SIG_MARKDOWN' => 'Allow Markdown in user signatures'
 ]);
