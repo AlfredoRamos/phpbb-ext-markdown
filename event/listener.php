@@ -315,9 +315,9 @@ class listener implements EventSubscriberInterface
 		], $event['post_data']);
 
 		$this->markdown_enabled = $this->markdown_enabled &&
+			!empty($this->config['allow_post_markdown']) &&
 			!empty($this->auth->acl_get('f_markdown', $event['forum_id'])) &&
 			!empty($this->auth->acl_get('u_post_markdown')) &&
-			!empty($this->config['allow_post_markdown']) &&
 			!empty($event['post_data']['enable_markdown']);
 
 		$this->template->assign_var(
@@ -360,8 +360,8 @@ class listener implements EventSubscriberInterface
 		$event['enable_markdown'] = empty($this->request->variable('disable_markdown', false));
 
 		$this->markdown_enabled = $this->markdown_enabled &&
-			!empty($this->auth->acl_get('u_pm_markdown')) &&
 			!empty($this->config['allow_pm_markdown']) &&
+			!empty($this->auth->acl_get('u_pm_markdown')) &&
 			!empty($event['enable_markdown']);
 
 		$this->template->assign_var(
@@ -390,8 +390,8 @@ class listener implements EventSubscriberInterface
 		$event['allow_markdown'] = empty($this->request->variable('disable_markdown', false));
 
 		$this->markdown_enabled = $this->markdown_enabled &&
-			!empty($this->auth->acl_get('u_sig_markdown')) &&
 			!empty($this->config['allow_sig_markdown']) &&
+			!empty($this->auth->acl_get('u_sig_markdown')) &&
 			!empty($event['allow_markdown']);
 
 		$this->template->assign_var(
