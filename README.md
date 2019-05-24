@@ -32,9 +32,15 @@ It uses the plugins Litedown and PipeTables from [s9e/TextFormatter](https://git
 ### Preview
 
 [![Board features](https://i.imgur.com/PSGGuM3b.png)](https://i.imgur.com/PSGGuM3.png)
+[![Post settings](https://i.imgur.com/qYZ7JBCb.png)](https://i.imgur.com/qYZ7JBC.png)
+[![Private message settings](https://i.imgur.com/np1PqN6b.png)](https://i.imgur.com/np1PqN6.png)
+[![Signature settings](https://i.imgur.com/aEKJxWRb.png)](https://i.imgur.com/aEKJxWR.png)
+[![Post group permissions](https://i.imgur.com/eiJJvbMb.png)](https://i.imgur.com/eiJJvbM.png)
+[![Profile group permissions](https://i.imgur.com/spT9zXYb.png)](https://i.imgur.com/spT9zXY.png)
+[![Private messages group permissions](https://i.imgur.com/YXcNxXKb.png)](https://i.imgur.com/YXcNxXK.png)
+[![Forum permissions](https://i.imgur.com/5GIQpMVb.png)](https://i.imgur.com/5GIQpMV.png)
 [![User posting defaults](https://i.imgur.com/zWhjOfVb.png)](https://i.imgur.com/zWhjOfV.png)
 [![Markdown post](https://i.imgur.com/kba871fb.png)](https://i.imgur.com/kba871f.png)
-
 [![Markdown private message](https://i.imgur.com/HGvlwhIb.png)](https://i.imgur.com/HGvlwhI.png)
 [![Markdown signature](https://i.imgur.com/svBmgYXb.png)](https://i.imgur.com/svBmgYX.png)
 [![Posting editor option](https://i.imgur.com/1Z7CDDrb.png)](https://i.imgur.com/1Z7CDDr.png)
