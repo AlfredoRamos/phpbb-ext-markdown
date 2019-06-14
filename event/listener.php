@@ -96,7 +96,7 @@ class listener implements EventSubscriberInterface
 			'core.posting_modify_template_vars' => 'posting_template_variables',
 			'core.ucp_pm_compose_modify_parse_before' => 'check_pm_permissions',
 			'core.message_parser_check_message' => 'check_signature_permissions',
-			'alfredoramos.imgur.allowed_values_after' => 'add_imgur_output_types'
+			'alfredoramos.imgur.allowed_values_append' => 'append_imgur_output_types'
 		];
 	}
 
@@ -408,7 +408,7 @@ class listener implements EventSubscriberInterface
 	 *
 	 * @return void
 	 */
-	public function add_imgur_output_types($event)
+	public function append_imgur_output_types($event)
 	{
 		if (empty($event['data']) || empty($event['extras']))
 		{
