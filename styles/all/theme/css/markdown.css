@@ -4,11 +4,61 @@
  * @copyright 2019 Alfredo Ramos
  * @license GPL-2.0-only
  */
-
 @media (max-width: 700px) {
 	.markdown-status {
 		display: none;
 	}
+}
+
+.postbody .content p, .postbody .signature p, .page-body .faq p {
+	font-size: 1em;
+}
+
+.postbody .content li p, .postbody .signature li p, .page-body .faq li p {
+	margin-bottom: 0;
+}
+
+.postbody .content h1, .postbody .signature h1, .page-body .faq h1, .postbody .content h2, .postbody .signature h2, .page-body .faq h2, .postbody .content h3, .postbody .signature h3, .page-body .faq h3, .postbody .content h4, .postbody .signature h4, .page-body .faq h4, .postbody .content h5, .postbody .signature h5, .page-body .faq h5, .postbody .content h6, .postbody .signature h6, .page-body .faq h6 {
+	line-height: 1em;
+	font-weight: bold;
+	color: currentColor;
+	margin: 1em 0 !important;
+	padding: 0;
+	border: none;
+	float: none !important;
+}
+
+.postbody .content h1:first-child, .postbody .signature h1:first-child, .page-body .faq h1:first-child, .postbody .content h2:first-child, .postbody .signature h2:first-child, .page-body .faq h2:first-child, .postbody .content h3:first-child, .postbody .signature h3:first-child, .page-body .faq h3:first-child, .postbody .content h4:first-child, .postbody .signature h4:first-child, .page-body .faq h4:first-child, .postbody .content h5:first-child, .postbody .signature h5:first-child, .page-body .faq h5:first-child, .postbody .content h6:first-child, .postbody .signature h6:first-child, .page-body .faq h6:first-child {
+	margin-top: 0 !important;
+}
+
+.postbody .content table, .postbody .signature table, .page-body .faq table,
+.postbody .content table th,
+.postbody .signature table th,
+.page-body .faq table th,
+.postbody .content table td,
+.postbody .signature table td,
+.page-body .faq table td {
+	border: 1px solid #105289;
+}
+
+.postbody .content table tr:nth-child(2n), .postbody .signature table tr:nth-child(2n), .page-body .faq table tr:nth-child(2n) {
+	background-color: #eef8fb;
+}
+
+.postbody .content table thead, .postbody .signature table thead, .page-body .faq table thead {
+	background-color: #105289;
+	color: #fff;
+}
+
+
+.postbody .content table th,
+.postbody .signature table th,
+.page-body .faq table th,
+.postbody .content table td,
+.postbody .signature table td,
+.page-body .faq table td {
+	padding: 5px 10px;
 }
 
 pre.markdown-demo {
