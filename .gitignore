@@ -1,4 +1,5 @@
 build/
 vendor/
 composer.lock
+Gemfile.lock
 .DS_Store

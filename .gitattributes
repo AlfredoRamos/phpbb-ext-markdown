@@ -7,3 +7,6 @@ build.xml export-ignore
 .gitignore export-ignore
 .gitattributes export-ignore
 *.md export-ignore
+Gemfile export-ignore
+Rakefile export-ignore
+*.scss export-ignore
