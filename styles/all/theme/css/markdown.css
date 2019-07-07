@@ -61,6 +61,12 @@
 	padding: 5px 10px;
 }
 
+.page-body .content .polls p {
+	font-size: 1em;
+	display: inline-block;
+	margin-bottom: 0;
+}
+
 pre.markdown-demo {
 	margin: 1em 0;
 }

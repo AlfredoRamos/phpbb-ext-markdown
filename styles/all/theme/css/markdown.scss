@@ -69,8 +69,18 @@
 	}
 }
 
-.page-body .faq {
-	@extend %reset;
+.page-body {
+	.content .polls {
+		p {
+			font-size: 1em;
+			display: inline-block;
+			margin-bottom: 0;
+		}
+	}
+
+	.faq {
+		@extend %reset;
+	}
 }
 
 pre.markdown-demo {
