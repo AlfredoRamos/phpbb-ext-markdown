@@ -4,6 +4,7 @@
  * @copyright 2019 Alfredo Ramos
  * @license GPL-2.0-only
  */
+
 @media (max-width: 700px) {
 	.markdown-status {
 		display: none;
@@ -40,6 +41,9 @@
 	}
 
 	table {
+		margin-top: 1em;
+		margin-bottom: 1em;
+
 		&,
 		th,
 		td {
@@ -62,24 +66,19 @@
 	}
 }
 
-.postbody {
+.page-body {
 	.content,
-	.signature {
+	.signature,
+	.faq {
 		@extend %reset;
 	}
-}
 
-.page-body {
 	.content .polls {
 		p {
 			font-size: 1em;
 			display: inline-block;
 			margin-bottom: 0;
 		}
-	}
-
-	.faq {
-		@extend %reset;
 	}
 }
 

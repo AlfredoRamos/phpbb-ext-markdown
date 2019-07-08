@@ -10,15 +10,15 @@
 	}
 }
 
-.postbody .content p, .postbody .signature p, .page-body .faq p {
+.page-body .content p, .page-body .signature p, .page-body .faq p {
 	font-size: 1em;
 }
 
-.postbody .content li p, .postbody .signature li p, .page-body .faq li p {
+.page-body .content li p, .page-body .signature li p, .page-body .faq li p {
 	margin-bottom: 0;
 }
 
-.postbody .content h1, .postbody .signature h1, .page-body .faq h1, .postbody .content h2, .postbody .signature h2, .page-body .faq h2, .postbody .content h3, .postbody .signature h3, .page-body .faq h3, .postbody .content h4, .postbody .signature h4, .page-body .faq h4, .postbody .content h5, .postbody .signature h5, .page-body .faq h5, .postbody .content h6, .postbody .signature h6, .page-body .faq h6 {
+.page-body .content h1, .page-body .signature h1, .page-body .faq h1, .page-body .content h2, .page-body .signature h2, .page-body .faq h2, .page-body .content h3, .page-body .signature h3, .page-body .faq h3, .page-body .content h4, .page-body .signature h4, .page-body .faq h4, .page-body .content h5, .page-body .signature h5, .page-body .faq h5, .page-body .content h6, .page-body .signature h6, .page-body .faq h6 {
 	line-height: 1em;
 	font-weight: bold;
 	color: currentColor;
@@ -28,35 +28,40 @@
 	float: none !important;
 }
 
-.postbody .content h1:first-child, .postbody .signature h1:first-child, .page-body .faq h1:first-child, .postbody .content h2:first-child, .postbody .signature h2:first-child, .page-body .faq h2:first-child, .postbody .content h3:first-child, .postbody .signature h3:first-child, .page-body .faq h3:first-child, .postbody .content h4:first-child, .postbody .signature h4:first-child, .page-body .faq h4:first-child, .postbody .content h5:first-child, .postbody .signature h5:first-child, .page-body .faq h5:first-child, .postbody .content h6:first-child, .postbody .signature h6:first-child, .page-body .faq h6:first-child {
+.page-body .content h1:first-child, .page-body .signature h1:first-child, .page-body .faq h1:first-child, .page-body .content h2:first-child, .page-body .signature h2:first-child, .page-body .faq h2:first-child, .page-body .content h3:first-child, .page-body .signature h3:first-child, .page-body .faq h3:first-child, .page-body .content h4:first-child, .page-body .signature h4:first-child, .page-body .faq h4:first-child, .page-body .content h5:first-child, .page-body .signature h5:first-child, .page-body .faq h5:first-child, .page-body .content h6:first-child, .page-body .signature h6:first-child, .page-body .faq h6:first-child {
 	margin-top: 0 !important;
 }
 
-.postbody .content table, .postbody .signature table, .page-body .faq table,
-.postbody .content table th,
-.postbody .signature table th,
+.page-body .content table, .page-body .signature table, .page-body .faq table {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.page-body .content table, .page-body .signature table, .page-body .faq table,
+.page-body .content table th,
+.page-body .signature table th,
 .page-body .faq table th,
-.postbody .content table td,
-.postbody .signature table td,
+.page-body .content table td,
+.page-body .signature table td,
 .page-body .faq table td {
 	border: 1px solid #105289;
 }
 
-.postbody .content table tr:nth-child(2n), .postbody .signature table tr:nth-child(2n), .page-body .faq table tr:nth-child(2n) {
+.page-body .content table tr:nth-child(2n), .page-body .signature table tr:nth-child(2n), .page-body .faq table tr:nth-child(2n) {
 	background-color: #eef8fb;
 }
 
-.postbody .content table thead, .postbody .signature table thead, .page-body .faq table thead {
+.page-body .content table thead, .page-body .signature table thead, .page-body .faq table thead {
 	background-color: #105289;
 	color: #fff;
 }
 
 
-.postbody .content table th,
-.postbody .signature table th,
+.page-body .content table th,
+.page-body .signature table th,
 .page-body .faq table th,
-.postbody .content table td,
-.postbody .signature table td,
+.page-body .content table td,
+.page-body .signature table td,
 .page-body .faq table td {
 	padding: 5px 10px;
 }
