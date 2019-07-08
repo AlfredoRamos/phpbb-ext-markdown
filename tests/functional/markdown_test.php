@@ -209,6 +209,50 @@ EOT;
 		$this->assertContains($expected, $result->html());
 	}
 
+	public function test_table_text_aligntment()
+	{
+		$markdown = <<<EOT
+| Left | Center | Right |
+|:-----|:------:|------:|
+|   x  |    x   |   x   |
+EOT;
+
+		$post = $this->create_topic(
+			2,
+			'Markdown tables test 3',
+			$markdown
+		);
+
+		$crawler = self::request('GET', sprintf(
+			'viewtopic.php?t=%d&sid=%s',
+			$post['topic_id'],
+			$this->sid
+		));
+
+		$expected = <<<EOT
+<table>
+<thead><tr>
+<th style="text-align:left">Left</th>
+<th style="text-align:center">Center</th>
+<th style="text-align:right">Right</th>
+</tr></thead>
+<tbody><tr>
+<td style="text-align:left">x</td>
+<td style="text-align:center">x</td>
+<td style="text-align:right">x</td>
+</tr></tbody>
+</table>
+EOT;
+
+		$result = $crawler->filter(sprintf(
+			'#post_content%d .content',
+			$post['topic_id']
+		));
+
+		$this->assertSame(1, $crawler->filter('table')->count());
+		$this->assertContains($expected, $result->html());
+	}
+
 	public function test_markdown_help_page()
 	{
 		$crawler = self::request('GET', 'app.php/help/markdown');
