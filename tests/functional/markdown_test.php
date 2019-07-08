@@ -167,6 +167,48 @@ EOT;
 		$this->assertContains($expected, $result->html());
 	}
 
+	public function test_compact_table()
+	{
+		$markdown = <<<EOT
+Header 1|Header 2
+-|-
+Cell 1|Cell 2
+EOT;
+
+		$post = $this->create_topic(
+			2,
+			'Markdown tables test 2',
+			$markdown
+		);
+
+		$crawler = self::request('GET', sprintf(
+			'viewtopic.php?t=%d&sid=%s',
+			$post['topic_id'],
+			$this->sid
+		));
+
+		$expected = <<<EOT
+<table>
+<thead><tr>
+<th>Header 1</th>
+<th>Header 2</th>
+</tr></thead>
+<tbody><tr>
+<td>Cell 1</td>
+<td>Cell 2</td>
+</tr></tbody>
+</table>
+EOT;
+
+		$result = $crawler->filter(sprintf(
+			'#post_content%d .content',
+			$post['topic_id']
+		));
+
+		$this->assertSame(1, $crawler->filter('table')->count());
+		$this->assertContains($expected, $result->html());
+	}
+
 	public function test_markdown_help_page()
 	{
 		$crawler = self::request('GET', 'app.php/help/markdown');
