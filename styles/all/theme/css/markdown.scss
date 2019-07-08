@@ -11,6 +11,10 @@
 	}
 }
 
+$table1: #105289; // Border and table header background color
+$table2: #eef8fb; // Alternate background color
+$table3: #fff; // Table header text color
+
 %reset {
 	p {
 		font-size: 1em;
@@ -47,16 +51,16 @@
 		&,
 		th,
 		td {
-			border: 1px solid #105289;
+			border: 1px solid $table1;
 		}
 
 		tr:nth-child(2n) {
-			background-color: #eef8fb;
+			background-color: $table2;
 		}
 
 		thead {
-			background-color: #105289;
-			color: #fff;
+			background-color: $table1;
+			color: $table3;
 		}
 
 		th,

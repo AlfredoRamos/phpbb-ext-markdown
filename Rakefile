@@ -63,11 +63,13 @@ namespace :build do
 
   desc 'Build minified CSS file'
   task :minified do
-    Rake::Task['build:base'].reenable
-    Rake::Task['build:base'].invoke(
-      input: files,
-      style: :compressed
-    )
+    files.each do |file|
+      Rake::Task['build:base'].reenable
+      Rake::Task['build:base'].invoke(
+        input: file,
+        style: :compressed
+      )
+    end
   end
 
   desc 'Build all CSS files'
