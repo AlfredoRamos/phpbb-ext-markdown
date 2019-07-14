@@ -33,7 +33,7 @@ class m02_user_configuration extends migration
 		return [
 			'add_columns' => [
 				USERS_TABLE => [
-					'user_allow_markdown' => ['BOOL', true]
+					'user_allow_markdown' => ['BOOL', 1]
 				]
 			]
 		];
