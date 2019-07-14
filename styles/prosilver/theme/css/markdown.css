@@ -4,11 +4,6 @@
  * @copyright 2019 Alfredo Ramos
  * @license GPL-2.0-only
  */
-@media (max-width: 700px) {
-	.markdown-status {
-		display: none;
-	}
-}
 
 .page-body .content p, .page-body .signature p, .page-body .faq p {
 	font-size: 1em;
@@ -70,8 +65,4 @@
 	font-size: 1em;
 	display: inline-block;
 	margin-bottom: 0;
-}
-
-pre.markdown-demo {
-	margin: 1em 0;
 }
