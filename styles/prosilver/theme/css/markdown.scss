@@ -5,12 +5,6 @@
  * @license GPL-2.0-only
  */
 
-@media (max-width: 700px) {
-	.markdown-status {
-		display: none;
-	}
-}
-
 $table1: #105289; // Border and table header background color
 $table2: #eef8fb; // Alternate background color
 $table3: #fff; // Table header text color
@@ -84,8 +78,4 @@ $table3: #fff; // Table header text color
 			margin-bottom: 0;
 		}
 	}
-}
-
-pre.markdown-demo {
-	margin: 1em 0;
 }
