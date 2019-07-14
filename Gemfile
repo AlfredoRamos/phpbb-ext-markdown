@@ -11,7 +11,6 @@ group :development do
 end
 
 group :test do
-  gem 'minitest'
   gem 'rubocop', require: false
   gem 'scss_lint', require: false
 end

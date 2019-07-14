@@ -2,8 +2,16 @@
 
 require 'sassc'
 require 'autoprefixer-rails'
+require 'rubocop/rake_task'
+require 'scss_lint/rake_task'
 
 $stdout.sync = $stderr.sync = true
+
+# RuboCop
+RuboCop::RakeTask.new
+
+# SCSS Lint
+SCSSLint::RakeTask.new
 
 namespace :build do
   files = Dir.glob('styles/**/theme/css/*.scss')
