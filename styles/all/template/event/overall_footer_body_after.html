@@ -1,4 +1,4 @@
-{%- if not INCLUDED_MARKDOWN_JS -%}
+{%- if IMGUR_UPLOAD_URL and not INCLUDED_MARKDOWN_JS -%}
 {% INCLUDEJS '@alfredoramos_markdown/js/markdown.js' %}
 {%- set INCLUDED_MARKDOWN_JS = true -%}
 {%- endif -%}
