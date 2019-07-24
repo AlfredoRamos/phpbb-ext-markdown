@@ -25,3 +25,6 @@ services:
 
     alfredoramos.markdown.helper:
         class: alfredoramos\markdown\includes\helper
+        arguments:
+            - '%core.root_path%'
+            - '%core.php_ext%'
