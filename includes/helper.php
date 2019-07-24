@@ -11,6 +11,26 @@ namespace alfredoramos\markdown\includes;
 
 class helper
 {
+	/** @var string */
+	protected $root_path;
+
+	/** @var string */
+	protected $php_ext;
+
+	/**
+	 * Helper constructor.
+	 *
+	 * @param string $root_path
+	 * @param string $php_ext
+	 *
+	 * @return void
+	 */
+	public function __construct($root_path, $php_ext)
+	{
+		$this->root_path = $root_path;
+		$this->php_ext = $php_ext;
+	}
+
 	/**
 	 * Insert template variables in ACP.
 	 *
@@ -33,90 +53,66 @@ class helper
 			'explain' => false
 		];
 
+		if (!function_exists('phpbb_insert_config_array'))
+		{
+			include($this->root_path . 'includes/functions_acp.' . $this->php_ext);
+		}
+
 		switch ($mode)
 		{
 			case 'features':
-				$display_vars['vars'] = $this->array_insert_after(
+				$display_vars['vars'] = phpbb_insert_config_array(
 					$display_vars['vars'],
-					'allow_pm_report',
 					[
 						'allow_markdown' => array_merge(
 							['lang' => 'ALLOW_MARKDOWN'],
 							$options
 						)
-					]
+					],
+					['before' => 'allow_bbcode']
 				);
 			break;
 
 			case 'post':
-				$display_vars['vars'] = $this->array_insert_after(
+				$display_vars['vars'] = phpbb_insert_config_array(
 					$display_vars['vars'],
-					'allow_forum_notify',
 					[
 						'allow_post_markdown' => array_merge(
 							['lang' => 'ALLOW_POST_MARKDOWN'],
 							$options
 						)
-					]
+					],
+					['before' => 'allow_bbcode']
 				);
 			break;
 
 			case 'message':
-				$display_vars['vars'] = $this->array_insert_after(
+				$display_vars['vars'] = phpbb_insert_config_array(
 					$display_vars['vars'],
-					'allow_mass_pm',
 					[
 						'allow_pm_markdown' => array_merge(
 							['lang' => 'ALLOW_PM_MARKDOWN'],
 							$options
 						)
-					]
+					],
+					['before' => 'auth_bbcode_pm']
 				);
 			break;
 
 			case 'signature':
-				$display_vars['vars'] = $this->array_insert_after(
+				$display_vars['vars'] = phpbb_insert_config_array(
 					$display_vars['vars'],
-					'allow_sig',
 					[
 						'allow_sig_markdown' => array_merge(
 							['lang' => 'ALLOW_SIG_MARKDOWN'],
 							$options
 						)
-					]
+					],
+					['before' => 'allow_sig_bbcode']
 				);
 			break;
 		}
 
 		return $display_vars;
-	}
-
-	/**
-	 * Insert a pair of key/value after given key.
-	 *
-	 * @link https://gist.github.com/wpscholar/0deadce1bbfa4adb4e4c
-	 *
-	 * @param array		$source
-	 * @param string	$key
-	 * @param array		$data
-	 *
-	 * @return array
-	 */
-	private function array_insert_after($source = [], $key = '', $data = [])
-	{
-		if (empty($source) || empty($key) || empty($data))
-		{
-			return [];
-		}
-
-		$keys = array_keys($source);
-		$index = array_search($key, $keys);
-		$position = ($index === false) ? count($source) : $index + 1;
-
-		return array_merge(
-			array_slice($source, 0, $position),
-			$data,
-			array_slice($source, $position)
-		);
 	}
 }
