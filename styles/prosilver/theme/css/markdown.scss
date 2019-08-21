@@ -9,6 +9,7 @@ $table1: #105289; // Border and table header background color
 $table2: #eef8fb; // Alternate background color
 $table3: #fff; // Table header text color
 
+// Reset template
 %reset {
 	p {
 		font-size: 1em;
@@ -22,6 +23,7 @@ $table3: #fff; // Table header text color
 		line-height: 1em;
 		font-weight: bold;
 		color: currentColor;
+		text-transform: none;
 		margin: 1em 0 !important;
 		padding: 0;
 		border: none;
@@ -35,6 +37,22 @@ $table3: #fff; // Table header text color
 	@for $i from 1 through 6 {
 		h#{$i} {
 			@extend %heading;
+
+			// Reset heading font sizes
+			// https://www.w3schools.com/cssref/css_default_values.asp
+			@if ($i == 1) {
+				font-size: 2em;
+			} @else if ($i == 2) {
+				font-size: 1.5em;
+			} @else if ($i == 3) {
+				font-size: 1.17em;
+			} @else if ($i == 4) {
+				font-size: 1em;
+			} @else if ($i == 5) {
+				font-size: .83em;
+			} @else if ($i == 6) {
+				font-size: .67em;
+			}
 		}
 	}
 
@@ -64,18 +82,26 @@ $table3: #fff; // Table header text color
 	}
 }
 
-.page-body {
+// Posts, private messages and signatures
+.post {
 	.content,
-	.signature,
-	.faq {
+	.signature {
 		@extend %reset;
 	}
+}
 
-	.content .polls {
-		p {
-			font-size: 1em;
-			display: inline-block;
-			margin-bottom: 0;
-		}
+// Polls
+.polls {
+	p {
+		font-size: 1em;
+		display: inline-block;
+		margin-bottom: 0;
+	}
+}
+
+// FAQ
+.faq {
+	dd {
+		@extend %reset;
 	}
 }
