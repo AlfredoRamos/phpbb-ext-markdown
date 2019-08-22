@@ -91,11 +91,16 @@ $table3: #fff; // Table header text color
 }
 
 // Polls
-.polls {
+.polls,
+.poll-title {
 	p {
 		font-size: 1em;
-		display: inline-block;
 		margin-bottom: 0;
+	}
+}
+.polls {
+	p {
+		display: inline-block;
 	}
 }
 
