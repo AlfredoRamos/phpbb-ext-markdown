@@ -14,6 +14,7 @@
 	example: ext/${vendor-name}/${extension-name}/
 	-->
 	<target name="clean-package">
+		<delete dir="${dir}/scss" />
 		<delete dir="${dir}/tests" />
 		<delete dir="${dir}/travis" />
 		<delete file="${dir}/.gitignore" />
@@ -24,11 +25,6 @@
 		<delete file="${dir}/README.md" />
 		<delete file="${dir}/Gemfile" />
 		<delete file="${dir}/Rakefile" />
-		<delete>
-			<fileset dir="${dir}">
-				<include name="styles/**/theme/css/*.scss" />
-			</fileset>
-		</delete>
 	</target>
 
 	<!-- DO NOT EDIT BELOW THIS LINE -->

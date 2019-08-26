@@ -6,7 +6,7 @@ require 'autoprefixer-rails'
 $stdout.sync = $stderr.sync = true
 
 namespace :build do
-  files = Dir.glob('styles/**/theme/css/*.scss')
+  files = Dir.glob('scss/styles/**/theme/css/*.scss')
 
   desc 'Build setup'
   task :setup do
@@ -15,7 +15,9 @@ namespace :build do
 
   desc 'Base build'
   task :base, [:opts] => [:setup] do |_t, args|
-    args[:opts][:output] = args[:opts][:input].sub(/\.scss$/, '.css') unless args[:opts].key?(:output)
+    args[:opts][:output] = args[:opts][:input]
+      .sub(/^scss\//, '')
+      .sub(/\.scss$/, '.css') unless args[:opts].key?(:output)
 
     File.open(args[:opts][:output], 'w') do |f|
       css = SassC::Engine.new(
