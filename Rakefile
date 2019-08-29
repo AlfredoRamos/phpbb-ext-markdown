@@ -19,6 +19,10 @@ namespace :build do
       .sub(/^scss\//, '')
       .sub(/\.scss$/, '.css') unless args[:opts].key?(:output)
 
+    args[:opts][:output] = args[:opts][:output]
+      .sub(/\.css$/, '.min.css') if args[:opts][:style] == :compressed &&
+    !args[:opts][:output].match?(/\.min\.css$/)
+
     File.open(args[:opts][:output], 'w') do |f|
       css = SassC::Engine.new(
         File.read(args[:opts][:input]),
