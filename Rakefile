@@ -76,7 +76,7 @@ namespace :build do
 
   desc 'Build all CSS files'
   task :all do
-    #Rake::Task['build:css'].invoke
-    Rake::Task['build:minified'].invoke
+    Rake::Task['build:css'].invoke
+    #Rake::Task['build:minified'].invoke
   end
 end
