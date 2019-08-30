@@ -89,4 +89,11 @@ class markdown extends controller
 
 		return $this->language->lang('MARKDOWN_GUIDE');
 	}
+
+	public function handle()
+	{
+		$this->template->assign_var('IN_MARKDOWN_HELP', true);
+
+		return parent::handle();
+	}
 }
