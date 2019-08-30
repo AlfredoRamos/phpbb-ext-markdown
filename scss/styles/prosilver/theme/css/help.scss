@@ -12,5 +12,9 @@
 .faq {
 	dd {
 		@extend %reset;
+
+		.markdown-demo {
+			margin: 1em 0;
+		}
 	}
 }
