@@ -13,10 +13,11 @@ $table3: #fff; // Table header text color
 %reset {
 	p {
 		font-size: 1em;
-	}
 
-	li p {
-		margin-bottom: 0;
+		&:last-child,
+		li & {
+			margin-bottom: 0;
+		}
 	}
 
 	%heading {

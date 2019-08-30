@@ -8,7 +8,13 @@
 	font-size: 1em;
 }
 
-.post .content li p, .post .signature li p, .faq dd li p {
+.post .content p:last-child, .post .signature p:last-child, .faq dd p:last-child,
+li .post .content p,
+.post li .content p,
+li .post .signature p,
+.post li .signature p,
+li .faq dd p,
+.faq li dd p {
 	margin-bottom: 0;
 }
 
