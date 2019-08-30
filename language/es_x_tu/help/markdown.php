@@ -46,7 +46,7 @@ $lang = array_merge($lang, [
 
 	'HELP_MARKDOWN_BLOCK_CODE' => 'Citando texto y mostrando texto de ancho fijo',
 	'HELP_MARKDOWN_QUOTE_QUESTION' => 'Citando texto en respuestas',
-	'HELP_MARKDOWN_QUOTE_ANSWER' => 'Para citar texto, agrega <code>&gt;</code> y opcionalmente un espacio antes de la línea de texto, ej.<pre class="markdown-demo"><code class="markdown" data-lang="markdown">&gt; Texto citado</code></pre> se convertirá <blockquote class="uncited"><div>Texto citado<p></p></div></blockquote>',
+	'HELP_MARKDOWN_QUOTE_ANSWER' => 'Para citar texto, agrega <code>&gt;</code> y opcionalmente un espacio antes de la línea de texto, ej.<pre class="markdown-demo"><code class="markdown" data-lang="markdown">&gt; Texto citado</code></pre> se convertirá <blockquote class="uncited"><div><p>Texto citado</p></div></blockquote>',
 	'HELP_MARKDOWN_CODE_QUESTION' => 'Mostrando código',
 	'HELP_MARKDOWN_CODE_ANSWER' => 'Para mostrar código, enciérralo entre un par de <code>```</code> o <code>~~~</code>, o alternativamente agrega 4 espacios en blanco antes de cada línea. También puedes especificar el lenguaje en el primer marcador, ej.<pre class="markdown-demo"><code class="markdown" data-lang="markdown">```ruby<br>puts "Hola #{usuario}!"<br>```</code></pre> se convertirá <pre class="markdown-demo"><code class="ruby" data-lang="ruby">puts "Hola #{usuario}!"</code></pre>',
 	'HELP_MARKDOWN_CODE_INLINE_QUESTION' => 'Mostrando código en línea',
