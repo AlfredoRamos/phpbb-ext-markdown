@@ -1,0 +1,80 @@
+/**
+ * Markdown extension for phpBB.
+ * @author Alfredo Ramos <alfredo.ramos@yandex.com>
+ * @copyright 2019 Alfredo Ramos
+ * @license GPL-2.0-only
+ */
+.faq dd p {
+	font-size: 1em;
+}
+
+.faq dd p:last-child,
+li .faq dd p,
+.faq li dd p {
+	margin-bottom: 0;
+}
+
+.faq dd h1, .faq dd h2, .faq dd h3, .faq dd h4, .faq dd h5, .faq dd h6 {
+	line-height: 1em;
+	font-weight: bold;
+	color: currentColor;
+	text-transform: none;
+	margin: 1em 0 !important;
+	padding: 0;
+	border: none;
+	float: none !important;
+}
+
+.faq dd h1:first-child, .faq dd h2:first-child, .faq dd h3:first-child, .faq dd h4:first-child, .faq dd h5:first-child, .faq dd h6:first-child {
+	margin-top: 0 !important;
+}
+
+.faq dd h1 {
+	font-size: 2em;
+}
+
+.faq dd h2 {
+	font-size: 1.5em;
+}
+
+.faq dd h3 {
+	font-size: 1.17em;
+}
+
+.faq dd h4 {
+	font-size: 1em;
+}
+
+.faq dd h5 {
+	font-size: .83em;
+}
+
+.faq dd h6 {
+	font-size: .67em;
+}
+
+.faq dd table {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.faq dd table,
+.faq dd table th,
+.faq dd table td {
+	border: 1px solid #105289;
+}
+
+.faq dd table tr:nth-child(2n) {
+	background-color: #eef8fb;
+}
+
+.faq dd table thead {
+	background-color: #105289;
+	color: #fff;
+}
+
+
+.faq dd table th,
+.faq dd table td {
+	padding: 5px 10px;
+}
