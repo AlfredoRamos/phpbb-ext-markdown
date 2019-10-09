@@ -146,7 +146,7 @@ EOT;
 		));
 
 		$expected = <<<EOT
-<table>
+<table class="markdown">
 <thead><tr>
 <th>Header 1</th>
 <th>Header 2</th>
@@ -188,7 +188,7 @@ EOT;
 		));
 
 		$expected = <<<EOT
-<table>
+<table class="markdown">
 <thead><tr>
 <th>Header 1</th>
 <th>Header 2</th>
@@ -230,7 +230,7 @@ EOT;
 		));
 
 		$expected = <<<EOT
-<table>
+<table class="markdown">
 <thead><tr>
 <th style="text-align:left">Left</th>
 <th style="text-align:center">Center</th>
