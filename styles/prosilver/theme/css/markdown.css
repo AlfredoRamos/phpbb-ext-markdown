@@ -25,14 +25,14 @@
 }
 
 h1.markdown, h2.markdown, h3.markdown, h4.markdown, h5.markdown, h6.markdown {
-	line-height: 1em;
-	font-weight: bold;
-	color: currentColor;
-	text-transform: none;
-	margin: 1em 0 !important;
-	padding: 0;
-	border: none;
 	float: none !important;
+	margin: 1em 0 !important;
+	border: none;
+	padding: 0;
+	text-transform: none;
+	line-height: 1em;
+	color: currentColor;
+	font-weight: bold;
 }
 
 h1.markdown:first-child, h2.markdown:first-child, h3.markdown:first-child, h4.markdown:first-child, h5.markdown:first-child, h6.markdown:first-child {
@@ -93,10 +93,9 @@ table.markdown td {
 	padding: 5px 10px;
 }
 
-.polls p,
-.poll-title p {
-	font-size: 1em;
+.polls p, .poll-title p {
 	margin-bottom: 0;
+	font-size: 1em;
 }
 
 .polls p {

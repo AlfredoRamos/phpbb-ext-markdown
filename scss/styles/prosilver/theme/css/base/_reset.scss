@@ -28,15 +28,16 @@
 }
 
 // Headings
+// scss-lint:disable ImportantRule
 %heading {
-	line-height: 1em;
-	font-weight: bold;
-	color: currentColor;
-	text-transform: none;
-	margin: 1em 0 !important;
-	padding: 0;
-	border: none;
 	float: none !important;
+	margin: 1em 0 !important;
+	border: none;
+	padding: 0;
+	text-transform: none;
+	line-height: 1em;
+	color: currentColor;
+	font-weight: bold;
 
 	&:first-child {
 		margin-top: 0 !important;
