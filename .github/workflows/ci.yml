@@ -1,0 +1,22 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.x
+    - name: Install gems
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        gem cleanup
+    - name: Test Ruby and SCSS
+      run: |
+        bundle exec rake rubocop
+        bundle exec rake scss_lint
