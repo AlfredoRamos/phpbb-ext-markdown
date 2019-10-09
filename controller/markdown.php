@@ -22,8 +22,6 @@ class markdown extends controller
 	{
 		$this->language->add_lang('help/markdown', 'alfredoramos/markdown');
 
-		$this->template->assign_var('IN_MARKDOWN_HELP', true);
-
 		$this->manager->add_block(
 			'HELP_MARKDOWN_BLOCK_INTRO',
 			false,

@@ -8,24 +8,19 @@
 @import 'abstracts/variables';
 @import 'base/reset';
 
-// Posts, private messages and signatures
-.post {
-	.content,
-	.signature {
-		@extend %reset;
-	}
-}
-
 // Polls
-.polls,
-.poll-title {
-	p {
-		font-size: 1em;
-		margin-bottom: 0;
+.poll {
+	&s,
+	&-title {
+		p {
+			margin-bottom: 0;
+			font-size: 1em;
+		}
 	}
-}
-.polls {
-	p {
-		display: inline-block;
+
+	&s {
+		p {
+			display: inline-block;
+		}
 	}
 }

@@ -202,6 +202,7 @@ class listener implements EventSubscriberInterface
 	{
 		$configurator = $event['configurator'];
 
+		// Check if plugins should be disabled
 		if (!$this->markdown_enabled)
 		{
 			unset($configurator->Litedown);
@@ -209,8 +210,49 @@ class listener implements EventSubscriberInterface
 			return;
 		}
 
+		// Enable plugins
 		$configurator->Litedown;
 		$configurator->PipeTables;
+
+		// List of tag that will get a CSS class
+		$tags = [
+			// Litedown
+			'H1', 'H2', 'H3', 'H4', 'H5', 'H6',
+			'LIST',
+
+			// PipeTables
+			'TABLE'
+		];
+
+		// Add CSS class
+		foreach ($tags as $tag)
+		{
+			$tag = trim($tag);
+
+			// Tag must exist
+			if (!isset($configurator->tags[$tag]))
+			{
+				continue;
+			}
+
+			// Setup DOM
+			$object = $configurator->tags[$tag];
+			$dom = $object->template->asDom();
+			$xpath = new \DOMXPath($dom);
+
+			// XPath expression
+			$exp = ($tag === 'LIST') ? '//ul | //ol' : '//' . strtolower($tag);
+
+			foreach ($xpath->query($exp) as $node)
+			{
+				$node->setAttribute('class', trim(sprintf(
+					'%s markdown',
+					trim($node->getattribute('class'))
+				)));
+			}
+
+			$dom->saveChanges();
+		}
 	}
 
 	/**

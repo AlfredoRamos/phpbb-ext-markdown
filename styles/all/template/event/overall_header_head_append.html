@@ -1,8 +1,5 @@
 {% if not INCLUDED_MARKDOWN_CSS %}
 {% INCLUDECSS '@alfredoramos_markdown/css/common.css' %}
 {% INCLUDECSS '@alfredoramos_markdown/css/markdown.css' %}
-{% if IN_MARKDOWN_HELP %}
-{% INCLUDECSS '@alfredoramos_markdown/css/help.css' %}
-{% endif %}
 {%- set INCLUDED_MARKDOWN_CSS = true -%}
 {% endif %}

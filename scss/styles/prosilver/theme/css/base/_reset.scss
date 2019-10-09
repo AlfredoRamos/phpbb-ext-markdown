@@ -1,73 +1,103 @@
 // Reset template
-%reset {
+.#{$class} {
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	// Paragraphs
 	p {
 		font-size: 1em;
 
-		&:last-child,
-		li & {
+		&:last-child {
 			margin-bottom: 0;
 		}
 	}
 
-	%heading {
-		line-height: 1em;
-		font-weight: bold;
-		color: currentColor;
-		text-transform: none;
-		margin: 1em 0 !important;
-		padding: 0;
-		border: none;
-		float: none !important;
+	// Lists
+	li {
+		// Nested lists
+		.#{$class} {
+			margin-top: 0;
+		}
 
-		&:first-child {
-			margin-top: 0 !important;
+		// BBCode lists
+		p {
+			margin-bottom: 0;
 		}
 	}
+}
 
-	@for $i from 1 through 6 {
-		h#{$i} {
-			@extend %heading;
+// Headings
+// scss-lint:disable ImportantRule
+%heading {
+	float: none !important;
+	margin: 1em 0 !important;
+	border: none;
+	padding: 0;
+	text-transform: none;
+	line-height: 1em;
+	color: currentColor;
+	font-weight: bold;
 
-			// Reset heading font sizes
-			// https://www.w3schools.com/cssref/css_default_values.asp
-			@if ($i == 1) {
-				font-size: 2em;
-			} @else if ($i == 2) {
-				font-size: 1.5em;
-			} @else if ($i == 3) {
-				font-size: 1.17em;
-			} @else if ($i == 4) {
-				font-size: 1em;
-			} @else if ($i == 5) {
-				font-size: .83em;
-			} @else if ($i == 6) {
-				font-size: .67em;
-			}
-		}
+	&:first-child {
+		margin-top: 0 !important;
 	}
 
-	table {
-		margin-top: 1em;
-		margin-bottom: 1em;
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+}
 
-		&,
-		th,
-		td {
-			border: 1px solid $table1;
-		}
+@for $i from 1 through 6 {
+	h#{$i}.#{$class} {
+		@extend %heading;
 
-		tr:nth-child(2n) {
-			background-color: $table2;
+		// Reset heading font sizes
+		// https://www.w3schools.com/cssref/css_default_values.asp
+		@if ($i == 1) {
+			font-size: 2em;
+		} @else if ($i == 2) {
+			font-size: 1.5em;
+		} @else if ($i == 3) {
+			font-size: 1.17em;
+		} @else if ($i == 4) {
+			font-size: 1em;
+		} @else if ($i == 5) {
+			font-size: .83em;
+		} @else if ($i == 6) {
+			font-size: .67em;
 		}
+	}
+}
 
-		thead {
-			background-color: $table1;
-			color: $table3;
-		}
+// Table
+%table {
+	margin-top: 1em;
+	margin-bottom: 1em;
 
-		th,
-		td {
-			padding: 5px 10px;
-		}
+	&,
+	th,
+	td {
+		border: 1px solid $table1;
+	}
+
+	tr:nth-child(2n) {
+		background-color: $table2;
+	}
+
+	thead {
+		background-color: $table1;
+		color: $table3;
+	}
+
+	th,
+	td {
+		padding: 5px 10px;
+	}
+}
+
+table {
+	&.#{$class} {
+		@extend %table;
 	}
 }

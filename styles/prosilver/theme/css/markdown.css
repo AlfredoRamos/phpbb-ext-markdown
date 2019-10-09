@@ -4,91 +4,98 @@
  * @copyright 2019 Alfredo Ramos
  * @license GPL-2.0-only
  */
-.post .content p, .post .signature p {
-	font-size: 1em;
-}
-
-.post .content p:last-child, .post .signature p:last-child,
-li .post .content p,
-.post li .content p,
-li .post .signature p,
-.post li .signature p {
+.markdown:last-child {
 	margin-bottom: 0;
 }
 
-.post .content h1, .post .signature h1, .post .content h2, .post .signature h2, .post .content h3, .post .signature h3, .post .content h4, .post .signature h4, .post .content h5, .post .signature h5, .post .content h6, .post .signature h6 {
-	line-height: 1em;
-	font-weight: bold;
-	color: currentColor;
-	text-transform: none;
-	margin: 1em 0 !important;
-	padding: 0;
-	border: none;
-	float: none !important;
-}
-
-.post .content h1:first-child, .post .signature h1:first-child, .post .content h2:first-child, .post .signature h2:first-child, .post .content h3:first-child, .post .signature h3:first-child, .post .content h4:first-child, .post .signature h4:first-child, .post .content h5:first-child, .post .signature h5:first-child, .post .content h6:first-child, .post .signature h6:first-child {
-	margin-top: 0 !important;
-}
-
-.post .content h1, .post .signature h1 {
-	font-size: 2em;
-}
-
-.post .content h2, .post .signature h2 {
-	font-size: 1.5em;
-}
-
-.post .content h3, .post .signature h3 {
-	font-size: 1.17em;
-}
-
-.post .content h4, .post .signature h4 {
+.markdown p {
 	font-size: 1em;
 }
 
-.post .content h5, .post .signature h5 {
+.markdown p:last-child {
+	margin-bottom: 0;
+}
+
+.markdown li .markdown {
+	margin-top: 0;
+}
+
+.markdown li p {
+	margin-bottom: 0;
+}
+
+h1.markdown, h2.markdown, h3.markdown, h4.markdown, h5.markdown, h6.markdown {
+	float: none !important;
+	margin: 1em 0 !important;
+	border: none;
+	padding: 0;
+	text-transform: none;
+	line-height: 1em;
+	color: currentColor;
+	font-weight: bold;
+}
+
+h1.markdown:first-child, h2.markdown:first-child, h3.markdown:first-child, h4.markdown:first-child, h5.markdown:first-child, h6.markdown:first-child {
+	margin-top: 0 !important;
+}
+
+h1.markdown:last-child, h2.markdown:last-child, h3.markdown:last-child, h4.markdown:last-child, h5.markdown:last-child, h6.markdown:last-child {
+	margin-bottom: 0 !important;
+}
+
+h1.markdown {
+	font-size: 2em;
+}
+
+h2.markdown {
+	font-size: 1.5em;
+}
+
+h3.markdown {
+	font-size: 1.17em;
+}
+
+h4.markdown {
+	font-size: 1em;
+}
+
+h5.markdown {
 	font-size: .83em;
 }
 
-.post .content h6, .post .signature h6 {
+h6.markdown {
 	font-size: .67em;
 }
 
-.post .content table, .post .signature table {
+table.markdown {
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
 
-.post .content table, .post .signature table,
-.post .content table th,
-.post .signature table th,
-.post .content table td,
-.post .signature table td {
+table.markdown,
+table.markdown th,
+table.markdown td {
 	border: 1px solid #105289;
 }
 
-.post .content table tr:nth-child(2n), .post .signature table tr:nth-child(2n) {
+table.markdown tr:nth-child(2n) {
 	background-color: #eef8fb;
 }
 
-.post .content table thead, .post .signature table thead {
+table.markdown thead {
 	background-color: #105289;
 	color: #fff;
 }
 
 
-.post .content table th,
-.post .signature table th,
-.post .content table td,
-.post .signature table td {
+table.markdown th,
+table.markdown td {
 	padding: 5px 10px;
 }
 
-.polls p,
-.poll-title p {
-	font-size: 1em;
+.polls p, .poll-title p {
 	margin-bottom: 0;
+	font-size: 1em;
 }
 
 .polls p {
