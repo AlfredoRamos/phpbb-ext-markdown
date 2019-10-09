@@ -4,6 +4,7 @@
 		margin-bottom: 0;
 	}
 
+	// Paragraphs
 	p {
 		font-size: 1em;
 
@@ -12,7 +13,14 @@
 		}
 	}
 
+	// Lists
 	li {
+		// Nested lists
+		.#{$class} {
+			margin-top: 0;
+		}
+
+		// BBCode lists
 		p {
 			margin-bottom: 0;
 		}

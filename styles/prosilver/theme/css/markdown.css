@@ -16,6 +16,10 @@
 	margin-bottom: 0;
 }
 
+.markdown li .markdown {
+	margin-top: 0;
+}
+
 .markdown li p {
 	margin-bottom: 0;
 }
