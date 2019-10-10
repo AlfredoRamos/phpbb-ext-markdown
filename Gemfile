@@ -9,3 +9,8 @@ group :development do
   gem 'rake'
   gem 'sassc'
 end
+
+group :test do
+  gem 'rubocop', require: false
+  gem 'scss_lint', '~> 0.58', require: false
+end

@@ -2,8 +2,14 @@
 
 require 'sassc'
 require 'autoprefixer-rails'
+require 'rubocop/rake_task'
+require 'scss_lint/rake_task'
 
 $stdout.sync = $stderr.sync = true
+
+# Tests
+RuboCop::RakeTask.new
+SCSSLint::RakeTask.new
 
 namespace :build do
   files = Dir.glob('scss/styles/**/theme/css/*.scss')
@@ -15,13 +21,17 @@ namespace :build do
 
   desc 'Base build'
   task :base, [:opts] => [:setup] do |_t, args|
-    args[:opts][:output] = args[:opts][:input]
-      .sub(/^scss\//, '')
-      .sub(/\.scss$/, '.css') unless args[:opts].key?(:output)
+    unless args[:opts].key?(:output)
+      args[:opts][:output] = args[:opts][:input]
+        .sub(%r{^scss/}, '')
+        .sub(/\.scss$/, '.css')
+    end
 
-    args[:opts][:output] = args[:opts][:output]
-      .sub(/\.css$/, '.min.css') if args[:opts][:style] == :compressed &&
-    !args[:opts][:output].match?(/\.min\.css$/)
+    if args[:opts][:style] == :compressed &&
+        !args[:opts][:output].match?(/\.min\.css$/)
+      args[:opts][:output] = args[:opts][:output]
+        .sub(/\.css$/, '.min.css')
+    end
 
     File.open(args[:opts][:output], 'w') do |f|
       css = SassC::Engine.new(
@@ -81,6 +91,6 @@ namespace :build do
   desc 'Build all CSS files'
   task :all do
     Rake::Task['build:css'].invoke
-    #Rake::Task['build:minified'].invoke
+    # Rake::Task['build:minified'].invoke
   end
 end
