@@ -31,5 +31,7 @@ $lang = array_merge($lang, [
 
 	// Imgur extension
 	'IMGUR_OUTPUT_MARKDOWN_IMAGE' => 'Markdown image',
-	'IMGUR_OUTPUT_MARKDOWN_THUMBNAIL' => 'Markdown thumbnail'
+	'ACP_IMGUR_OUTPUT_MARKDOWN_IMAGE_EXPLAIN' => '<code>![<var>{title}</var>](<var>{image}</var>)</code>',
+	'IMGUR_OUTPUT_MARKDOWN_THUMBNAIL' => 'Markdown thumbnail',
+	'ACP_IMGUR_OUTPUT_MARKDOWN_THUMBNAIL_EXPLAIN' => '<code>[![<var>{title}</var>](<var>{thumbnail}</var>)](<var>{image}</var>)</code>'
 ]);
