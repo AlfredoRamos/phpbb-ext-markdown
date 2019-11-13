@@ -8,14 +8,22 @@
 @import 'abstracts/variables';
 @import 'base/reset';
 
+// Content
+.content,
+.signature {
+	@extend %paragraph-margin-bottom-last-child;
+}
+
+.content {
+	@extend %paragraph-font-size;
+}
+
 // Polls
 .poll {
 	&s,
 	&-title {
-		p {
-			margin-bottom: 0;
-			font-size: 1em;
-		}
+		@extend %paragraph-font-size;
+		@extend %paragraph-margin-bottom;
 	}
 
 	&s {
