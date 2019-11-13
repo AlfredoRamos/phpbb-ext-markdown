@@ -8,20 +8,8 @@
 	margin-bottom: 0;
 }
 
-.markdown p {
-	font-size: 1em;
-}
-
-.markdown p:last-child {
-	margin-bottom: 0;
-}
-
 .markdown li .markdown {
 	margin-top: 0;
-}
-
-.markdown li p {
-	margin-bottom: 0;
 }
 
 h1.markdown, h2.markdown, h3.markdown, h4.markdown, h5.markdown, h6.markdown {
@@ -93,9 +81,16 @@ table.markdown td {
 	padding: 5px 10px;
 }
 
-.polls p, .poll-title p {
-	margin-bottom: 0;
+.markdown p, .content p, .polls p, .poll-title p {
 	font-size: 1em;
+}
+
+.markdown li p, .polls p, .poll-title p {
+	margin-bottom: 0;
+}
+
+.markdown p:last-child, .content p:last-child, .signature p:last-child {
+	margin-bottom: 0;
 }
 
 .polls p {
