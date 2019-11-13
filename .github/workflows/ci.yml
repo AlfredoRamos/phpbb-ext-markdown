@@ -24,7 +24,7 @@ jobs:
         gem install bundler
         bundle install --jobs 4 --retry 3
         gem cleanup
-    - name: Test Ruby and SCSS
-      run: |
-        bundle exec rake rubocop
-        bundle exec rake scss_lint
+    - name: Test Ruby
+      run: bundle exec rake rubocop
+    - name: Test SCSS
+      run: bundle exec rake scss_lint
