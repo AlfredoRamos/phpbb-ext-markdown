@@ -18,7 +18,7 @@ class abstract_functional_test_case extends phpbb_functional_test_case
 		return ['alfredoramos/markdown'];
 	}
 
-	public function setUp()
+	public function setUp(): void
 	{
 		parent::setUp();
 

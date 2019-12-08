@@ -14,7 +14,7 @@ namespace alfredoramos\markdown\tests\functional;
  */
 class acp_markdown_test extends abstract_functional_test_case
 {
-	public function setUp()
+	public function setUp(): void
 	{
 		parent::setUp();
 

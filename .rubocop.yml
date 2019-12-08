@@ -22,7 +22,7 @@ Style/PercentLiteralDelimiters:
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: no_comma
 
-Layout/IndentFirstArgument:
+Layout/FirstArgumentIndentation:
   EnforcedStyle: consistent
 
 Layout/MultilineMethodCallIndentation:
