@@ -11,7 +11,7 @@ namespace alfredoramos\markdown\tests\functional;
 
 use phpbb_functional_test_case;
 
-class abstract_functional_test_case extends phpbb_functional_test_case
+abstract class abstract_functional_test_case extends phpbb_functional_test_case
 {
 	static protected function setup_extensions()
 	{
