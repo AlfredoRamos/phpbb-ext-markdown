@@ -27,11 +27,5 @@ $lang = array_merge($lang, [
 	'MARKDOWN_STATUS_FORMAT' => '<a href="%s">Markdown</a> is <em>%s</em>',
 	'MARKDOWN_IS_ON' => 'ON',
 	'MARKDOWN_IS_OFF' => 'OFF',
-	'DISABLE_MARKDOWN' => 'Disable Markdown',
-
-	// Imgur extension
-	'IMGUR_OUTPUT_MARKDOWN_IMAGE' => 'Markdown image',
-	'ACP_IMGUR_OUTPUT_MARKDOWN_IMAGE_EXPLAIN' => '<code>![<var>{title}</var>](<var>{image}</var>)</code>',
-	'IMGUR_OUTPUT_MARKDOWN_THUMBNAIL' => 'Markdown thumbnail',
-	'ACP_IMGUR_OUTPUT_MARKDOWN_THUMBNAIL_EXPLAIN' => '<code>[![<var>{title}</var>](<var>{thumbnail}</var>)](<var>{image}</var>)</code>'
+	'DISABLE_MARKDOWN' => 'Disable Markdown'
 ]);

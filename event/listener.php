@@ -95,8 +95,7 @@ class listener implements EventSubscriberInterface
 			'core.posting_modify_message_text' => 'check_forum_permissions',
 			'core.posting_modify_template_vars' => 'posting_template_variables',
 			'core.ucp_pm_compose_modify_parse_before' => 'check_pm_permissions',
-			'core.message_parser_check_message' => 'check_signature_permissions',
-			'alfredoramos.imgur.allowed_values_append' => 'append_imgur_output_types'
+			'core.message_parser_check_message' => 'check_signature_permissions'
 		];
 	}
 
@@ -440,33 +439,6 @@ class listener implements EventSubscriberInterface
 		$this->template->assign_var(
 			'S_MARKDOWN_CHECKED',
 			empty($event['allow_markdown']) ? ' checked="checked"' : ''
-		);
-	}
-
-	/**
-	 * Append custom output for Imgur extension.
-	 *
-	 * @param object $event
-	 *
-	 * @return void
-	 */
-	public function append_imgur_output_types($event)
-	{
-		if (empty($event['data']) || empty($event['extras']))
-		{
-			return;
-		}
-
-		$event->update_subarray(
-			'data',
-			'types',
-			array_merge(
-				$event['data']['types'],
-				[
-					'markdown_image',
-					'markdown_thumbnail'
-				]
-			)
 		);
 	}
 }
