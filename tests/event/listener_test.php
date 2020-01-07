@@ -87,8 +87,7 @@ class listener_test extends phpbb_test_case
 				'core.posting_modify_message_text',
 				'core.posting_modify_template_vars',
 				'core.ucp_pm_compose_modify_parse_before',
-				'core.message_parser_check_message',
-				'alfredoramos.imgur.allowed_values_append'
+				'core.message_parser_check_message'
 			],
 			array_keys(listener::getSubscribedEvents())
 		);
