@@ -14,7 +14,7 @@ namespace alfredoramos\markdown\tests\functional;
  */
 class markdown_test extends abstract_functional_test_case
 {
-	public function setUp()
+	public function setUp(): void
 	{
 		parent::setUp();
 
@@ -64,7 +64,19 @@ EOT;
 			$this->sid
 		));
 
-		$expected = <<<EOT
+		if (version_compare(PHP_VERSION, '7.3.0', '>='))
+		{
+			$expected = <<<EOT
+<p>Code:</p>
+
+<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>echo 'message';</code></pre></div>
+
+<p>Inline <code>code</code></p>
+EOT;
+		}
+		else
+		{
+			$expected = <<<EOT
 <p>Code:</p>
 
 <div class="codebox">
@@ -74,6 +86,7 @@ EOT;
 
 <p>Inline <code>code</code></p>
 EOT;
+		}
 
 		$result = $crawler->filter(sprintf(
 			'#post_content%d .content',
@@ -106,7 +119,19 @@ EOT;
 			$this->sid
 		));
 
-		$expected = <<<EOT
+		if (version_compare(PHP_VERSION, '7.3.0', '>='))
+		{
+			$expected = <<<EOT
+<p>Code:</p>
+
+<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>echo 'message';</code></pre></div>
+
+<p>Inline <code>code</code></p>
+EOT;
+		}
+		else
+		{
+			$expected = <<<EOT
 <p>Code:</p>
 
 <div class="codebox">
@@ -116,6 +141,7 @@ EOT;
 
 <p>Inline <code>code</code></p>
 EOT;
+		}
 
 		$result = $crawler->filter(sprintf(
 			'#post-%d .content',
@@ -145,7 +171,13 @@ EOT;
 			$this->sid
 		));
 
-		$expected = <<<EOT
+		if (version_compare(PHP_VERSION, '7.3.0', '>='))
+		{
+			$expected = '<table class="markdown"><thead><tr><th>Header 1</th><th>Header 2</th></tr></thead><tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody></table>';
+		}
+		else
+		{
+			$expected = <<<EOT
 <table class="markdown">
 <thead><tr>
 <th>Header 1</th>
@@ -157,6 +189,7 @@ EOT;
 </tr></tbody>
 </table>
 EOT;
+		}
 
 		$result = $crawler->filter(sprintf(
 			'#post_content%d .content',
@@ -187,7 +220,13 @@ EOT;
 			$this->sid
 		));
 
-		$expected = <<<EOT
+		if (version_compare(PHP_VERSION, '7.3.0', '>='))
+		{
+			$expected = '<table class="markdown"><thead><tr><th>Header 1</th><th>Header 2</th></tr></thead><tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody></table>';
+		}
+		else
+		{
+			$expected = <<<EOT
 <table class="markdown">
 <thead><tr>
 <th>Header 1</th>
@@ -199,6 +238,7 @@ EOT;
 </tr></tbody>
 </table>
 EOT;
+		}
 
 		$result = $crawler->filter(sprintf(
 			'#post_content%d .content',
@@ -229,7 +269,13 @@ EOT;
 			$this->sid
 		));
 
-		$expected = <<<EOT
+		if (version_compare(PHP_VERSION, '7.3.0', '>='))
+		{
+			$expected = '<table class="markdown"><thead><tr><th style="text-align:left">Left</th><th style="text-align:center">Center</th><th style="text-align:right">Right</th></tr></thead><tbody><tr><td style="text-align:left">x</td><td style="text-align:center">x</td><td style="text-align:right">x</td></tr></tbody></table>';
+		}
+		else
+		{
+			$expected = <<<EOT
 <table class="markdown">
 <thead><tr>
 <th style="text-align:left">Left</th>
@@ -243,6 +289,7 @@ EOT;
 </tr></tbody>
 </table>
 EOT;
+		}
 
 		$result = $crawler->filter(sprintf(
 			'#post_content%d .content',

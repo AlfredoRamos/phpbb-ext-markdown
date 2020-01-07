@@ -27,22 +27,15 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class listener_test extends phpbb_test_case
 {
 	protected $auth;
-
 	protected $config;
-
 	protected $user;
-
 	protected $request;
-
 	protected $template;
-
 	protected $routing_helper;
-
 	protected $language;
-
 	protected $helper;
 
-	public function setUp()
+	public function setUp(): void
 	{
 		parent::setUp();
 
@@ -79,7 +72,7 @@ class listener_test extends phpbb_test_case
 		);
 	}
 
-	public function test_suscribed_events()
+	public function test_subscribed_events()
 	{
 		$this->assertSame(
 			[
