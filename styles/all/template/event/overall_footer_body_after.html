@@ -1,4 +1,4 @@
-{% if S_USER_LOGGED_IN and not S_IS_BOT and not INCLUDED_MARKDOWN_JS %}
+{% if S_MARKDOWN_ALLOWED and S_USER_LOGGED_IN and not S_IS_BOT and not INCLUDED_MARKDOWN_JS %}
 {% INCLUDEJS '@alfredoramos_markdown/js/editor.js' %}
 {%- set INCLUDED_MARKDOWN_JS = true -%}
 {% endif %}
