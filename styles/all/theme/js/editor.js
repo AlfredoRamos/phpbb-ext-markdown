@@ -28,15 +28,15 @@
 		}
 
 		let selectedValue = textarea.value.slice(0, start);
-		const codeBlockRegexp = /`{3}|~{3}/g;
-		let codeBlocks = selectedValue.match(codeBlockRegexp);
+		const codeBlocksRegexp = /`{3}|~{3}/g;
+		let codeBlocks = selectedValue.match(codeBlocksRegexp);
 
 		if (codeBlocks === null) {
 			return false;
 		}
 
 		return (codeBlocks.length % 2 === 1);
-	}
+	};
 
 	// Get postingbox and signature textarea
 	let textarea = document.body.querySelectorAll('textarea[name="message"], textarea[name="signature"]');
