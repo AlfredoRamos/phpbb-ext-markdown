@@ -23,19 +23,19 @@
 		const end = textarea.selectionEnd;
 		const value = textarea.value.slice(start, end);
 
-		if (value.indexOf('```') >= 0) {
+		if (value.indexOf('```') >= 0 || value.indexOf('~~~') >= 0) {
 			return false;
 		}
 
 		let selectedValue = textarea.value.slice(0, start);
-		const codeFencesRegexp = /```/g;
-		let codeFences = selectedValue.match(codeFencesRegexp);
+		const codeBlockRegexp = /`{3}|~{3}/g;
+		let codeBlocks = selectedValue.match(codeBlockRegexp);
 
-		if (codeFences === null) {
+		if (codeBlocks === null) {
 			return false;
 		}
 
-		return (codeFences.length % 2 === 1);
+		return (codeBlocks.length % 2 === 1);
 	}
 
 	// Get postingbox and signature textarea
