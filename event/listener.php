@@ -291,7 +291,7 @@ class listener implements EventSubscriberInterface
 
 		if ($event['id'] === 'pm' && $event['mode'] === 'compose')
 		{
-			$allowed = $allowed && !empty($this->auth->acl_get('u_pm_markdown'));
+			$allowed = $allowed && !empty($this->config['allow_pm_markdown']) && !empty($this->auth->acl_get('u_pm_markdown'));
 		}
 		else if ($event['id'] === 'ucp_profile' && $event['mode'] === 'signature')
 		{
@@ -378,6 +378,7 @@ class listener implements EventSubscriberInterface
 	public function posting_template_variables($event)
 	{
 		$allowed = !empty($this->config['allow_markdown']) &&
+			!empty($this->config['allow_post_markdown']) &&
 			!empty($this->auth->acl_get('f_markdown', $event['forum_id']));
 
 		$event['page_data'] = array_merge([
