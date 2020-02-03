@@ -287,18 +287,43 @@ class listener implements EventSubscriberInterface
 			return;
 		}
 
-		$allowed = !empty($this->config['allow_markdown']);
+		// Globally enabled
+		$enabled = !empty($this->config['allow_markdown']);
+
+		// Post, private messages or signature
+		$enabled = $enabled &&
+			(
+				!empty($this->config['allow_post_markdown']) ||
+				!empty($this->config['allow_pm_markdown']) ||
+				!empty($this->config['allow_sig_markdown'])
+			);
+
+		// User permissions for post, private messages or signature
+		$enabled = $enabled &&
+			(
+				!empty($this->auth->acl_get('u_post_markdown')) ||
+				!empty($this->auth->acl_get('u_pm_markdown')) ||
+				!empty($this->auth->acl_get('u_sig_markdown'))
+			);
+
+		$allowed = !empty($this->config['allow_markdown']) &&
+			!empty($this->user->data['user_allow_markdown']);
 
 		if ($event['id'] === 'pm' && $event['mode'] === 'compose')
 		{
-			$allowed = $allowed && !empty($this->config['allow_pm_markdown']) && !empty($this->auth->acl_get('u_pm_markdown'));
+			$allowed = $allowed &&
+				!empty($this->config['allow_pm_markdown']) &&
+				!empty($this->auth->acl_get('u_pm_markdown'));
 		}
 		else if ($event['id'] === 'ucp_profile' && $event['mode'] === 'signature')
 		{
-			$allowed = $allowed && !empty($this->config['allow_sig_markdown']);
+			$allowed = $allowed &&
+				!empty($this->config['allow_sig_markdown']) &&
+				!empty($this->auth->acl_get('u_sig_markdown'));
 		}
 
 		$this->template->assign_vars([
+			'S_MARKDOWN_ENABLED' => $enabled,
 			'S_MARKDOWN_ALLOWED' => $allowed,
 			'MARKDOWN_STATUS' => $this->language->lang(
 				'MARKDOWN_STATUS_FORMAT',
@@ -379,7 +404,9 @@ class listener implements EventSubscriberInterface
 	{
 		$allowed = !empty($this->config['allow_markdown']) &&
 			!empty($this->config['allow_post_markdown']) &&
-			!empty($this->auth->acl_get('f_markdown', $event['forum_id']));
+			!empty($this->auth->acl_get('f_markdown', $event['forum_id'])) &&
+			!empty($this->auth->acl_get('u_post_markdown')) &&
+			!empty($this->user->data['user_allow_markdown']);
 
 		$event['page_data'] = array_merge([
 			'S_MARKDOWN_ALLOWED' => $allowed,
