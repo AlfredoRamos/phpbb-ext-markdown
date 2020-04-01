@@ -93,6 +93,8 @@ class listener implements EventSubscriberInterface
 			'core.ucp_prefs_post_data' => 'ucp_markdown_configuration',
 			'core.ucp_prefs_post_update_data' => 'ucp_markdown_configuration_data',
 			'core.posting_modify_message_text' => 'check_forum_permissions',
+			'core.posting_modify_submit_post_before' => 'add_post_data',
+			'core.submit_post_modify_sql_data' => 'save_post_data',
 			'core.posting_modify_template_vars' => 'posting_template_variables',
 			'core.ucp_pm_compose_modify_parse_before' => 'check_pm_permissions',
 			'core.message_parser_check_message' => 'check_signature_permissions'
@@ -344,12 +346,12 @@ class listener implements EventSubscriberInterface
 	{
 		$this->language->add_lang('ucp/markdown', 'alfredoramos/markdown');
 
-		$event['data'] = array_merge([
+		$event['data'] = array_merge($event['data'], [
 			'markdown' => $this->request->variable(
 				'markdown',
 				(bool) $this->user->data['user_allow_markdown']
 			)
-		], $event['data']);
+		]);
 
 		$this->template->assign_var('S_MARKDOWN', $event['data']['markdown']);
 	}
@@ -363,9 +365,9 @@ class listener implements EventSubscriberInterface
 	 */
 	public function ucp_markdown_configuration_data($event)
 	{
-		$event['sql_ary'] = array_merge([
+		$event['sql_ary'] = array_merge($event['sql_ary'], [
 			'user_allow_markdown' => !empty($event['data']['markdown'])
-		], $event['sql_ary']);
+		]);
 	}
 
 	/**
@@ -377,20 +379,45 @@ class listener implements EventSubscriberInterface
 	 */
 	public function check_forum_permissions($event)
 	{
-		$event['post_data'] = array_merge([
+		$event['post_data'] = array_merge($event['post_data'], [
 			'enable_markdown' => empty($this->request->variable('disable_markdown', false))
-		], $event['post_data']);
+		]);
 
 		$this->markdown_enabled = $this->markdown_enabled &&
 			!empty($this->config['allow_post_markdown']) &&
 			!empty($this->auth->acl_get('f_markdown', $event['forum_id'])) &&
 			!empty($this->auth->acl_get('u_post_markdown')) &&
 			!empty($event['post_data']['enable_markdown']);
+	}
 
-		$this->template->assign_var(
-			'S_MARKDOWN_CHECKED',
-			empty($event['post_data']['enable_markdown']) ? ' checked="checked"' : ''
-		);
+	/**
+	 * Add Markdown status to post data.
+	 *
+	 * @param object $event
+	 *
+	 * @return void
+	 */
+	public function add_post_data($event)
+	{
+		$event['data'] = array_merge($event['data'], [
+			'enable_markdown' => (bool) $event['post_data']['enable_markdown']
+		]);
+	}
+
+	/**
+	 * Add Markdown status to SQL query of posts table.
+	 *
+	 * @param object $event
+	 *
+	 * @return void
+	 */
+	public function save_post_data($event)
+	{
+		$sql_data = $event['sql_data'];
+		$sql_data[POSTS_TABLE]['sql'] = array_merge($sql_data[POSTS_TABLE]['sql'], [
+			'enable_markdown' => (bool) $event['data']['enable_markdown']
+		]);
+		$event['sql_data'] = $sql_data;
 	}
 
 	/**
@@ -408,14 +435,15 @@ class listener implements EventSubscriberInterface
 			!empty($this->auth->acl_get('u_post_markdown')) &&
 			!empty($this->user->data['user_allow_markdown']);
 
-		$event['page_data'] = array_merge([
+		$event['page_data'] = array_merge($event['page_data'], [
 			'S_MARKDOWN_ALLOWED' => $allowed,
 			'MARKDOWN_STATUS' => $this->language->lang(
 				'MARKDOWN_STATUS_FORMAT',
 				$this->routing_helper->route('alfredoramos_markdown_help'),
 				$allowed ? $this->language->lang('MARKDOWN_IS_ON') : $this->language->lang('MARKDOWN_IS_OFF')
-			)
-		], $event['page_data']);
+			),
+			'S_MARKDOWN_CHECKED' => (empty($event['post_data']['enable_markdown']) ? ' checked="checked"' : '')
+		]);
 	}
 
 	/**
