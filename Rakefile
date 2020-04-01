@@ -4,8 +4,16 @@ require 'sassc'
 require 'autoprefixer-rails'
 require 'rubocop/rake_task'
 require 'scss_lint/rake_task'
+require 'logger'
 
 $stdout.sync = $stderr.sync = true
+
+# Logger
+logger = Logger.new($stdout)
+logger.datetime_format = '%F %T %:z'
+logger.formatter = proc do |severity, datetime, _progname, msg|
+  "#{datetime} | #{severity} | #{msg}\n"
+end
 
 # Tests
 RuboCop::RakeTask.new
@@ -19,7 +27,7 @@ namespace :build do
     Dir.mkdir('build') unless Dir.exist?('build')
   end
 
-  desc 'Base build'
+  # Base build
   task :base, [:opts] => [:setup] do |_t, args|
     unless args[:opts].key?(:output)
       args[:opts][:output] = args[:opts][:input]
@@ -32,6 +40,9 @@ namespace :build do
       args[:opts][:output] = args[:opts][:output]
         .sub(/\.css$/, '.min.css')
     end
+
+    logger.info(format('Processing file: %<filename>s', filename: args[:opts][:input]))
+    logger.info(format('Style: %<style>s', style: args[:opts][:style].to_s))
 
     File.open(args[:opts][:output], 'w') do |f|
       css = SassC::Engine.new(
@@ -64,6 +75,8 @@ namespace :build do
         ]
       ).css
     end
+
+    logger.info(format('Generated file: %<filename>s', filename: args[:opts][:output]))
   end
 
   desc 'Build CSS file'
