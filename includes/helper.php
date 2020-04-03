@@ -65,8 +65,8 @@ class helper
 					$display_vars['vars'],
 					[
 						'allow_markdown' => array_merge(
-							['lang' => 'ALLOW_MARKDOWN'],
-							$options
+							$options,
+							['lang' => 'ALLOW_MARKDOWN']
 						)
 					],
 					['before' => 'allow_bbcode']
@@ -78,8 +78,8 @@ class helper
 					$display_vars['vars'],
 					[
 						'allow_post_markdown' => array_merge(
-							['lang' => 'ALLOW_POST_MARKDOWN'],
-							$options
+							$options,
+							['lang' => 'ALLOW_POST_MARKDOWN']
 						)
 					],
 					['before' => 'allow_bbcode']
@@ -91,8 +91,8 @@ class helper
 					$display_vars['vars'],
 					[
 						'allow_pm_markdown' => array_merge(
-							['lang' => 'ALLOW_PM_MARKDOWN'],
-							$options
+							$options,
+							['lang' => 'ALLOW_PM_MARKDOWN']
 						)
 					],
 					['before' => 'auth_bbcode_pm']
@@ -104,8 +104,8 @@ class helper
 					$display_vars['vars'],
 					[
 						'allow_sig_markdown' => array_merge(
-							['lang' => 'ALLOW_SIG_MARKDOWN'],
-							$options
+							$options,
+							['lang' => 'ALLOW_SIG_MARKDOWN']
 						)
 					],
 					['before' => 'allow_sig_bbcode']
