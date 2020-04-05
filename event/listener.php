@@ -92,6 +92,7 @@ class listener implements EventSubscriberInterface
 			'core.ucp_display_module_before' => 'ucp_markdown_status',
 			'core.ucp_prefs_post_data' => 'ucp_markdown_configuration',
 			'core.ucp_prefs_post_update_data' => 'ucp_markdown_configuration_data',
+			'core.posting_modify_default_variables' => 'default_post_data',
 			'core.posting_modify_message_text' => 'check_forum_permissions',
 			'core.posting_modify_submit_post_before' => 'add_post_data',
 			'core.submit_post_modify_sql_data' => 'save_post_data',
@@ -361,12 +362,33 @@ class listener implements EventSubscriberInterface
 	 *
 	 * @param object $event
 	 *
-	 * @return void;
+	 * @return void
 	 */
 	public function ucp_markdown_configuration_data($event)
 	{
 		$event['sql_ary'] = array_merge($event['sql_ary'], [
 			'user_allow_markdown' => !empty($event['data']['markdown'])
+		]);
+	}
+
+	/**
+	 * Add default post data.
+	 *
+	 * @param object $event
+	 *
+	 * @return void
+	 */
+	public function default_post_data($event)
+	{
+		if (isset($event['post_data']['enable_markdown']))
+		{
+			return;
+		}
+
+		// Markdown enabled by default for new topics,
+		// it is read from database when user edits a post
+		$event['post_data'] = array_merge($event['post_data'], [
+			'enable_markdown' => true
 		]);
 	}
 
