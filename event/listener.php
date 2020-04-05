@@ -218,6 +218,20 @@ class listener implements EventSubscriberInterface
 		$configurator->Litedown;
 		$configurator->PipeTables;
 
+		// Add task BBCode
+		$tag = $configurator->tags->add('TASK');
+		$tag->attributes->add('state')->required = false;
+		$tag->template = '<input type="checkbox" disabled=""><xsl:if test="@state"><xsl:attribute name="checked"/></xsl:if></input>';
+
+		// Add task list
+		$filter = $configurator->tags['LIST']->filterChain->append([helper::class, 'filterTaskList']);
+		$filter->addParameterByName('innerText');
+
+		// Add task list item
+		$filter = $configurator->tags['LI']->filterChain->append([helper::class, 'filterTaskListItem']);
+		$filter->addParameterByName('text');
+		$filter->addParameterByName('parser');
+
 		// List of tag that will get a CSS class
 		$tags = [
 			// Litedown
@@ -225,7 +239,10 @@ class listener implements EventSubscriberInterface
 			'LIST',
 
 			// PipeTables
-			'TABLE'
+			'TABLE',
+
+			// Custom
+			'TASK'
 		];
 
 		// Add CSS class

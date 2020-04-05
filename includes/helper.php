@@ -115,4 +115,30 @@ class helper
 
 		return $display_vars;
 	}
+
+	static public function filterTaskListItem($tag, $text, $parser)
+	{
+		$pos = $tag->getPos() + $tag->getLen();
+		$str = substr($text, $pos, 3);
+
+		if ($str !== '[ ]' && $str !== '[x]')
+		{
+			return;
+		}
+
+		$task = $parser->addSelfClosingTag('TASK', $pos, 3);
+
+		if ($str === '[x]')
+		{
+			$task->setAttribute('state', 'checked');
+		}
+	}
+
+	static public function filterTaskList($tag, $innerText)
+	{
+		if (preg_match('/^\\s*-\\s+\\[[ x]\\]/', $innerText))
+		{
+			$tag->setAttribute('type', 'none');
+		}
+	}
 }
