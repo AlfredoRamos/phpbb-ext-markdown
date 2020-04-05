@@ -388,7 +388,9 @@ class listener implements EventSubscriberInterface
 		// Markdown enabled by default for new topics,
 		// it is read from database when user edits a post
 		$event['post_data'] = array_merge($event['post_data'], [
-			'enable_markdown' => true
+			'enable_markdown' => !empty($this->config['allow_post_markdown']) &&
+				!empty($this->auth->acl_get('f_markdown', $event['post_data']['forum_id'])) &&
+				!empty($this->auth->acl_get('u_post_markdown'))
 		]);
 	}
 
