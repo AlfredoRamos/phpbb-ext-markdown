@@ -84,6 +84,7 @@ class listener_test extends phpbb_test_case
 				'core.ucp_display_module_before',
 				'core.ucp_prefs_post_data',
 				'core.ucp_prefs_post_update_data',
+				'core.posting_modify_default_variables',
 				'core.posting_modify_message_text',
 				'core.posting_modify_submit_post_before',
 				'core.submit_post_modify_sql_data',
