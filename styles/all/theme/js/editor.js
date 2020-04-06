@@ -38,45 +38,47 @@
 		return (codeBlocks.length % 2 === 1);
 	};
 
-	// Get postingbox and signature textarea
-	let textarea = document.body.querySelectorAll('textarea[name="message"], textarea[name="signature"]');
-
-	// Iterate over all textareas
-	textarea.forEach(function(item) {
-		if (!item) {
+	// Enable tabulations in Markdown code
+	document.body.addEventListener('keydown', function(e) {
+		// Event already handled
+		if (e.defaultPrevented) {
 			return;
 		}
 
-		// Keydown event on each textarea
-		item.addEventListener('keydown', function(e) {
-			// Tab key
-			if (e.keyCode !== 9) {
-				return;
-			}
+		let field = e.target;
 
-			// Check if cursor is inside Markdown fenced code block
-			let isCodeBlock = inCodeBlock(this);
+		// Match post, private message and signature
+		if (!field.matches('textarea[name="message"], textarea[name="signature"]')) {
+			return;
+		}
 
-			// There's nothing to do
-			if (!isCodeBlock) {
-				return;
-			}
+		// Tab key
+		if (e.key !== 'Tab') {
+			return;
+		}
 
-			// Avoid lossing focus
-			e.preventDefault();
+		// Check if cursor is inside a Markdown code block
+		let isCodeBlock = inCodeBlock(field);
 
-			// Get caret position
-			let start = this.selectionStart;
-			let end = this.selectionEnd;
+		// There's nothing to do
+		if (!isCodeBlock) {
+			return;
+		}
 
-			// Get previous value
-			let value = this.value;
+		// Avoid lossing focus
+		e.preventDefault();
 
-			// Add Tab character at caret position
-			this.value = value.substring(0, start) + '\t' + value.substring(end);
+		// Get caret position
+		let start = field.selectionStart;
+		let end = field.selectionEnd;
 
-			// Update caret position
-			this.selectionStart = this.selectionEnd = (start + 1);
-		});
+		// Get previous value
+		let value = field.value;
+
+		// Add Tab character at caret position
+		field.value = value.substring(0, start) + '\t' + value.substring(end);
+
+		// Update caret position
+		field.selectionStart = field.selectionEnd = (start + 1);
 	});
 })();
