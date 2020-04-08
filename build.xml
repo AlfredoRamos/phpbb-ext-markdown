@@ -6,7 +6,7 @@
 	Only set this to "true" if you have dependencies in the composer.json,
 	otherwise use "false".
 	-->
-	<property name="has-dependencies" value="false" />
+	<property name="has-dependencies" value="true" />
 
 	<!--
 	Remove some unnecessary files/directories

@@ -209,7 +209,8 @@ class listener implements EventSubscriberInterface
 		{
 			unset(
 				$configurator->Litedown,
-				$configurator->PipeTables
+				$configurator->PipeTables,
+				$configurator->TaskLists
 			);
 			return;
 		}
@@ -217,20 +218,7 @@ class listener implements EventSubscriberInterface
 		// Enable plugins
 		$configurator->Litedown;
 		$configurator->PipeTables;
-
-		// Add task BBCode
-		$tag = $configurator->tags->add('TASK');
-		$tag->attributes->add('state')->required = false;
-		$tag->template = '<input type="checkbox" disabled=""><xsl:if test="@state"><xsl:attribute name="checked"/></xsl:if></input>';
-
-		// Add task list
-		$filter = $configurator->tags['LIST']->filterChain->append([helper::class, 'filterTaskList']);
-		$filter->addParameterByName('innerText');
-
-		// Add task list item
-		$filter = $configurator->tags['LI']->filterChain->append([helper::class, 'filterTaskListItem']);
-		$filter->addParameterByName('text');
-		$filter->addParameterByName('parser');
+		$configurator->TaskLists;
 
 		// List of tag that will get a CSS class
 		$tags = [
@@ -241,7 +229,7 @@ class listener implements EventSubscriberInterface
 			// PipeTables
 			'TABLE',
 
-			// Custom
+			// TaskLists
 			'TASK'
 		];
 
@@ -293,6 +281,7 @@ class listener implements EventSubscriberInterface
 		$parser = $event['parser']->get_parser();
 		$parser->disablePlugin('Litedown');
 		$parser->disablePlugin('PipeTables');
+		$parser->disablePlugin('TaskLists');
 	}
 
 	/**

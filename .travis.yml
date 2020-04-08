@@ -46,7 +46,7 @@ env:
     - IMAGE_ICC="1"                     # ICC profile sniffer switch
     - EPV="1"                           # Extension pre-validator switch
     - PHPBB_BRANCH="3.3.x"              # phpBB branch
-    - EXTDEPS="0"                       # Extension dependencies switch
+    - EXTDEPS="1"                       # Extension dependencies switch
 
 branches:
   only:
