@@ -27,7 +27,7 @@
 			return false;
 		}
 
-		let selectedValue = textarea.value.slice(0, start);
+		const selectedValue = textarea.value.slice(0, start);
 		const codeBlocksRegexp = /`{3}|~{3}/g;
 		let codeBlocks = selectedValue.match(codeBlocksRegexp);
 
@@ -45,23 +45,14 @@
 			return;
 		}
 
+		// Helpers
 		let field = e.target;
+		let selector = 'textarea[name="message"], textarea[name="signature"]';
 
 		// Match post, private message and signature
-		if (!field.matches('textarea[name="message"], textarea[name="signature"]')) {
-			return;
-		}
-
-		// Tab key
-		if (e.key !== 'Tab') {
-			return;
-		}
-
-		// Check if cursor is inside a Markdown code block
-		let isCodeBlock = inCodeBlock(field);
-
-		// There's nothing to do
-		if (!isCodeBlock) {
+		// Triggered only on Tab key press
+		// Cursor must be inside a Markdown code block
+		if (!field.matches(selector) || e.key !== 'Tab' || !inCodeBlock(field)) {
 			return;
 		}
 
