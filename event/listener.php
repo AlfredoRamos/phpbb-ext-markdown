@@ -207,8 +207,10 @@ class listener implements EventSubscriberInterface
 		// Check if plugins should be disabled
 		if (!$this->markdown_enabled)
 		{
-			unset($configurator->Litedown);
-			unset($configurator->PipeTables);
+			unset(
+				$configurator->Litedown,
+				$configurator->PipeTables
+			);
 			return;
 		}
 
@@ -266,12 +268,14 @@ class listener implements EventSubscriberInterface
 	 */
 	public function enable_markdown($event)
 	{
-		if (!$this->markdown_enabled)
+		if ($this->markdown_enabled)
 		{
-			$parser = $event['parser']->get_parser();
-			$parser->disablePlugin('Litedown');
-			$parser->disablePlugin('PipeTables');
+			return;
 		}
+
+		$parser = $event['parser']->get_parser();
+		$parser->disablePlugin('Litedown');
+		$parser->disablePlugin('PipeTables');
 	}
 
 	/**

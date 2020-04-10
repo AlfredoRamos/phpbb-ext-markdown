@@ -29,7 +29,7 @@
 
 		const selectedValue = textarea.value.slice(0, start);
 		const codeBlocksRegexp = /`{3}|~{3}/g;
-		let codeBlocks = selectedValue.match(codeBlocksRegexp);
+		const codeBlocks = selectedValue.match(codeBlocksRegexp);
 
 		if (codeBlocks === null) {
 			return false;

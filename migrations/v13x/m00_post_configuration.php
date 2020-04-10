@@ -14,7 +14,7 @@ use phpbb\db\migration\migration;
 class m00_post_configuration extends migration
 {
 	/**
-	 * Check configuration data exist.
+	 * Check if configuration data exists.
 	 *
 	 * @return bool
 	 */
