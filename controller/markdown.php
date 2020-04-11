@@ -54,6 +54,23 @@ class markdown extends controller
 		);
 
 		$this->manager->add_block(
+			'HELP_MARKDOWN_BLOCK_TABLE',
+			false,
+			[
+				'HELP_MARKDOWN_TABLE_QUESTION' => 'HELP_MARKDOWN_TABLE_ANSWER'
+			]
+		);
+
+		$this->manager->add_block(
+			'HELP_MARKDOWN_BLOCK_SPOILER',
+			true,
+			[
+				'HELP_MARKDOWN_BLOCK_SPOILER_QUESTION' => 'HELP_MARKDOWN_BLOCK_SPOILER_ANSWER',
+				'HELP_MARKDOWN_INLINE_SPOILER_QUESTION' => 'HELP_MARKDOWN_INLINE_SPOILER_ANSWER'
+			]
+		);
+
+		$this->manager->add_block(
 			'HELP_MARKDOWN_BLOCK_LIST',
 			true,
 			[
@@ -82,7 +99,6 @@ class markdown extends controller
 			'HELP_MARKDOWN_BLOCK_EXTRA',
 			true,
 			[
-				'HELP_MARKDOWN_TABLE_QUESTION' => 'HELP_MARKDOWN_TABLE_ANSWER',
 				'HELP_MARKDOWN_HORIZONTAL_RULE_QUESTION' => 'HELP_MARKDOWN_HORIZONTAL_RULE_ANSWER'
 			]
 		);
