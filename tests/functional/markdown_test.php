@@ -19,8 +19,7 @@ class markdown_test extends abstract_functional_test_case
 		parent::setUp();
 
 		$this->add_lang_ext('alfredoramos/markdown', [
-			'posting',
-			'help/markdown'
+			'posting'
 		]);
 	}
 
@@ -300,90 +299,69 @@ EOT;
 		$this->assertContains($expected, $result->html());
 	}
 
-	public function test_markdown_help_page()
+	public function test_block_spoiler()
 	{
-		$crawler = self::request('GET', 'app.php/help/markdown');
+		$markdown = <<<EOT
+>! Spoiler text
+> Another line
+EOT;
 
-		$elements = [
-			'title' => $crawler->filter('#page-body > .faq-title'),
-			'blocks' => $crawler->filter('#faqlinks .faq')
-		];
-
-		$this->assertSame(1, $elements['title']->count());
-		$this->assertSame(
-			$this->lang('MARKDOWN_GUIDE'),
-			$elements['title']->text()
+		$post = $this->create_topic(
+			2,
+			'Markdown spoilers test 1',
+			$markdown
 		);
 
-		$this->assertSame(7, $elements['blocks']->count());
+		$crawler = self::request('GET', sprintf(
+			'viewtopic.php?t=%d&sid=%s',
+			$post['topic_id'],
+			$this->sid
+		));
 
-		$items = $elements['blocks']->each(function($node) {
-			return [
-				'title' => $node->filter('dt > strong'),
-				'links' => $node->filter('dd > a')
-			];
-		});
+		$expected = <<<EOT
+<details class="spoiler"><p>Spoiler text<br>
+Another line</p></details>
+EOT;
 
-		foreach ($items as $key => $value)
-		{
-			switch ($key)
-			{
-				case 0: // Introduction
-					$this->assertSame(
-						$this->lang('HELP_MARKDOWN_BLOCK_INTRO'),
-						$value['title']->text()
-					);
-					$this->assertSame(1, $value['links']->count());
-				break;
+		$result = $crawler->filter(sprintf(
+			'#post_content%d .content',
+			$post['topic_id']
+		));
 
-				case 1: // Text formatting
-					$this->assertSame(
-						$this->lang('HELP_MARKDOWN_BLOCK_TEXT'),
-						$value['title']->text()
-					);
-					$this->assertSame(6, $value['links']->count());
-				break;
+		$this->assertSame(1, $crawler->filter('.spoiler')->count());
+		$this->assertContains($expected, $result->html());
+	}
 
-				case 2: // Quoting and outputting
-					$this->assertSame(
-						$this->lang('HELP_MARKDOWN_BLOCK_CODE'),
-						$value['title']->text()
-					);
-					$this->assertSame(3, $value['links']->count());
-				break;
+	public function test_inline_spoiler()
+	{
+		$markdown = <<<EOT
+This is a Reddit-style >!spoiler!<.
+This is a Discord-style ||spoiler||.
+EOT;
 
-				case 3: // Generating lists
-					$this->assertSame(
-						$this->lang('HELP_MARKDOWN_BLOCK_LIST'),
-						$value['title']->text()
-					);
-					$this->assertSame(2, $value['links']->count());
-				break;
+		$post = $this->create_topic(
+			2,
+			'Markdown spoilers test 1',
+			$markdown
+		);
 
-				case 4: // Creating links
-					$this->assertSame(
-						$this->lang('HELP_MARKDOWN_BLOCK_LINK'),
-						$value['title']->text()
-					);
-					$this->assertSame(1, $value['links']->count());
-				break;
+		$crawler = self::request('GET', sprintf(
+			'viewtopic.php?t=%d&sid=%s',
+			$post['topic_id'],
+			$this->sid
+		));
 
-				case 5: // Showing images
-					$this->assertSame(
-						$this->lang('HELP_MARKDOWN_BLOCK_IMAGE'),
-						$value['title']->text()
-					);
-					$this->assertSame(1, $value['links']->count());
-				break;
+		$expected = <<<EOT
+<p>This is a Reddit-style <span class="spoiler" onclick="removeAttribute('style')" style="background:#444;color:transparent">spoiler</span>.<br>
+This is a Discord-style <span class="spoiler" onclick="removeAttribute('style')" style="background:#444;color:transparent">spoiler</span>.</p>
+EOT;
 
-				case 6: // Extras
-					$this->assertSame(
-						$this->lang('HELP_MARKDOWN_BLOCK_EXTRA'),
-						$value['title']->text()
-					);
-					$this->assertSame(2, $value['links']->count());
-				break;
-			}
-		}
+		$result = $crawler->filter(sprintf(
+			'#post_content%d .content',
+			$post['topic_id']
+		));
+
+		$this->assertSame(2, $crawler->filter('.spoiler')->count());
+		$this->assertContains($expected, $result->html());
 	}
 }
