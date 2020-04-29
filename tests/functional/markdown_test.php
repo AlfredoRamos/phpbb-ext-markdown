@@ -364,4 +364,74 @@ EOT;
 		$this->assertSame(2, $crawler->filter('.spoiler')->count());
 		$this->assertContains($expected, $result->html());
 	}
+
+	public function test_task_list()
+	{
+		$markdown = <<<EOT
+- [x] Task 1
+	- [x] Task 1.1
+- [ ] Task 2
+EOT;
+
+		$post = $this->create_topic(
+			2,
+			'Markdown task list test 1',
+			$markdown
+		);
+
+		$crawler = self::request('GET', sprintf(
+			'viewtopic.php?t=%d&sid=%s',
+			$post['topic_id'],
+			$this->sid
+		));
+
+		$result = $crawler->filter(sprintf(
+			'#post_content%d .content',
+			$post['topic_id']
+		));
+
+		$list = $result->filter('ul.markdown');
+		$items = $list->filter('li[data-task-id]');
+
+		$this->assertSame(2, $list->count());
+		$this->assertSame(3, $items->count());
+
+		if (version_compare(PHP_VERSION, '7.3.0', '>='))
+		{
+			$expected = <<<EOT
+<ul class="markdown"><li data-task-id="..." data-task-state="checked"><input data-task-id="..." type="checkbox" checked disabled> Task 1
+	<ul class="markdown"><li data-task-id="..." data-task-state="checked"><input data-task-id="..." type="checkbox" checked disabled> Task 1.1</li></ul></li>
+<li data-task-id="..." data-task-state="unchecked"><input data-task-id="..." type="checkbox" disabled> Task 2</li></ul>
+EOT;
+		}
+		else
+		{
+			$expected = <<<EOT
+<ul class="markdown">
+<li data-task-id="..." data-task-state="checked">
+<input data-task-id="..." type="checkbox" checked disabled> Task 1
+	<ul class="markdown"><li data-task-id="..." data-task-state="checked">
+<input data-task-id="..." type="checkbox" checked disabled> Task 1.1</li></ul>
+</li>
+<li data-task-id="..." data-task-state="unchecked">
+<input data-task-id="..." type="checkbox" disabled> Task 2</li>
+</ul>
+EOT;
+		}
+
+		$html = $this->task_id_placeholder($result->html());
+		$expected = $this->task_id_placeholder($expected);
+
+		$this->assertContains($expected, $html);
+	}
+
+	private function task_id_placeholder($html = '', $placeholder = '...')
+	{
+		if (empty($html))
+		{
+			return '';
+		}
+
+		return preg_replace('#(?<=data-task-id=")(\w+)(?=")#', $placeholder, $html);
+	}
 }
