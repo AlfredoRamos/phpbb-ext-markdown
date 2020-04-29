@@ -227,10 +227,7 @@ class listener implements EventSubscriberInterface
 			'LIST',
 
 			// PipeTables
-			'TABLE',
-
-			// TaskLists
-			'TASK'
+			'TABLE'
 		];
 
 		// Add CSS class
