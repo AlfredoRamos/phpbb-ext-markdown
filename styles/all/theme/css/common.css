@@ -5,6 +5,10 @@
  * @license GPL-2.0-only
  */
 
+ul > li[data-task-id] {
+	list-style-type: none;
+}
+
 @media (max-width: 700px) {
 	.markdown-status {
 		display: none;

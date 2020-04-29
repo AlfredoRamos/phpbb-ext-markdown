@@ -209,7 +209,8 @@ class listener implements EventSubscriberInterface
 		{
 			unset(
 				$configurator->Litedown,
-				$configurator->PipeTables
+				$configurator->PipeTables,
+				$configurator->TaskLists
 			);
 			return;
 		}
@@ -217,6 +218,7 @@ class listener implements EventSubscriberInterface
 		// Enable plugins
 		$configurator->Litedown;
 		$configurator->PipeTables;
+		$configurator->TaskLists;
 
 		// List of tag that will get a CSS class
 		$tags = [
@@ -276,6 +278,7 @@ class listener implements EventSubscriberInterface
 		$parser = $event['parser']->get_parser();
 		$parser->disablePlugin('Litedown');
 		$parser->disablePlugin('PipeTables');
+		$parser->disablePlugin('TaskLists');
 	}
 
 	/**
