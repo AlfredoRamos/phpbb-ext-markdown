@@ -12,12 +12,15 @@ namespace alfredoramos\markdown\tests\functional;
 /**
  * @group functional
  */
-class ucp_markdown_test extends abstract_functional_test_case
+class ucp_markdown_test extends \phpbb_functional_test_case
 {
+	use functional_test_case_trait;
+
 	public function setUp(): void
 	{
 		parent::setUp();
 
+		$this->login();
 		$this->add_lang_ext('alfredoramos/markdown', 'ucp/markdown');
 	}
 
