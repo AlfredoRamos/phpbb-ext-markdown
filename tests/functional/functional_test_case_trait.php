@@ -9,19 +9,10 @@
 
 namespace alfredoramos\markdown\tests\functional;
 
-use phpbb_functional_test_case;
-
-abstract class abstract_functional_test_case extends phpbb_functional_test_case
+trait functional_test_case_trait
 {
 	static protected function setup_extensions()
 	{
 		return ['alfredoramos/markdown'];
-	}
-
-	public function setUp(): void
-	{
-		parent::setUp();
-
-		$this->login();
 	}
 }
