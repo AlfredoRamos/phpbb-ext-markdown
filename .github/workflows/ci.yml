@@ -18,7 +18,7 @@ jobs:
     - name: Setup Ruby
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.6.x
+        ruby-version: 2.7
     - name: Install gems
       run: |
         gem install -N bundler
