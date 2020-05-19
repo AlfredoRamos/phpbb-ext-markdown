@@ -19,9 +19,18 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.7
+    - name: Setup cache
+      uses: actions/cache@v1
+      with:
+        path: ~/.gem
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
     - name: Install gems
       run: |
+        echo "gem: --no-document" > ~/.gemrc
         gem install -N bundler
+        bundle config path ~/.gem
         bundle install --jobs 4 --retry 3
         gem cleanup
     - name: Test Ruby
