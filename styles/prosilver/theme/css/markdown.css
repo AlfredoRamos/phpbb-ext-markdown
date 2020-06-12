@@ -12,7 +12,7 @@
 	margin-top: 0;
 }
 
-h1.markdown, h2.markdown, h3.markdown, h4.markdown, h5.markdown, h6.markdown {
+h6.markdown, h5.markdown, h4.markdown, h3.markdown, h2.markdown, h1.markdown {
 	float: none !important;
 	margin: 1em 0 !important;
 	border: none;
@@ -23,11 +23,11 @@ h1.markdown, h2.markdown, h3.markdown, h4.markdown, h5.markdown, h6.markdown {
 	font-weight: bold;
 }
 
-h1.markdown:first-child, h2.markdown:first-child, h3.markdown:first-child, h4.markdown:first-child, h5.markdown:first-child, h6.markdown:first-child {
+h6.markdown:first-child, h5.markdown:first-child, h4.markdown:first-child, h3.markdown:first-child, h2.markdown:first-child, h1.markdown:first-child {
 	margin-top: 0 !important;
 }
 
-h1.markdown:last-child, h2.markdown:last-child, h3.markdown:last-child, h4.markdown:last-child, h5.markdown:last-child, h6.markdown:last-child {
+h6.markdown:last-child, h5.markdown:last-child, h4.markdown:last-child, h3.markdown:last-child, h2.markdown:last-child, h1.markdown:last-child {
 	margin-bottom: 0 !important;
 }
 
@@ -75,21 +75,21 @@ table.markdown thead {
 	color: #fff;
 }
 
-
 table.markdown th,
 table.markdown td {
 	padding: 5px 10px;
 }
 
-.markdown p, .content p, .polls p, .poll-title p {
+.polls p, .poll-title p, .content p, .markdown p {
 	font-size: 1em;
 }
 
-.markdown li p, .polls p, .poll-title p {
+.polls p, .poll-title p, .markdown li p {
 	margin-bottom: 0;
 }
 
-.markdown p:last-child, .content p:last-child, .signature p:last-child {
+.content p:last-child,
+.signature p:last-child, .markdown p:last-child {
 	margin-bottom: 0;
 }
 

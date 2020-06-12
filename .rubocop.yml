@@ -1,6 +1,15 @@
 Metrics/BlockLength:
   Max: 120
 
+Metrics/ClassLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 50
+
+Metrics/AbcSize:
+  Max: 30
+
 Style/StringLiterals:
   EnforcedStyle: single_quotes
 
