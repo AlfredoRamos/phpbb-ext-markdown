@@ -98,7 +98,7 @@ class help_markdown_test extends \phpbb_functional_test_case
 						$this->lang('HELP_MARKDOWN_BLOCK_LIST'),
 						$value['title']->text()
 					);
-					$this->assertSame(2, $value['links']->count());
+					$this->assertSame(3, $value['links']->count());
 				break;
 
 				case 6: // Creating links

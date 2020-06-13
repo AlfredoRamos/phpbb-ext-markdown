@@ -5,7 +5,7 @@
  * @license GPL-2.0-only
  */
 
-ul > li[data-task-id] {
+.markdown > li[data-task-id] {
 	list-style-type: none;
 }
 
