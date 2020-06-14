@@ -224,7 +224,7 @@ class listener implements EventSubscriberInterface
 		$tags = [
 			// Litedown
 			'H1', 'H2', 'H3', 'H4', 'H5', 'H6',
-			'LIST',
+			'LIST', 'SPOILER', 'ISPOILER',
 
 			// PipeTables
 			'TABLE'
@@ -247,7 +247,24 @@ class listener implements EventSubscriberInterface
 			$xpath = new \DOMXPath($dom);
 
 			// XPath expression
-			$exp = ($tag === 'LIST') ? '//ul | //ol' : '//' . strtolower($tag);
+			switch ($tag)
+			{
+				case 'LIST':
+					$exp = '//ul | //ol';
+				break;
+
+				case 'SPOILER':
+					$exp = '//details';
+				break;
+
+				case 'ISPOILER':
+					$exp = '//span';
+				break;
+
+				default:
+					$exp = '//' . strtolower($tag);
+				break;
+			}
 
 			foreach ($xpath->query($exp) as $node)
 			{
