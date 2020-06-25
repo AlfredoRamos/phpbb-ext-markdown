@@ -7,10 +7,43 @@ Markdown extension for phpBB.
 [![Code Quality](https://img.shields.io/codacy/grade/7c8dbf2b5e6c4a68b7e0ceb04e9790f3.svg?style=flat-square)](https://app.codacy.com/manual/AlfredoRamos/phpbb-ext-markdown/dashboard)
 [![License](https://img.shields.io/github/license/AlfredoRamos/phpbb-ext-markdown.svg?style=flat-square)](https://raw.githubusercontent.com/AlfredoRamos/phpbb-ext-markdown/master/license.txt)
 
-### Dependencies
+Write Markdown text in posts, signature or private messages and it will be converted as HTML. It can be used instead of or alongside BBCodes.
+
+It uses the plugins Litedown and PipeTables from [s9e/TextFormatter](https://github.com/s9e/TextFormatter). You can read more about the supported syntax in the official documentation:
+
+- [Litedown: Syntax](https://s9etextformatter.readthedocs.io/Plugins/Litedown/Syntax/)
+- [PipeTables: Syntax](https://s9etextformatter.readthedocs.io/Plugins/PipeTables/Syntax/)
+
+### Features
+
+- Use Markdown in posts, personal messages and signatures
+- Can be used instead of or alongside text formatted with BBCode
+- Configuration to enable/disable the use of Markdown globally in the ACP
+- Configuration to enable/disable the use of Markdown per user in the UCP
+- Set per user group permissions to use Markdown
+- Set per forum permissions to use Markdown
+- Posting option to disable Markdown only in the current message
+- Add help page to explain users how write messages in Markdown
+- Add indentation when pressing the tab key inside Markdown code blocks
+
+### Requirements
 
 - PHP 7.1.3 or greater
 - phpBB 3.3 or greater
+
+### Support
+
+- [**Download page**](https://www.phpbb.com/customise/db/extension/markdown/)
+- [Support area](https://www.phpbb.com/customise/db/extension/markdown/support)
+- [GitHub issues](https://github.com/AlfredoRamos/phpbb-ext-markdown/issues)
+
+### Donate
+
+If you like or found my work useful and want to show some appreciation, you can consider supporting its development by giving a donation.
+
+[![Donate with PayPal](https://alfredoramos.github.io/assets/images/donate.png)](https://alfredoramos.github.io/donate/)
+
+[![Donate with PayPal](https://www.paypalobjects.com/webstatic/i/logo/rebrand/ppcom.svg)](https://alfredoramos.github.io/donate/)
 
 ### Installation
 
