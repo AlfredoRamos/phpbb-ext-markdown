@@ -216,7 +216,7 @@ class listener implements EventSubscriberInterface
 		}
 
 		// Enable plugins
-		$configurator->Litedown;
+		$configurator->Litedown->addHeadersId('md-');
 		$configurator->PipeTables;
 		$configurator->TaskLists;
 

@@ -428,6 +428,54 @@ EOT;
 		$this->assertContains($expected, $html);
 	}
 
+	public function test_header_slugs()
+	{
+		$markdown = <<<EOT
+# Lorem ipsum
+## Pellentesque odio felis
+### Vivamus eu nisl
+#### Proin egestas ornare
+##### Phasellus eu luctus lectus
+###### Pellentesque eleifend feugiat
+EOT;
+
+		$post = $this->create_topic(
+			2,
+			'Markdown header slugs test 1',
+			$markdown
+		);
+
+		$crawler = self::request('GET', sprintf(
+			'viewtopic.php?t=%d&sid=%s',
+			$post['topic_id'],
+			$this->sid
+		));
+
+		$result = $crawler->filter(sprintf(
+			'#post_content%d .content',
+			$post['topic_id']
+		));
+
+		$headers = $result->filter('.markdown');
+		$this->assertSame(6, $headers->count());
+
+		for ($i = 1; $i <= 6; $i++) {
+			$header = $result->filter(sprintf('h%d', $i));
+			$this->assertSame(1, $header->count());
+		}
+
+		$expected = <<<EOT
+<h1 class="markdown" id="md-lorem-ipsum">Lorem ipsum</h1>
+<h2 class="markdown" id="md-pellentesque-odio-felis">Pellentesque odio felis</h2>
+<h3 class="markdown" id="md-vivamus-eu-nisl">Vivamus eu nisl</h3>
+<h4 class="markdown" id="md-proin-egestas-ornare">Proin egestas ornare</h4>
+<h5 class="markdown" id="md-phasellus-eu-luctus-lectus">Phasellus eu luctus lectus</h5>
+<h6 class="markdown" id="md-pellentesque-eleifend-feugiat">Pellentesque eleifend feugiat</h6>
+EOT;
+
+		$this->assertContains($expected, $result->html());
+	}
+
 	private function task_id_placeholder($html = '', $placeholder = '...')
 	{
 		if (empty($html))
