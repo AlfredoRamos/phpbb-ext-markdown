@@ -20,7 +20,7 @@ jobs:
       with:
         ruby-version: 2.7
     - name: Setup cache
-      uses: actions/cache@v1
+      uses: actions/cache@v2
       with:
         path: ~/.gem
         key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
