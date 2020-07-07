@@ -28,7 +28,7 @@ $lang = array_merge($lang, [
 
 	'HELP_MARKDOWN_BLOCK_INTRO' => 'Introducción',
 	'HELP_MARKDOWN_INTRO_MARKDOWN_QUESTION' => '¿Qué es Markdown?',
-	'HELP_MARKDOWN_INTRO_MARKDOWN_ANSWER' => 'Markdown es un lenguaje de marcado ligero con sintáxis de formato en texto plano dirigido a escritores web. Te permite escribir fácilmente texto, sin necesidad o ayuda de herramientas externas o interfáz de usuario, que será convertido a HTML sin perder legibilidad. Markdown puede usar en lugar de o junto a texto formateado con BBCode.',
+	'HELP_MARKDOWN_INTRO_MARKDOWN_ANSWER' => 'Markdown es un lenguaje de marcado ligero con sintaxis de formato en texto plano dirigido a escritores web. Te permite escribir fácilmente texto, sin necesidad o ayuda de herramientas externas o interfaz de usuario, que será convertido a HTML sin perder legibilidad. Markdown puede usar en lugar de o junto a texto formateado con BBCode.',
 
 	'HELP_MARKDOWN_BLOCK_TEXT' => 'Formato de texto',
 	'HELP_MARKDOWN_TEXT_BOLD_QUESTION' => 'Creando texto en negritas',
@@ -74,9 +74,9 @@ $lang = array_merge($lang, [
 	'HELP_MARKDOWN_LINK_QUESTION' => 'Creando un enlace a otro sitio',
 	'HELP_MARKDOWN_LINK_ANSWER' => 'Para crear enlaces, agrega el texto del enlace entre corchetes seguido por la URL del enlace entre paréntesis, ej.<pre class="markdown-code"><code class="markdown" data-lang="markdown">[Texto del enlace](http://example.org)</code></pre> se convertirá<br><br><a href="http://example.org">Texto del enlace</a>',
 
-	'HELP_MARKDOWN_BLOCK_IMAGE' => 'Mostrando iḿagenes',
+	'HELP_MARKDOWN_BLOCK_IMAGE' => 'Mostrando imágenes',
 	'HELP_MARKDOWN_IMAGE_QUESTION' => 'Agregando imágenes',
-	'HELP_MARKDOWN_IMAGE_ANSWER' => 'Para mostrar una imágen, agrega un signo de exclamación seguido por el texto alternativo de la imagen entre corchetes y luego la URL de la imagen entre paréntesis, ej.<pre class="markdown-code"><code class="markdown" data-lang="markdown">![phpBB](https://www.phpbb.com/assets/images/images/logos/blue/160x52.png)</code></pre> se convertirá<br><br><img src="https://www.phpbb.com/assets/images/images/logos/blue/160x52.png" alt="phpBB">',
+	'HELP_MARKDOWN_IMAGE_ANSWER' => 'Para mostrar una imagen, agrega un signo de exclamación seguido por el texto alternativo de la imagen entre corchetes y luego la URL de la imagen entre paréntesis, ej.<pre class="markdown-code"><code class="markdown" data-lang="markdown">![phpBB](https://www.phpbb.com/assets/images/images/logos/blue/160x52.png)</code></pre> se convertirá<br><br><img src="https://www.phpbb.com/assets/images/images/logos/blue/160x52.png" alt="phpBB">',
 
 	'HELP_MARKDOWN_BLOCK_EXTRA' => 'Extras',
 	'HELP_MARKDOWN_HORIZONTAL_RULE_QUESTION' => 'Creando reglas horizontales',
