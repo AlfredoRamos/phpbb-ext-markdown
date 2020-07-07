@@ -5,14 +5,12 @@ Markdown extension for phpBB.
 [![Build Status](https://img.shields.io/travis/com/AlfredoRamos/phpbb-ext-markdown.svg?style=flat-square)](https://travis-ci.com/AlfredoRamos/phpbb-ext-markdown)
 [![Latest Stable Version](https://img.shields.io/github/tag/AlfredoRamos/phpbb-ext-markdown.svg?label=stable&style=flat-square)](https://github.com/AlfredoRamos/phpbb-ext-markdown/releases)
 [![Code Quality](https://img.shields.io/codacy/grade/7c8dbf2b5e6c4a68b7e0ceb04e9790f3.svg?style=flat-square)](https://app.codacy.com/manual/AlfredoRamos/phpbb-ext-markdown/dashboard)
+[![Translation Progress](https://badges.crowdin.net/phpbb-ext-markdown/localized.svg)](https://crowdin.com/project/phpbb-ext-markdown)
 [![License](https://img.shields.io/github/license/AlfredoRamos/phpbb-ext-markdown.svg?style=flat-square)](https://raw.githubusercontent.com/AlfredoRamos/phpbb-ext-markdown/master/license.txt)
 
 Write Markdown text in posts, signature or private messages and it will be converted as HTML. It can be used instead of or alongside BBCodes.
 
-It uses the plugins Litedown and PipeTables from [s9e/TextFormatter](https://github.com/s9e/TextFormatter). You can read more about the supported syntax in the official documentation:
-
-- [Litedown: Syntax](https://s9etextformatter.readthedocs.io/Plugins/Litedown/Syntax/)
-- [PipeTables: Syntax](https://s9etextformatter.readthedocs.io/Plugins/PipeTables/Syntax/)
+It uses the plugins [Litedown](https://s9etextformatter.readthedocs.io/Plugins/Litedown/Syntax/), [PipeTables](https://s9etextformatter.readthedocs.io/Plugins/PipeTables/Syntax/) and [TaskLists](https://s9etextformatter.readthedocs.io/Plugins/TaskLists/Synopsis/) from [s9e/TextFormatter](https://github.com/s9e/TextFormatter). You can read more about the supported syntax in the official documentation:
 
 ### Features
 
@@ -36,6 +34,7 @@ It uses the plugins Litedown and PipeTables from [s9e/TextFormatter](https://git
 - [**Download page**](https://www.phpbb.com/customise/db/extension/markdown/)
 - [Support area](https://www.phpbb.com/customise/db/extension/markdown/support)
 - [GitHub issues](https://github.com/AlfredoRamos/phpbb-ext-markdown/issues)
+- [Crowdin translations](https://crowdin.com/project/phpbb-ext-markdown)
 
 ### Donate
 
