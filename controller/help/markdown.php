@@ -7,7 +7,7 @@
  * @license GPL-2.0-only
  */
 
-namespace alfredoramos\markdown\controller;
+namespace alfredoramos\markdown\controller\help;
 
 use phpbb\help\controller\controller;
 
