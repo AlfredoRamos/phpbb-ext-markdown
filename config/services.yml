@@ -13,8 +13,8 @@ services:
         tags:
             - { name: event.listener }
 
-    alfredoramos.markdown.controller.markdown:
-        class: alfredoramos\markdown\controller\markdown
+    alfredoramos.markdown.controller.help.markdown:
+        class: alfredoramos\markdown\controller\help\markdown
         arguments:
             - '@controller.helper'
             - '@phpbb.help.manager'
