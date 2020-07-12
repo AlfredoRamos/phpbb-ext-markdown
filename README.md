@@ -67,7 +67,7 @@ If you like or found my work useful and want to show some appreciation, you can 
 [![Markdown private message](https://i.imgur.com/HGvlwhIb.png)](https://i.imgur.com/HGvlwhI.png)
 [![Markdown signature](https://i.imgur.com/svBmgYXb.png)](https://i.imgur.com/svBmgYX.png)
 [![Posting editor option](https://i.imgur.com/1Z7CDDrb.png)](https://i.imgur.com/1Z7CDDr.png)
-[![Task list](https://i.imgur.com/njWLpODb.png)](https://i.imgur.com/njWLpOD.png)
+[![Task list](https://i.imgur.com/slz1Z9Yb.png)](https://i.imgur.com/slz1Z9Y.png)
 
 *(Click to view in full size)*
 
