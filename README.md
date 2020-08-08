@@ -3,6 +3,7 @@
 Markdown extension for phpBB.
 
 [![Build Status](https://img.shields.io/travis/com/AlfredoRamos/phpbb-ext-markdown.svg?style=flat-square)](https://travis-ci.com/AlfredoRamos/phpbb-ext-markdown)
+[![GitHub Actions](https://img.shields.io/github/workflow/status/AlfredoRamos/phpbb-ext-markdown/GitHub%20Actions%20CI.svg?label=actions&style=flat-square)](https://github.com/AlfredoRamos/phpbb-ext-markdown/actions)
 [![Latest Stable Version](https://img.shields.io/github/tag/AlfredoRamos/phpbb-ext-markdown.svg?label=stable&style=flat-square)](https://github.com/AlfredoRamos/phpbb-ext-markdown/releases)
 [![Code Quality](https://img.shields.io/codacy/grade/7c8dbf2b5e6c4a68b7e0ceb04e9790f3.svg?style=flat-square)](https://app.codacy.com/manual/AlfredoRamos/phpbb-ext-markdown/dashboard)
 [![Translation Progress](https://badges.crowdin.net/phpbb-ext-markdown/localized.svg)](https://crowdin.com/project/phpbb-ext-markdown)
