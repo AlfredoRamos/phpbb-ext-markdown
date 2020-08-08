@@ -9,7 +9,6 @@
 
 namespace alfredoramos\markdown\tests\event;
 
-use phpbb_test_case;
 use phpbb\auth\auth;
 use phpbb\config\config;
 use phpbb\user;
@@ -24,7 +23,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * @group event
  */
-class listener_test extends phpbb_test_case
+class listener_test extends \phpbb_test_case
 {
 	protected $auth;
 	protected $config;

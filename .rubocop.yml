@@ -8,7 +8,7 @@ Metrics/MethodLength:
   Max: 50
 
 Metrics/AbcSize:
-  Max: 30
+  Max: 35
 
 Style/StringLiterals:
   EnforcedStyle: single_quotes
