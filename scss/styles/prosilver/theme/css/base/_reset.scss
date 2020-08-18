@@ -102,6 +102,12 @@ table {
 	}
 }
 
+%paragraph-inline {
+	p {
+		display: inline-block;
+	}
+}
+
 %paragraph-margin-bottom {
 	p {
 		margin-bottom: 0;

@@ -27,8 +27,15 @@
 	}
 
 	&s {
-		p {
-			display: inline-block;
-		}
+		@extend %paragraph-inline;
+	}
+}
+
+// Forums
+.forums {
+	.list-inner {
+		@extend %paragraph-inline;
+		@extend %paragraph-font-size;
+		@extend %paragraph-margin-bottom;
 	}
 }
