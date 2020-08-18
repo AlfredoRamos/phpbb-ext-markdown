@@ -80,19 +80,19 @@ table.markdown td {
 	padding: 5px 10px;
 }
 
-.polls p, .poll-title p, .content p, .markdown p {
+.forums .list-inner p, .polls p, .poll-title p, .content p, .markdown p {
 	font-size: 1em;
 }
 
-.polls p, .poll-title p, .markdown li p {
+.forums .list-inner p, .polls p {
+	display: inline-block;
+}
+
+.forums .list-inner p, .polls p, .poll-title p, .markdown li p {
 	margin-bottom: 0;
 }
 
 .content p:last-child,
 .signature p:last-child, .markdown p:last-child {
 	margin-bottom: 0;
-}
-
-.polls p {
-	display: inline-block;
 }
