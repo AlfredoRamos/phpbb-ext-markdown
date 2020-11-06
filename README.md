@@ -24,6 +24,7 @@ It uses the plugins [Litedown](https://s9etextformatter.readthedocs.io/Plugins/L
 - Posting option to disable Markdown only in the current message
 - Add help page to explain users how write messages in Markdown
 - Add indentation when pressing the tab key inside Markdown code blocks
+- Autogeneration of slugs/IDs for headings
 
 ### Requirements
 
