@@ -152,9 +152,9 @@ class Helper
   def minified_ext(file_path)
     ext = File.extname(file_path)
 
-    return file_path if file_path.end_with?('.min' + ext)
+    return file_path if file_path.end_with?(format('.min%<ext>s', ext: ext))
 
-    file_path.gsub(ext, '.min' + ext)
+    file_path.gsub(ext, format('.min%<ext>s', ext: ext))
   end
 end
 
