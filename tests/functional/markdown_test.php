@@ -465,12 +465,12 @@ EOT;
 		}
 
 		$expected = <<<EOT
-<h1 class="markdown" id="md-lorem-ipsum">Lorem ipsum</h1>
-<h2 class="markdown" id="md-pellentesque-odio-felis">Pellentesque odio felis</h2>
-<h3 class="markdown" id="md-vivamus-eu-nisl">Vivamus eu nisl</h3>
-<h4 class="markdown" id="md-proin-egestas-ornare">Proin egestas ornare</h4>
-<h5 class="markdown" id="md-phasellus-eu-luctus-lectus">Phasellus eu luctus lectus</h5>
-<h6 class="markdown" id="md-pellentesque-eleifend-feugiat">Pellentesque eleifend feugiat</h6>
+<h1 class="markdown" id="lorem-ipsum">Lorem ipsum</h1>
+<h2 class="markdown" id="pellentesque-odio-felis">Pellentesque odio felis</h2>
+<h3 class="markdown" id="vivamus-eu-nisl">Vivamus eu nisl</h3>
+<h4 class="markdown" id="proin-egestas-ornare">Proin egestas ornare</h4>
+<h5 class="markdown" id="phasellus-eu-luctus-lectus">Phasellus eu luctus lectus</h5>
+<h6 class="markdown" id="pellentesque-eleifend-feugiat">Pellentesque eleifend feugiat</h6>
 EOT;
 
 		$this->assertContains($expected, $result->html());
