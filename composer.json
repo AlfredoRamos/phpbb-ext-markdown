@@ -29,7 +29,7 @@
 	"extra": {
 		"display-name": "Markdown",
 		"soft-require": {
-			"phpbb/phpbb": "~3.3.0"
+			"phpbb/phpbb": "~3.3.2"
 		},
 		"version-check": {
 			"host": "alfredoramos.mx",
