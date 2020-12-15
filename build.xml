@@ -56,7 +56,7 @@
 	<target name="all" depends="prepare-structure,package" />
 
 	<!-- Remove incomplete language pack -->
-	<target name="clean-lang">
+	<target name="remove-lang">
 		<if>
 			<and>
 				<not>
@@ -72,6 +72,12 @@
 		</if>
 	</target>
 
+	<!-- Replace invalid characters in language files -->
+	<target name="clean-lang">
+		<echo msg="Replacing invalid characters: ${filename}" />
+		<exec dir="${package-directory}/language" command="sed -ri 's|'\\\\\''|’|g' ${filename}" checkreturn="true" />
+	</target>
+
 	<!-- Clean up the language directory -->
 	<target name="clean-langs">
 		<if>
@@ -80,9 +86,17 @@
 			</not>
 			<then>
 				<echo msg="Deleting incomplete languages" />
-				<foreach list="${exclude-langs}" param="lang" target="clean-lang" />
+				<foreach list="${exclude-langs}" param="lang" target="remove-lang" />
 			</then>
 		</if>
+
+		<foreach param="filename" target="clean-lang">
+			<fileset dir="${package-directory}/language">
+				<patternset>
+					<include name="**/*.php" />
+				</patternset>
+			</fileset>
+		</foreach>
 	</target>
 
 	<!-- Clean up the build directory -->
