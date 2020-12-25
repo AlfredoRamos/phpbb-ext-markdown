@@ -19,11 +19,9 @@
 
 		<delete dir="${dir}/scss" />
 		<delete dir="${dir}/tests" />
-		<delete dir="${dir}/travis" />
 		<delete dir="${dir}/.github" />
 		<delete file="${dir}/.gitignore" />
 		<delete file="${dir}/.gitattributes" />
-		<delete file="${dir}/.travis.yml" />
 		<delete file="${dir}/.rubocop.yml" />
 		<delete file="${dir}/.scss-lint.yml" />
 		<delete file="${dir}/build.xml" />

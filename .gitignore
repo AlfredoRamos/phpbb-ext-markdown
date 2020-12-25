@@ -3,4 +3,3 @@ vendor/
 .bundle/
 composer.lock
 Gemfile.lock
-.DS_Store
