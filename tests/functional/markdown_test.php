@@ -16,10 +16,9 @@ class markdown_test extends \phpbb_functional_test_case
 {
 	use functional_test_case_trait;
 
-	public function setUp(): void
+	protected function setUp(): void
 	{
 		parent::setUp();
-
 		$this->login();
 		$this->add_lang_ext('alfredoramos/markdown', [
 			'posting'
@@ -95,7 +94,7 @@ EOT;
 			$post['topic_id']
 		));
 
-		$this->assertContains($expected, $result->html());
+		$this->assertStringContainsString($expected, $result->html());
 	}
 
 	public function test_private_message()
@@ -150,7 +149,7 @@ EOT;
 			$private_message
 		));
 
-		$this->assertContains($expected, $result->html());
+		$this->assertStringContainsString($expected, $result->html());
 	}
 
 	public function test_simple_table()
@@ -199,7 +198,7 @@ EOT;
 		));
 
 		$this->assertSame(1, $crawler->filter('table')->count());
-		$this->assertContains($expected, $result->html());
+		$this->assertStringContainsString($expected, $result->html());
 	}
 
 	public function test_compact_table()
@@ -248,7 +247,7 @@ EOT;
 		));
 
 		$this->assertSame(1, $crawler->filter('table')->count());
-		$this->assertContains($expected, $result->html());
+		$this->assertStringContainsString($expected, $result->html());
 	}
 
 	public function test_table_text_aligntment()
@@ -299,7 +298,7 @@ EOT;
 		));
 
 		$this->assertSame(1, $crawler->filter('table')->count());
-		$this->assertContains($expected, $result->html());
+		$this->assertStringContainsString($expected, $result->html());
 	}
 
 	public function test_block_spoiler()
@@ -332,7 +331,7 @@ EOT;
 		));
 
 		$this->assertSame(1, $crawler->filter('.spoiler')->count());
-		$this->assertContains($expected, $result->html());
+		$this->assertStringContainsString($expected, $result->html());
 	}
 
 	public function test_inline_spoiler()
@@ -365,7 +364,7 @@ EOT;
 		));
 
 		$this->assertSame(2, $crawler->filter('.spoiler')->count());
-		$this->assertContains($expected, $result->html());
+		$this->assertStringContainsString($expected, $result->html());
 	}
 
 	public function test_task_list()
@@ -425,7 +424,7 @@ EOT;
 		$html = $this->task_id_placeholder($result->html());
 		$expected = $this->task_id_placeholder($expected);
 
-		$this->assertContains($expected, $html);
+		$this->assertStringContainsString($expected, $html);
 	}
 
 	public function test_header_slugs()
@@ -473,7 +472,7 @@ EOT;
 <h6 class="markdown" id="pellentesque-eleifend-feugiat">Pellentesque eleifend feugiat</h6>
 EOT;
 
-		$this->assertContains($expected, $result->html());
+		$this->assertStringContainsString($expected, $result->html());
 	}
 
 	private function task_id_placeholder($html = '', $placeholder = '...')

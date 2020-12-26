@@ -34,10 +34,9 @@ class listener_test extends \phpbb_test_case
 	protected $language;
 	protected $helper;
 
-	public function setUp(): void
+	protected function setUp(): void
 	{
 		parent::setUp();
-
 		$this->auth = $this->getMockBuilder(auth::class)->getMock();
 		$this->config = $this->getMockBuilder(config::class)
 			->disableOriginalConstructor()->getMock();

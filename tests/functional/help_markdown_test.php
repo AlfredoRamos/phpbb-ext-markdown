@@ -16,10 +16,9 @@ class help_markdown_test extends \phpbb_functional_test_case
 {
 	use functional_test_case_trait;
 
-	public function setUp(): void
+	protected function setUp(): void
 	{
 		parent::setUp();
-
 		$this->add_lang_ext('alfredoramos/markdown', [
 			'help/markdown'
 		]);

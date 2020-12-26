@@ -16,10 +16,9 @@ class acp_markdown_test extends \phpbb_functional_test_case
 {
 	use functional_test_case_trait;
 
-	public function setUp(): void
+	protected function setUp(): void
 	{
 		parent::setUp();
-
 		$this->login();
 		$this->admin_login();
 		$this->add_lang_ext('alfredoramos/markdown', 'acp/info_acp_markdown');
@@ -34,7 +33,7 @@ class acp_markdown_test extends \phpbb_functional_test_case
 
 		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
 
-		$this->assertContains(
+		$this->assertStringContainsString(
 			$this->lang('ALLOW_MARKDOWN'),
 			$crawler->filter('label[for="allow_markdown"]')->text()
 		);
@@ -52,7 +51,7 @@ class acp_markdown_test extends \phpbb_functional_test_case
 
 		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
 
-		$this->assertContains(
+		$this->assertStringContainsString(
 			$this->lang('ALLOW_POST_MARKDOWN'),
 			$crawler->filter('label[for="allow_post_markdown"]')->text()
 		);
@@ -70,7 +69,7 @@ class acp_markdown_test extends \phpbb_functional_test_case
 
 		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
 
-		$this->assertContains(
+		$this->assertStringContainsString(
 			$this->lang('ALLOW_PM_MARKDOWN'),
 			$crawler->filter('label[for="allow_pm_markdown"]')->text()
 		);
@@ -88,7 +87,7 @@ class acp_markdown_test extends \phpbb_functional_test_case
 
 		$form = $crawler->selectButton($this->lang('SUBMIT'))->form();
 
-		$this->assertContains(
+		$this->assertStringContainsString(
 			$this->lang('ALLOW_SIG_MARKDOWN'),
 			$crawler->filter('label[for="allow_sig_markdown"]')->text()
 		);
