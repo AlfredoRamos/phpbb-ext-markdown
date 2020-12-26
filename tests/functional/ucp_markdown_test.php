@@ -16,10 +16,9 @@ class ucp_markdown_test extends \phpbb_functional_test_case
 {
 	use functional_test_case_trait;
 
-	public function setUp(): void
+	protected function setUp(): void
 	{
 		parent::setUp();
-
 		$this->login();
 		$this->add_lang_ext('alfredoramos/markdown', 'ucp/markdown');
 	}
@@ -69,10 +68,6 @@ class ucp_markdown_test extends \phpbb_functional_test_case
 			'/app.php/help/markdown',
 			$crawler->filter('.markdown-status > a')->attr('href')
 		);
-
-		// It needs phpBB v3.2.6-RC1 or greater
-		// https://tracker.phpbb.com/browse/PHPBB3-15949
-		// https://github.com/phpbb/phpbb/pull/5519
 		$this->assertTrue($form->has('disable_markdown'));
 	}
 
@@ -95,6 +90,6 @@ class ucp_markdown_test extends \phpbb_functional_test_case
 
 		$result = $crawler->filter('.postbody .signature');
 
-		$this->assertContains($expected, $result->html());
+		$this->assertStringContainsString($expected, $result->html());
 	}
 }
