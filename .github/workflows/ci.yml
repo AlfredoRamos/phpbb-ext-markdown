@@ -1,4 +1,4 @@
-name: GitHub Actions CI
+name: CI
 
 on:
   push:
@@ -15,7 +15,7 @@ env:
   SNIFF: 1
   IMAGE_ICC: 1
   EPV: 1
-  EXECUTABLE_FILES: 0
+  EXECUTABLE_FILES: 1
   EXTDEPS: 0
   PHPBB_BRANCH: 3.3.x
 
@@ -186,27 +186,17 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Setup Ruby
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.7
-    - name: Setup cache
-      uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
-    - name: Install gems
-      run: |
-        echo "gem: --no-document" > ~/.gemrc
-        gem install -N bundler
-        bundle config path vendor/bundle
-        bundle install --jobs 4 --retry 3
-        bundle clean
-        gem cleanup
-    - name: Test Ruby
-      run: bundle exec rake rubocop
-    - name: Test SCSS
-      run: bundle exec rake scss_lint
+      - name: Checkout extension
+        uses: actions/checkout@master
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+
+      - name: Test Ruby
+        run: bundle exec rake rubocop
+
+      - name: Test SCSS
+        run: bundle exec rake scss_lint
