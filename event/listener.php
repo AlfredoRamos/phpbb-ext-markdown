@@ -21,28 +21,28 @@ use alfredoramos\markdown\includes\helper;
 
 class listener implements EventSubscriberInterface
 {
-	/** @var \phpbb\auth\auth */
+	/** @var auth */
 	protected $auth;
 
-	/** @var \phpbb\config\config */
+	/** @var config */
 	protected $config;
 
-	/** @var \phpbb\user */
+	/** @var user */
 	protected $user;
 
-	/** @var \phpbb\request\request */
+	/** @var request */
 	protected $request;
 
-	/** @var \phpbb\template\template */
+	/** @var template */
 	protected $template;
 
-	/** @var \phpbb\routing\helper */
+	/** @var routing_helper */
 	protected $routing_helper;
 
-	/** @var \phpbb\language\language */
+	/** @var language */
 	protected $language;
 
-	/** @var \alfredoramos\markdown\includes\helper */
+	/** @var helper */
 	protected $helper;
 
 	/** @var bool */
@@ -51,14 +51,14 @@ class listener implements EventSubscriberInterface
 	/**
 	 * Listener constructor.
 	 *
-	 * @param \phpbb\auth\auth			$auth
-	 * @param \phpbb\config\config		$config
-	 * @param \phpbb\user				$user
-	 * @param \phpbb\request\request	$request
-	 * @param \phpbb\template\template	$template
-	 * @param \phpbb\routing\helper		$routing_helper
-	 * @param \phpbb\language\language	$language
-	 * @param \alfredoramos\markdown\includes\helper	$helper
+	 * @param auth				$auth
+	 * @param config			$config
+	 * @param user				$user
+	 * @param request			$request
+	 * @param template			$template
+	 * @param routing_helper	$routing_helper
+	 * @param language			$language
+	 * @param helper			$helper
 	 *
 	 * @return void
 	 */
