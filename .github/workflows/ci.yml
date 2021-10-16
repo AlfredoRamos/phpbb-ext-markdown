@@ -2,13 +2,8 @@ name: CI
 
 on:
   push:
-    branches:
-      - master
+    branches: [master]
   pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
 
 env:
   EXTNAME: 'alfredoramos/markdown'
@@ -16,11 +11,11 @@ env:
   IMAGE_ICC: 1
   EPV: 1
   EXECUTABLE_FILES: 1
-  EXTDEPS: 0
   PHPBB_BRANCH: 3.3.x
 
 jobs:
   test:
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
     name: php ${{ matrix.php-version }}, ${{ matrix.db-type }}
     runs-on: ubuntu-18.04
     services:
@@ -99,7 +94,7 @@ jobs:
       - name: Checkout extension
         uses: actions/checkout@master
         with:
-          path: phpBB3/phpBB/ext/${{ env.EXTNAME }}
+          path: extension
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -128,12 +123,18 @@ jobs:
         working-directory: phpBB3
         run: .github/setup-phpbb.sh $DB $PHP_VERSION $NOTESTS
 
-      - name: Install extension dependencies
-        if: ${{ env.EXTDEPS == 1 }}
-        working-directory: phpBB3/phpBB/ext/${{ env.EXTNAME }}
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+          working-directory: extension
+
+      - name: Setup extension
+        working-directory: extension
         run: |
-          composer require -n --prefer-dist --no-progress 'composer/package-versions-deprecated:^1.11.99' 'ocramius/proxy-manager:~2.1.1'
-          composer update -n --no-dev --prefer-dist --no-progress
+          chmod +x .github/setup-extension.sh
+          .github/setup-extension.sh $EXTNAME $NOTESTS
 
       - name: Setup EPV
         if: ${{ env.NOTESTS == 1 && env.EPV == 1 }}
@@ -170,7 +171,7 @@ jobs:
         working-directory: phpBB3
         run: |
           mkdir -p phpBB/ext/$EXTNAME/ci
-          cp .github/phpunit* phpBB/ext/$EXTNAME/ci/
+          cp -a .github/phpunit* phpBB/ext/$EXTNAME/ci/
 
       - name: Run unit tests
         if: ${{ env.NOTESTS != 1 }}
@@ -182,15 +183,20 @@ jobs:
     steps:
       - name: Checkout extension
         uses: actions/checkout@master
+        with:
+          path: extension
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: '3.0'
           bundler-cache: true
+          working-directory: extension
 
       - name: Test Ruby
+        working-directory: extension
         run: bundle exec rake rubocop
 
-      - name: Test SCSS
+      - name: Test scss
+        working-directory: extension
         run: bundle exec rake scss_lint
