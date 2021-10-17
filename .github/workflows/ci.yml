@@ -107,15 +107,13 @@ jobs:
       - name: Setup Composer
         id: setup-composer
         working-directory: phpBB3/phpBB
-        run: |
-          echo "::set-output name=dir::$(composer config cache-files-dir)"
-          composer update --no-install --prefer-dist
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
       - name: Setup cache
         uses: actions/cache@v2
         with:
           path: ${{ steps.setup-composer.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock', '**/composer.json') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock', '**/composer.json', 'phpBB3/phpBB/ext/${{ env.EXTNAME }}/composer.lock', 'phpBB3/phpBB/ext/${{ env.EXTNAME }}/composer.json') }}
           restore-keys: |
             ${{ runner.os }}-composer-
 
@@ -179,6 +177,7 @@ jobs:
         run: phpBB/vendor/bin/phpunit --configuration phpBB/ext/$EXTNAME/ci/phpunit-$DB-github.xml --bootstrap tests/bootstrap.php
 
   lint:
+    if: ${{ !contains(github.event.head_commit.message, '[skip lint]') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout extension
@@ -197,6 +196,6 @@ jobs:
         working-directory: extension
         run: bundle exec rake rubocop
 
-      - name: Test scss
+      - name: Test SCSS
         working-directory: extension
         run: bundle exec rake scss_lint
