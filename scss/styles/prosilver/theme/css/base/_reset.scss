@@ -21,16 +21,15 @@
 }
 
 // Headings
-// scss-lint:disable ImportantRule
 %heading {
+	font-weight: bold;
+	line-height: 1em;
+	text-transform: none;
+	border: none;
+	color: currentColor;
 	float: none !important;
 	margin: 1em 0 !important;
-	border: none;
 	padding: 0;
-	text-transform: none;
-	line-height: 1em;
-	color: currentColor;
-	font-weight: bold;
 
 	&:first-child {
 		margin-top: 0 !important;
@@ -47,18 +46,18 @@
 
 		// Reset heading font sizes
 		// https://www.w3schools.com/cssref/css_default_values.asp
-		@if ($i == 1) {
+		@if $i == 1 {
 			font-size: 2em;
-		} @else if ($i == 2) {
+		} @else if $i == 2 {
 			font-size: 1.5em;
-		} @else if ($i == 3) {
+		} @else if $i == 3 {
 			font-size: 1.17em;
-		} @else if ($i == 4) {
+		} @else if $i == 4 {
 			font-size: 1em;
-		} @else if ($i == 5) {
-			font-size: .83em;
-		} @else if ($i == 6) {
-			font-size: .67em;
+		} @else if $i == 5 {
+			font-size: 0.83em;
+		} @else if $i == 6 {
+			font-size: 0.67em;
 		}
 	}
 }

@@ -12,22 +12,37 @@
 	margin-top: 0;
 }
 
-h6.markdown, h5.markdown, h4.markdown, h3.markdown, h2.markdown, h1.markdown {
+h6.markdown,
+h5.markdown,
+h4.markdown,
+h3.markdown,
+h2.markdown,
+h1.markdown {
+	font-weight: bold;
+	line-height: 1em;
+	text-transform: none;
+	border: none;
+	color: currentColor;
 	float: none !important;
 	margin: 1em 0 !important;
-	border: none;
 	padding: 0;
-	text-transform: none;
-	line-height: 1em;
-	color: currentColor;
-	font-weight: bold;
 }
 
-h6.markdown:first-child, h5.markdown:first-child, h4.markdown:first-child, h3.markdown:first-child, h2.markdown:first-child, h1.markdown:first-child {
+h6.markdown:first-child,
+h5.markdown:first-child,
+h4.markdown:first-child,
+h3.markdown:first-child,
+h2.markdown:first-child,
+h1.markdown:first-child {
 	margin-top: 0 !important;
 }
 
-h6.markdown:last-child, h5.markdown:last-child, h4.markdown:last-child, h3.markdown:last-child, h2.markdown:last-child, h1.markdown:last-child {
+h6.markdown:last-child,
+h5.markdown:last-child,
+h4.markdown:last-child,
+h3.markdown:last-child,
+h2.markdown:last-child,
+h1.markdown:last-child {
 	margin-bottom: 0 !important;
 }
 
@@ -48,11 +63,11 @@ h4.markdown {
 }
 
 h5.markdown {
-	font-size: .83em;
+	font-size: 0.83em;
 }
 
 h6.markdown {
-	font-size: .67em;
+	font-size: 0.67em;
 }
 
 table.markdown {
@@ -80,19 +95,28 @@ table.markdown td {
 	padding: 5px 10px;
 }
 
-.forums .list-inner p, .polls p, .poll-title p, .content p, .markdown p {
+.forums .list-inner p,
+.polls p,
+.poll-title p,
+.content p,
+.markdown p {
 	font-size: 1em;
 }
 
-.forums .list-inner p, .polls p {
+.forums .list-inner p,
+.polls p {
 	display: inline-block;
 }
 
-.forums .list-inner p, .polls p, .poll-title p, .markdown li p {
+.forums .list-inner p,
+.polls p,
+.poll-title p,
+.markdown li p {
 	margin-bottom: 0;
 }
 
 .content p:last-child,
-.signature p:last-child, .markdown p:last-child {
+.signature p:last-child,
+.markdown p:last-child {
 	margin-bottom: 0;
 }

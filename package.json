@@ -1,0 +1,40 @@
+{
+	"browserslist": [
+		">= 1%",
+		"last 1 major version",
+		"not dead",
+		"Chrome >= 45",
+		"Firefox >= 38",
+		"Edge >= 12",
+		"Explorer >= 10",
+		"iOS >= 9",
+		"Safari >= 9",
+		"Android >= 4.4",
+		"Opera >= 30"
+	],
+	"scripts": {
+		"build-scss": "node .github/scripts/build-scss.js",
+		"build-css": "npx postcss 'build/package/**/css/!(*.min).css' --ext '.min.css' --base build/ --no-map -d build/",
+		"build-js": "node .github/scripts/build-js.js",
+		"build-templates": "node .github/scripts/build-templates.js",
+		"build": "npm run build-scss && npm run build-css && npm run build-js && npm run build-templates",
+		"build-dev": "npm run build && npm run lint-scss && npm run lint-css",
+		"lint-scss": "npx stylelint '**/*.scss' --fix",
+		"lint-css": "npx stylelint '**/*.css' --fix"
+	},
+	"devDependencies": {
+		"autoprefixer": "^10.4.0",
+		"cssnano": "^5.0.12",
+		"glob": "^7.2.0",
+		"postcss": "^8.4.4",
+		"postcss-cli": "^9.1.0",
+		"postcss-import": "^14.0.2",
+		"postcss-scss": "^4.0.2",
+		"sass": "^1.44.0",
+		"stylelint": "^14.1.0",
+		"stylelint-config-standard-scss": "^3.0.0",
+		"stylelint-order": "^5.0.0",
+		"stylelint-scss": "^4.0.1",
+		"uglify-js": "^3.14.5"
+	}
+}
