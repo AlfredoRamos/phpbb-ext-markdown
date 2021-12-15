@@ -19,17 +19,18 @@
 
 		<delete dir="${dir}/scss" />
 		<delete dir="${dir}/tests" />
+		<delete dir="${dir}/node_modules" />
 		<delete dir="${dir}/.github" />
 		<delete file="${dir}/.gitignore" />
 		<delete file="${dir}/.gitattributes" />
-		<delete file="${dir}/.rubocop.yml" />
-		<delete file="${dir}/.scss-lint.yml" />
+		<delete file="${dir}/.stylelintrc.json" />
 		<delete file="${dir}/build.xml" />
 		<delete file="${dir}/crowdin.yml" />
 		<delete file="${dir}/phpunit.xml.dist" />
 		<delete file="${dir}/README.md" />
-		<delete file="${dir}/Gemfile" />
-		<delete file="${dir}/Rakefile" />
+		<delete file="${dir}/package.json" />
+		<delete file="${dir}/package-lock.json" />
+		<delete file="${dir}/postcss.config.js" />
 
 		<if>
 			<and>
@@ -105,8 +106,7 @@
 	<!-- Minify CSS and JS assets -->
 	<target name="minify-assets">
 		<echo msg="Minifying assets" />
-		<exec command="bundle exec rake build:all" checkreturn="true" />
-		<exec command="vim -c 'argdo setf css | execute &quot;normal! gg=G&quot; | update | quitall' $(find . -type f -path '*.css' | xargs)" checkreturn="true" />
+		<exec command="npm run build" checkreturn="true" />
 	</target>
 
 	<!-- Recreate the necessary folders -->

@@ -5,11 +5,11 @@ tests/ export-ignore
 phpunit.xml.dist export-ignore
 build.xml export-ignore
 crowdin.yml export-ignore
-.rubocop.yml export-ignore
-.scss-lint.yml export-ignore
+package.json export-ignore
+package-lock.json export-ignore
+postcss.config.js export-ignore
 .gitignore export-ignore
 .gitattributes export-ignore
+ .stylelintrc.json export-ignore
 *.md export-ignore
-Gemfile export-ignore
-Rakefile export-ignore
 *.scss export-ignore
