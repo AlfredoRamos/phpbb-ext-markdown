@@ -258,7 +258,7 @@ class listener implements EventSubscriberInterface
 				break;
 
 				case 'ISPOILER':
-					$exp = '//span';
+					$exp = '//span[contains(@class, "spoiler")]';
 				break;
 
 				default:
@@ -530,9 +530,6 @@ class listener implements EventSubscriberInterface
 			return;
 		}
 
-		// It needs phpBB v3.2.6-RC1 or greater
-		// https://tracker.phpbb.com/browse/PHPBB3-15949
-		// https://github.com/phpbb/phpbb/pull/5519
 		$event['allow_markdown'] = empty($this->request->variable('disable_markdown', false));
 
 		$this->markdown_enabled = $this->markdown_enabled &&
