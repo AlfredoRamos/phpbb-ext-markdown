@@ -3,15 +3,15 @@
 	"type": "phpbb-extension",
 	"description": "Markdown extension for phpBB",
 	"homepage": "https://github.com/AlfredoRamos/phpbb-ext-markdown",
-	"version": "1.4.0",
-	"time": "2020-11-06",
+	"version": "1.4.1",
+	"time": "2022-03-20",
 	"keywords": ["phpbb", "extension", "markdown", "litedown", "pipetables", "tasklists"],
 	"license": "GPL-2.0-only",
 	"authors": [
 		{
 			"name": "Alfredo Ramos",
 			"email": "alfredo.ramos@yandex.com",
-			"homepage": "https://alfredoramos.mx/",
+			"homepage": "https://alfredoramos.mx",
 			"role": "Lead Developer"
 		}
 	],
