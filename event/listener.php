@@ -307,7 +307,7 @@ class listener implements EventSubscriberInterface
 	 */
 	public function ucp_markdown_status($event)
 	{
-		if (($event['id'] !== 'ucp_prefs' && $event['mode' !== 'post']) &&
+		if (($event['id'] !== 'ucp_prefs' && $event['mode'] !== 'post') &&
 			($event['id'] !== 'pm' && $event['mode'] !== 'compose') &&
 			($event['id'] !== 'ucp_profile' && $event['mode'] !== 'signature'))
 		{
