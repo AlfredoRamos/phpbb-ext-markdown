@@ -23,6 +23,7 @@
 		<delete dir="${dir}/.github" />
 		<delete file="${dir}/.gitignore" />
 		<delete file="${dir}/.gitattributes" />
+		<delete file="${dir}/.editorconfig" />
 		<delete file="${dir}/.stylelintrc.json" />
 		<delete file="${dir}/build.xml" />
 		<delete file="${dir}/crowdin.yml" />
