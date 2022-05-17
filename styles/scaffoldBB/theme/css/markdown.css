@@ -1,0 +1,122 @@
+/**
+ * Markdown extension for phpBB.
+ * @author Alfredo Ramos <alfredo.ramos@yandex.com>
+ * @copyright 2019 Alfredo Ramos
+ * @license GPL-2.0-only
+ */
+.markdown:last-child {
+	margin-bottom: 0;
+}
+
+.markdown li .markdown {
+	margin-top: 0;
+}
+
+h6.markdown,
+h5.markdown,
+h4.markdown,
+h3.markdown,
+h2.markdown,
+h1.markdown {
+	font-weight: bold;
+	line-height: 1em;
+	text-transform: none;
+	border: none;
+	color: currentColor;
+	float: none !important;
+	margin: 1em 0 !important;
+	padding: 0;
+}
+
+h6.markdown:first-child,
+h5.markdown:first-child,
+h4.markdown:first-child,
+h3.markdown:first-child,
+h2.markdown:first-child,
+h1.markdown:first-child {
+	margin-top: 0 !important;
+}
+
+h6.markdown:last-child,
+h5.markdown:last-child,
+h4.markdown:last-child,
+h3.markdown:last-child,
+h2.markdown:last-child,
+h1.markdown:last-child {
+	margin-bottom: 0 !important;
+}
+
+h1.markdown {
+	font-size: 2em;
+}
+
+h2.markdown {
+	font-size: 1.5em;
+}
+
+h3.markdown {
+	font-size: 1.17em;
+}
+
+h4.markdown {
+	font-size: 1em;
+}
+
+h5.markdown {
+	font-size: 0.83em;
+}
+
+h6.markdown {
+	font-size: 0.67em;
+}
+
+table.markdown {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+table.markdown,
+table.markdown th,
+table.markdown td {
+	border: 1px solid var(--bs-primary);
+}
+
+table.markdown tr:nth-child(2n) {
+	background-color: var(--bs-gray-100);
+}
+
+table.markdown thead {
+	background-color: var(--bs-primary);
+	color: var(--bs-white);
+}
+
+table.markdown th,
+table.markdown td {
+	padding: 5px 10px;
+}
+
+.forums .list-inner p,
+.polls p,
+.poll-title p,
+.content p,
+.markdown p {
+	font-size: 1em;
+}
+
+.forums .list-inner p,
+.polls p {
+	display: inline-block;
+}
+
+.forums .list-inner p,
+.polls p,
+.poll-title p,
+.markdown li p {
+	margin-bottom: 0;
+}
+
+.content p:last-child,
+.signature p:last-child,
+.markdown p:last-child {
+	margin-bottom: 0;
+}

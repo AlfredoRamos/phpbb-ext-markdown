@@ -1,0 +1,15 @@
+<dl class="row gx-0 mb-1">
+	<dt class="col-md-5">
+		<label for="markdown1">{{ lang('DEFAULT_MARKDOWN') }}{{ lang('COLON') }}</label>
+	</dt>
+	<dd class="col-md-7">
+		<label for="markdown1">
+			<input class="form-check-input" type="radio" id="markdown1" name="markdown" value="1"{% if S_MARKDOWN %} checked="checked"{% endif %}>
+			{{ lang('YES') }}
+		</label>
+		<label for="markdown0">
+			<input class="form-check-input" type="radio" id="markdown0" name="markdown" value="0"{% if not S_MARKDOWN %} checked="checked"{% endif %}>
+			{{ lang('NO') }}
+		</label>
+	</dd>
+</dl>
