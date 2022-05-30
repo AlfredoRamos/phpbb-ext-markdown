@@ -21,6 +21,7 @@
 		<delete dir="${dir}/tests" />
 		<delete dir="${dir}/node_modules" />
 		<delete dir="${dir}/.github" />
+		<delete dir="${dir}/.vscode" />
 		<delete file="${dir}/.gitignore" />
 		<delete file="${dir}/.gitattributes" />
 		<delete file="${dir}/.editorconfig" />

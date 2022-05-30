@@ -2,6 +2,7 @@
 scss/ export-ignore
 tests/ export-ignore
 .github/ export-ignore
+.vscode/ export-ignore
 phpunit.xml.dist export-ignore
 build.xml export-ignore
 crowdin.yml export-ignore
