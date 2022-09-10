@@ -27,7 +27,7 @@
 		"cssnano": "^5.0.12",
 		"glob": "^8.0.1",
 		"postcss": "^8.4.4",
-		"postcss-cli": "^9.1.0",
+		"postcss-cli": "^10.0.0",
 		"postcss-import": "^14.0.2",
 		"postcss-scss": "^4.0.2",
 		"sass": "^1.44.0",
