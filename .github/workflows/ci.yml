@@ -17,7 +17,7 @@ jobs:
   test:
     if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
     name: php ${{ matrix.php-version }}, ${{ matrix.db-type }} ${{ matrix.db-version }}
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     services:
       mysql:
         image: ${{ (matrix.db-type == 'mysql' || matrix.db-type == 'mariadb') && matrix.db-type || 'mariadb' }}:${{ (matrix.db-type == 'mysql' || matrix.db-type == 'mariadb' && matrix.db-version != 'none') && matrix.db-version || 'latest' }}
@@ -64,7 +64,7 @@ jobs:
             db-version: '10.5'
           - php-version: '7.1'
             db-type: 'postgres'
-            db-version: '13-alpine'
+            db-version: '14-alpine'
           - php-version: '7.2'
             db-type: 'mariadb'
             db-version: '10.5'
@@ -85,7 +85,7 @@ jobs:
             db-version: '10.6'
           - php-version: '8.2'
             db-type: 'postgres'
-            db-version: '14-alpine'
+            db-version: '15-alpine'
     steps:
       - name: Checkout phpBB
         uses: actions/checkout@v3
@@ -110,13 +110,13 @@ jobs:
       - name: Setup Composer
         id: setup-composer
         working-directory: phpBB3/phpBB
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "cache-dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Setup cache
         uses: actions/cache@v3
         with:
-          path: ${{ steps.setup-composer.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock', '**/composer.json', 'phpBB3/phpBB/ext/${{ env.EXTNAME }}/composer.lock', 'phpBB3/phpBB/ext/${{ env.EXTNAME }}/composer.json') }}
+          path: ${{ steps.setup-composer.outputs.cache-dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock', '**/composer.json') }}
           restore-keys: |
             ${{ runner.os }}-composer-
 
@@ -135,7 +135,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '17'
+          node-version: '18'
 
       - name: Install Node dependencies
         working-directory: extension
@@ -150,7 +150,7 @@ jobs:
       - name: Setup EPV
         if: ${{ env.NOTESTS == 1 && env.EPV == 1 }}
         working-directory: phpBB3/phpBB
-        run: composer require -n --dev --prefer-dist --no-progress phpbb/epv:dev-master
+        run: composer require -n --prefer-dist --no-progress phpbb/epv:dev-master
 
       - name: Run code sniffer
         if: ${{ env.NOTESTS == 1 && env.SNIFF == 1 }}
@@ -209,7 +209,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '17'
+          node-version: '18'
 
       - name: Install Node dependencies
         working-directory: extension

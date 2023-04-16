@@ -174,7 +174,10 @@ EOT;
 
 		if (version_compare(PHP_VERSION, '7.3.0', '>='))
 		{
-			$expected = '<table class="markdown"><thead><tr><th>Header 1</th><th>Header 2</th></tr></thead><tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody></table>';
+			$expected = <<<EOT
+<table class="markdown"><thead><tr><th>Header 1</th><th>Header 2</th></tr></thead>
+<tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody></table>
+EOT;
 		}
 		else
 		{
@@ -223,7 +226,10 @@ EOT;
 
 		if (version_compare(PHP_VERSION, '7.3.0', '>='))
 		{
-			$expected = '<table class="markdown"><thead><tr><th>Header 1</th><th>Header 2</th></tr></thead><tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody></table>';
+			$expected = <<<EOT
+<table class="markdown"><thead><tr><th>Header 1</th><th>Header 2</th></tr></thead>
+<tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody></table>
+EOT;
 		}
 		else
 		{
@@ -272,7 +278,10 @@ EOT;
 
 		if (version_compare(PHP_VERSION, '7.3.0', '>='))
 		{
-			$expected = '<table class="markdown"><thead><tr><th style="text-align:left">Left</th><th style="text-align:center">Center</th><th style="text-align:right">Right</th></tr></thead><tbody><tr><td style="text-align:left">x</td><td style="text-align:center">x</td><td style="text-align:right">x</td></tr></tbody></table>';
+			$expected = <<<EOT
+<table class="markdown"><thead><tr><th style="text-align:left">Left</th><th style="text-align:center">Center</th><th style="text-align:right">Right</th></tr></thead>
+<tbody><tr><td style="text-align:left">x</td><td style="text-align:center">x</td><td style="text-align:right">x</td></tr></tbody></table>
+EOT;
 		}
 		else
 		{
