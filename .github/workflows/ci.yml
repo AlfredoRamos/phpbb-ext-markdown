@@ -25,14 +25,14 @@ jobs:
         php-version: ['7.1']
     steps:
       - name: Checkout phpBB
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: phpbb/phpbb
           ref: ${{ env.PHPBB_BRANCH }}
           path: phpBB3
 
       - name: Checkout extension
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: extension
 
@@ -159,14 +159,14 @@ jobs:
             db-version: '10.6'
     steps:
       - name: Checkout phpBB
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: phpbb/phpbb
           ref: ${{ env.PHPBB_BRANCH }}
           path: phpBB3
 
       - name: Checkout extension
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: extension
 
@@ -265,14 +265,14 @@ jobs:
             db-version: '15-alpine'
     steps:
       - name: Checkout phpBB
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: phpbb/phpbb
           ref: ${{ env.PHPBB_BRANCH }}
           path: phpBB3
 
       - name: Checkout extension
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: extension
 
@@ -343,7 +343,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout extension
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: extension
 
