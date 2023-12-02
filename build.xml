@@ -26,6 +26,7 @@
 		<delete file="${dir}/.gitattributes" />
 		<delete file="${dir}/.editorconfig" />
 		<delete file="${dir}/.stylelintrc.json" />
+		<delete file="${dir}/.tool-versions" />
 		<delete file="${dir}/build.xml" />
 		<delete file="${dir}/crowdin.yml" />
 		<delete file="${dir}/phpunit.xml.dist" />
