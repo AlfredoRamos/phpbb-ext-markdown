@@ -22,7 +22,7 @@ jobs:
       PHP_VERSION: ${{ matrix.php-version }}
     strategy:
       matrix:
-        php-version: ['7.1']
+        php-version: ['7.2']
     steps:
       - name: Checkout phpBB
         uses: actions/checkout@v4
@@ -133,12 +133,9 @@ jobs:
     strategy:
       matrix:
         include:
-          - php-version: '7.1'
+          - php-version: '7.2'
             db-type: 'mysql'
             db-version: '5.7'
-          - php-version: '7.1'
-            db-type: 'mariadb'
-            db-version: '10.5'
           - php-version: '7.2'
             db-type: 'mariadb'
             db-version: '10.5'
@@ -155,6 +152,9 @@ jobs:
             db-type: 'mariadb'
             db-version: '10.5'
           - php-version: '8.1'
+            db-type: 'mariadb'
+            db-version: '10.6'
+          - php-version: '8.2'
             db-type: 'mariadb'
             db-version: '10.6'
     steps:
@@ -257,12 +257,12 @@ jobs:
     strategy:
       matrix:
         include:
-          - php-version: '7.1'
-            db-type: 'postgres'
-            db-version: '14-alpine'
-          - php-version: '8.2'
+          - php-version: '7.2'
             db-type: 'postgres'
             db-version: '15-alpine'
+          - php-version: '8.2'
+            db-type: 'postgres'
+            db-version: '16-alpine'
     steps:
       - name: Checkout phpBB
         uses: actions/checkout@v4
