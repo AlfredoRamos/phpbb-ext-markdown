@@ -61,18 +61,12 @@ jobs:
         working-directory: phpBB3
         run: .github/setup-phpbb.sh $DB $PHP_VERSION $NOTESTS
 
-      - name: Setup Node cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version-file: 'extension/.tool-versions'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
       - name: Install Node dependencies
         working-directory: extension
@@ -195,18 +189,12 @@ jobs:
         working-directory: phpBB3
         run: .github/setup-phpbb.sh $DB $PHP_VERSION $NOTESTS
 
-      - name: Setup Node cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version-file: 'extension/.tool-versions'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
       - name: Install Node dependencies
         working-directory: extension
@@ -301,18 +289,12 @@ jobs:
         working-directory: phpBB3
         run: .github/setup-phpbb.sh $DB $PHP_VERSION $NOTESTS
 
-      - name: Setup Node cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version-file: 'extension/.tool-versions'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
       - name: Install Node dependencies
         working-directory: extension
@@ -347,18 +329,12 @@ jobs:
         with:
           path: extension
 
-      - name: Setup Node cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version-file: 'extension/.tool-versions'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
       - name: Install Node dependencies
         working-directory: extension

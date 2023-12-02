@@ -11,7 +11,8 @@ package-lock.json export-ignore
 postcss.config.js export-ignore
 .gitignore export-ignore
 .gitattributes export-ignore
- .editorconfig export-ignore
- .stylelintrc.json export-ignore
+.editorconfig export-ignore
+.stylelintrc.json export-ignore
+.tool-versions export-ignore
 *.md export-ignore
 *.scss export-ignore
