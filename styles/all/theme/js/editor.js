@@ -1,11 +1,11 @@
 /**
  * Markdown extension for phpBB.
- * @author Alfredo Ramos <alfredo.ramos@protonmail.com>
+ * @author Alfredo Ramos <alfredo.ramos@skiff.com>
  * @copyright 2019 Alfredo Ramos
  * @license GPL-2.0-only
  */
 
-(function() {
+(function () {
 	'use strict';
 
 	/**
@@ -18,7 +18,7 @@
 	 *
 	 * @return {bool}
 	 */
-	const inCodeBlock = function(textarea) {
+	const inCodeBlock = function (textarea) {
 		const start = textarea.selectionStart;
 		const end = textarea.selectionEnd;
 		const value = textarea.value.slice(start, end);
@@ -35,11 +35,11 @@
 			return false;
 		}
 
-		return (codeBlocks.length % 2 === 1);
+		return codeBlocks.length % 2 === 1;
 	};
 
 	// Enable tabulations in Markdown code
-	document.body.addEventListener('keydown', function(e) {
+	document.body.addEventListener('keydown', function (e) {
 		// Event already handled
 		if (e.defaultPrevented) {
 			return;
@@ -52,7 +52,11 @@
 		// Match post, private message and signature
 		// Triggered only on Tab key press
 		// Cursor must be inside a Markdown code block
-		if (!field.matches(selector) || e.key !== 'Tab' || !inCodeBlock(field)) {
+		if (
+			!field.matches(selector) ||
+			e.key !== 'Tab' ||
+			!inCodeBlock(field)
+		) {
 			return;
 		}
 
@@ -70,6 +74,6 @@
 		field.value = value.substring(0, start) + '\t' + value.substring(end);
 
 		// Update caret position
-		field.selectionStart = field.selectionEnd = (start + 1);
+		field.selectionStart = field.selectionEnd = start + 1;
 	});
 })();
