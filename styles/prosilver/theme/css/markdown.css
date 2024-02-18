@@ -1,6 +1,6 @@
 /**
  * Markdown extension for phpBB.
- * @author Alfredo Ramos <alfredo.ramos@skiff.com>
+ * @author Alfredo Ramos <alfredo.ramos@proton.me>
  * @copyright 2019 Alfredo Ramos
  * @license GPL-2.0-only
  */

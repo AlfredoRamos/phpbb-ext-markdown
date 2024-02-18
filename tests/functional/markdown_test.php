@@ -2,7 +2,7 @@
 
 /**
  * Markdown extension for phpBB.
- * @author Alfredo Ramos <alfredo.ramos@skiff.com>
+ * @author Alfredo Ramos <alfredo.ramos@proton.me>
  * @copyright 2019 Alfredo Ramos
  * @license GPL-2.0-only
  */
@@ -65,8 +65,7 @@ EOT;
 			$this->sid
 		));
 
-		if (version_compare(PHP_VERSION, '7.3.0', '>='))
-		{
+		if (version_compare(PHP_VERSION, '7.3.0', '>=')) {
 			$expected = <<<EOT
 <p>Code:</p>
 
@@ -74,9 +73,7 @@ EOT;
 
 <p>Inline <code>code</code></p>
 EOT;
-		}
-		else
-		{
+		} else {
 			$expected = <<<EOT
 <p>Code:</p>
 
@@ -120,8 +117,7 @@ EOT;
 			$this->sid
 		));
 
-		if (version_compare(PHP_VERSION, '7.3.0', '>='))
-		{
+		if (version_compare(PHP_VERSION, '7.3.0', '>=')) {
 			$expected = <<<EOT
 <p>Code:</p>
 
@@ -129,9 +125,7 @@ EOT;
 
 <p>Inline <code>code</code></p>
 EOT;
-		}
-		else
-		{
+		} else {
 			$expected = <<<EOT
 <p>Code:</p>
 
@@ -172,15 +166,12 @@ EOT;
 			$this->sid
 		));
 
-		if (version_compare(PHP_VERSION, '7.3.0', '>='))
-		{
+		if (version_compare(PHP_VERSION, '7.3.0', '>=')) {
 			$expected = <<<EOT
 <table class="markdown"><thead><tr><th>Header 1</th><th>Header 2</th></tr></thead>
 <tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody></table>
 EOT;
-		}
-		else
-		{
+		} else {
 			$expected = <<<EOT
 <table class="markdown">
 <thead><tr>
@@ -224,15 +215,12 @@ EOT;
 			$this->sid
 		));
 
-		if (version_compare(PHP_VERSION, '7.3.0', '>='))
-		{
+		if (version_compare(PHP_VERSION, '7.3.0', '>=')) {
 			$expected = <<<EOT
 <table class="markdown"><thead><tr><th>Header 1</th><th>Header 2</th></tr></thead>
 <tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody></table>
 EOT;
-		}
-		else
-		{
+		} else {
 			$expected = <<<EOT
 <table class="markdown">
 <thead><tr>
@@ -276,15 +264,12 @@ EOT;
 			$this->sid
 		));
 
-		if (version_compare(PHP_VERSION, '7.3.0', '>='))
-		{
+		if (version_compare(PHP_VERSION, '7.3.0', '>=')) {
 			$expected = <<<EOT
 <table class="markdown"><thead><tr><th style="text-align:left">Left</th><th style="text-align:center">Center</th><th style="text-align:right">Right</th></tr></thead>
 <tbody><tr><td style="text-align:left">x</td><td style="text-align:center">x</td><td style="text-align:right">x</td></tr></tbody></table>
 EOT;
-		}
-		else
-		{
+		} else {
 			$expected = <<<EOT
 <table class="markdown">
 <thead><tr>
@@ -407,16 +392,13 @@ EOT;
 		$this->assertSame(2, $list->count());
 		$this->assertSame(3, $items->count());
 
-		if (version_compare(PHP_VERSION, '7.3.0', '>='))
-		{
+		if (version_compare(PHP_VERSION, '7.3.0', '>=')) {
 			$expected = <<<EOT
 <ul class="markdown"><li data-task-id="..." data-task-state="checked"><input data-task-id="..." type="checkbox" checked disabled> Task 1
 	<ul class="markdown"><li data-task-id="..." data-task-state="checked"><input data-task-id="..." type="checkbox" checked disabled> Task 1.1</li></ul></li>
 <li data-task-id="..." data-task-state="unchecked"><input data-task-id="..." type="checkbox" disabled> Task 2</li></ul>
 EOT;
-		}
-		else
-		{
+		} else {
 			$expected = <<<EOT
 <ul class="markdown">
 <li data-task-id="..." data-task-state="checked">
@@ -486,8 +468,7 @@ EOT;
 
 	private function task_id_placeholder($html = '', $placeholder = '...')
 	{
-		if (empty($html))
-		{
+		if (empty($html)) {
 			return '';
 		}
 

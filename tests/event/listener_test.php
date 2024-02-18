@@ -2,7 +2,7 @@
 
 /**
  * Markdown extension for phpBB.
- * @author Alfredo Ramos <alfredo.ramos@skiff.com>
+ * @author Alfredo Ramos <alfredo.ramos@proton.me>
  * @copyright 2019 Alfredo Ramos
  * @license GPL-2.0-only
  */
@@ -43,12 +43,12 @@ class listener_test extends \phpbb_test_case
 		$this->user = $this->getMockBuilder(user::class)
 			->disableOriginalConstructor()->getMock();
 		$this->request = $this->getMockBuilder(request::class)
-		   ->disableOriginalConstructor()->getMock();
+			->disableOriginalConstructor()->getMock();
 		$this->template = $this->getMockBuilder(template::class)->getMock();
 		$this->routing_helper = $this->getMockBuilder(routing_helper::class)
-		   ->disableOriginalConstructor()->getMock();
+			->disableOriginalConstructor()->getMock();
 		$this->language = $this->getMockBuilder(language::class)
-		   ->disableOriginalConstructor()->getMock();
+			->disableOriginalConstructor()->getMock();
 		$this->helper = $this->getMockBuilder(helper::class)
 			->disableOriginalConstructor()->getMock();
 	}

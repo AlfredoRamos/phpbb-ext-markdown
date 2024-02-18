@@ -2,7 +2,7 @@
 
 /**
  * Markdown extension for phpBB.
- * @author Alfredo Ramos <alfredo.ramos@skiff.com>
+ * @author Alfredo Ramos <alfredo.ramos@proton.me>
  * @copyright 2019 Alfredo Ramos
  * @license GPL-2.0-only
  */
@@ -41,8 +41,7 @@ class helper
 	 */
 	public function acp_configuration($display_vars = [], $mode = '')
 	{
-		if (empty($display_vars) || empty($display_vars['vars']) || empty($mode))
-		{
+		if (empty($display_vars) || empty($display_vars['vars']) || empty($mode)) {
 			return [];
 		}
 
@@ -53,13 +52,11 @@ class helper
 			'explain' => false
 		];
 
-		if (!function_exists('phpbb_insert_config_array'))
-		{
+		if (!function_exists('phpbb_insert_config_array')) {
 			include($this->root_path . 'includes/functions_acp.' . $this->php_ext);
 		}
 
-		switch ($mode)
-		{
+		switch ($mode) {
 			case 'features':
 				$display_vars['vars'] = phpbb_insert_config_array(
 					$display_vars['vars'],
@@ -71,7 +68,7 @@ class helper
 					],
 					['before' => 'allow_bbcode']
 				);
-			break;
+				break;
 
 			case 'post':
 				$display_vars['vars'] = phpbb_insert_config_array(
@@ -84,7 +81,7 @@ class helper
 					],
 					['before' => 'allow_bbcode']
 				);
-			break;
+				break;
 
 			case 'message':
 				$display_vars['vars'] = phpbb_insert_config_array(
@@ -97,7 +94,7 @@ class helper
 					],
 					['before' => 'auth_bbcode_pm']
 				);
-			break;
+				break;
 
 			case 'signature':
 				$display_vars['vars'] = phpbb_insert_config_array(
@@ -110,7 +107,7 @@ class helper
 					],
 					['before' => 'allow_sig_bbcode']
 				);
-			break;
+				break;
 		}
 
 		return $display_vars;

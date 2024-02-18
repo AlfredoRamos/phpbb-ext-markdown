@@ -2,7 +2,7 @@
 
 /**
  * Markdown extension for phpBB.
- * @author Alfredo Ramos <alfredo.ramos@skiff.com>
+ * @author Alfredo Ramos <alfredo.ramos@proton.me>
  * @copyright 2019 Alfredo Ramos
  * @license GPL-2.0-only
  */
@@ -41,24 +41,22 @@ class help_markdown_test extends \phpbb_functional_test_case
 
 		$this->assertSame(9, $elements['blocks']->count());
 
-		$items = $elements['blocks']->each(function($node) {
+		$items = $elements['blocks']->each(function ($node) {
 			return [
 				'title' => $node->filter('dt > strong'),
 				'links' => $node->filter('dd > a')
 			];
 		});
 
-		foreach ($items as $key => $value)
-		{
-			switch ($key)
-			{
+		foreach ($items as $key => $value) {
+			switch ($key) {
 				case 0: // Introduction
 					$this->assertSame(
 						$this->lang('HELP_MARKDOWN_BLOCK_INTRO'),
 						$value['title']->text()
 					);
 					$this->assertSame(1, $value['links']->count());
-				break;
+					break;
 
 				case 1: // Text formatting
 					$this->assertSame(
@@ -66,7 +64,7 @@ class help_markdown_test extends \phpbb_functional_test_case
 						$value['title']->text()
 					);
 					$this->assertSame(6, $value['links']->count());
-				break;
+					break;
 
 				case 2: // Quoting and outputting fixed-width text
 					$this->assertSame(
@@ -74,7 +72,7 @@ class help_markdown_test extends \phpbb_functional_test_case
 						$value['title']->text()
 					);
 					$this->assertSame(3, $value['links']->count());
-				break;
+					break;
 
 				case 3: // Generating tables
 					$this->assertSame(
@@ -82,7 +80,7 @@ class help_markdown_test extends \phpbb_functional_test_case
 						$value['title']->text()
 					);
 					$this->assertSame(1, $value['links']->count());
-				break;
+					break;
 
 				case 4: // Generating spoilers
 					$this->assertSame(
@@ -90,7 +88,7 @@ class help_markdown_test extends \phpbb_functional_test_case
 						$value['title']->text()
 					);
 					$this->assertSame(2, $value['links']->count());
-				break;
+					break;
 
 				case 5: // Generating lists
 					$this->assertSame(
@@ -98,7 +96,7 @@ class help_markdown_test extends \phpbb_functional_test_case
 						$value['title']->text()
 					);
 					$this->assertSame(3, $value['links']->count());
-				break;
+					break;
 
 				case 6: // Creating links
 					$this->assertSame(
@@ -106,7 +104,7 @@ class help_markdown_test extends \phpbb_functional_test_case
 						$value['title']->text()
 					);
 					$this->assertSame(1, $value['links']->count());
-				break;
+					break;
 
 				case 7: // Showing images
 					$this->assertSame(
@@ -114,7 +112,7 @@ class help_markdown_test extends \phpbb_functional_test_case
 						$value['title']->text()
 					);
 					$this->assertSame(1, $value['links']->count());
-				break;
+					break;
 
 				case 8: // Extras
 					$this->assertSame(
@@ -122,7 +120,7 @@ class help_markdown_test extends \phpbb_functional_test_case
 						$value['title']->text()
 					);
 					$this->assertSame(1, $value['links']->count());
-				break;
+					break;
 			}
 		}
 	}

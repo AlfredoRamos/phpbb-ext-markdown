@@ -2,7 +2,7 @@
 
 /**
  * Markdown extension for phpBB.
- * @author Alfredo Ramos <alfredo.ramos@skiff.com>
+ * @author Alfredo Ramos <alfredo.ramos@proton.me>
  * @copyright 2019 Alfredo Ramos
  * @license GPL-2.0-only
  */
@@ -136,8 +136,7 @@ class listener implements EventSubscriberInterface
 			'signature'
 		];
 
-		if (!in_array($event['mode'], $modes, true))
-		{
+		if (!in_array($event['mode'], $modes, true)) {
 			return;
 		}
 
@@ -205,8 +204,7 @@ class listener implements EventSubscriberInterface
 		$configurator = $event['configurator'];
 
 		// Check if plugins should be disabled
-		if (!$this->markdown_enabled)
-		{
+		if (!$this->markdown_enabled) {
 			unset(
 				$configurator->Litedown,
 				$configurator->PipeTables,
@@ -231,13 +229,11 @@ class listener implements EventSubscriberInterface
 		];
 
 		// Add CSS class
-		foreach ($tags as $tag)
-		{
+		foreach ($tags as $tag) {
 			$tag = trim($tag);
 
 			// Tag must exist
-			if (!isset($configurator->tags[$tag]))
-			{
+			if (!isset($configurator->tags[$tag])) {
 				continue;
 			}
 
@@ -247,27 +243,25 @@ class listener implements EventSubscriberInterface
 			$xpath = new \DOMXPath($dom);
 
 			// XPath expression
-			switch ($tag)
-			{
+			switch ($tag) {
 				case 'LIST':
 					$exp = '//ul | //ol';
-				break;
+					break;
 
 				case 'SPOILER':
 					$exp = '//details';
-				break;
+					break;
 
 				case 'ISPOILER':
 					$exp = '//span[contains(@class, "spoiler")]';
-				break;
+					break;
 
 				default:
 					$exp = '//' . strtolower($tag);
-				break;
+					break;
 			}
 
-			foreach ($xpath->query($exp) as $node)
-			{
+			foreach ($xpath->query($exp) as $node) {
 				$node->setAttribute('class', trim(sprintf(
 					'%s markdown',
 					trim($node->getattribute('class'))
@@ -287,8 +281,7 @@ class listener implements EventSubscriberInterface
 	 */
 	public function enable_markdown($event)
 	{
-		if ($this->markdown_enabled)
-		{
+		if ($this->markdown_enabled) {
 			return;
 		}
 
@@ -309,8 +302,8 @@ class listener implements EventSubscriberInterface
 	{
 		if (($event['id'] !== 'ucp_prefs' && $event['mode'] !== 'post') &&
 			($event['id'] !== 'pm' && $event['mode'] !== 'compose') &&
-			($event['id'] !== 'ucp_profile' && $event['mode'] !== 'signature'))
-		{
+			($event['id'] !== 'ucp_profile' && $event['mode'] !== 'signature')
+		) {
 			return;
 		}
 
@@ -336,14 +329,11 @@ class listener implements EventSubscriberInterface
 		$allowed = !empty($this->config['allow_markdown']) &&
 			!empty($this->user->data['user_allow_markdown']);
 
-		if ($event['id'] === 'pm' && $event['mode'] === 'compose')
-		{
+		if ($event['id'] === 'pm' && $event['mode'] === 'compose') {
 			$allowed = $allowed &&
 				!empty($this->config['allow_pm_markdown']) &&
 				!empty($this->auth->acl_get('u_pm_markdown'));
-		}
-		else if ($event['id'] === 'ucp_profile' && $event['mode'] === 'signature')
-		{
+		} else if ($event['id'] === 'ucp_profile' && $event['mode'] === 'signature') {
 			$allowed = $allowed &&
 				!empty($this->config['allow_sig_markdown']) &&
 				!empty($this->auth->acl_get('u_sig_markdown'));
@@ -404,8 +394,7 @@ class listener implements EventSubscriberInterface
 	 */
 	public function default_post_data($event)
 	{
-		if (isset($event['post_data']['enable_markdown']))
-		{
+		if (isset($event['post_data']['enable_markdown'])) {
 			return;
 		}
 
@@ -525,8 +514,7 @@ class listener implements EventSubscriberInterface
 	 */
 	public function check_signature_permissions($event)
 	{
-		if (!in_array($event['mode'], ['sig', 'text_reparser.user_signature'], true))
-		{
+		if (!in_array($event['mode'], ['sig', 'text_reparser.user_signature'], true)) {
 			return;
 		}
 

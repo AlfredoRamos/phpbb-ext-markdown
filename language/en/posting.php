@@ -2,7 +2,7 @@
 
 /**
  * Markdown extension for phpBB.
- * @author Alfredo Ramos <alfredo.ramos@skiff.com>
+ * @author Alfredo Ramos <alfredo.ramos@proton.me>
  * @copyright 2019 Alfredo Ramos
  * @license GPL-2.0-only
  */
@@ -10,16 +10,14 @@
 /**
  * @ignore
  */
-if (!defined('IN_PHPBB'))
-{
+if (!defined('IN_PHPBB')) {
 	exit;
 }
 
 /**
  * @ignore
  */
-if (empty($lang) || !is_array($lang))
-{
+if (empty($lang) || !is_array($lang)) {
 	$lang = [];
 }
 

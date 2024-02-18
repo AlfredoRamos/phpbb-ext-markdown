@@ -2,7 +2,7 @@
 
 /**
  * Markdown extension for phpBB.
- * @author Alfredo Ramos <alfredo.ramos@skiff.com>
+ * @author Alfredo Ramos <alfredo.ramos@proton.me>
  * @copyright 2019 Alfredo Ramos
  * @license GPL-2.0-only
  */
@@ -51,7 +51,6 @@ class ucp_markdown_test extends \phpbb_functional_test_case
 			$crawler->filter('.markdown-status > a')->attr('href')
 		);
 		$this->assertTrue($form->has('disable_markdown'));
-
 	}
 
 	public function test_ucp_signature()
