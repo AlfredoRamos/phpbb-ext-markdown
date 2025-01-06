@@ -7,7 +7,6 @@
 .markdown:last-child {
 	margin-bottom: 0;
 }
-
 .markdown li .markdown {
 	margin-top: 0;
 }
@@ -19,15 +18,13 @@ h3.markdown,
 h2.markdown,
 h1.markdown {
 	font-weight: bold;
-	line-height: 1em;
+	line-height: 1;
 	text-transform: none;
 	border: none;
-	color: currentColor;
 	float: none !important;
 	margin: 1em 0 !important;
 	padding: 0;
 }
-
 h6.markdown:first-child,
 h5.markdown:first-child,
 h4.markdown:first-child,
@@ -36,7 +33,6 @@ h2.markdown:first-child,
 h1.markdown:first-child {
 	margin-top: 0 !important;
 }
-
 h6.markdown:last-child,
 h5.markdown:last-child,
 h4.markdown:last-child,
@@ -74,43 +70,33 @@ table.markdown {
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
-
 table.markdown,
 table.markdown th,
 table.markdown td {
-	border: 1px solid #105289;
+	border-width: 1px;
+	border-style: solid;
 }
-
-table.markdown tr:nth-child(2n) {
-	background-color: #eef8fb;
-}
-
-table.markdown thead {
-	background-color: #105289;
-	color: #fff;
-}
-
 table.markdown th,
 table.markdown td {
 	padding: 5px 10px;
 }
 
-.forums .list-inner p,
+.content p,
 .polls p,
 .poll-title p,
-.content p,
+.forums .list-inner p,
 .markdown p {
 	font-size: 1em;
 }
 
-.forums .list-inner p,
-.polls p {
+.polls p,
+.forums .list-inner p {
 	display: inline-block;
 }
 
-.forums .list-inner p,
 .polls p,
 .poll-title p,
+.forums .list-inner p,
 .markdown li p {
 	margin-bottom: 0;
 }

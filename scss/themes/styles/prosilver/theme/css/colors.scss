@@ -1,0 +1,43 @@
+/**
+ * Markdown extension for phpBB.
+ * @author Alfredo Ramos <alfredo.ramos@proton.me>
+ * @copyright 2019 Alfredo Ramos
+ * @license GPL-2.0-only
+ */
+
+@use '../../../../../abstracts/variables';
+
+// Headings
+%heading {
+	color: currentcolor;
+}
+
+@for $i from 1 through 6 {
+	h#{$i}.#{variables.$class} {
+		@extend %heading;
+	}
+}
+
+// Table
+%table {
+	&,
+	th,
+	td {
+		border-color: variables.$table1;
+	}
+
+	tr:nth-child(2n) {
+		background-color: variables.$table2;
+	}
+
+	thead {
+		background-color: variables.$table1;
+		color: variables.$table3;
+	}
+}
+
+table {
+	&.#{variables.$class} {
+		@extend %table;
+	}
+}

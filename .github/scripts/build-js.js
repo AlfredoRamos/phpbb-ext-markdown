@@ -1,14 +1,15 @@
 'use strict';
 
 const fs = require('fs');
-const path = require('path');
 const glob = require('glob');
 const uglifyjs = require('uglify-js');
 const helper = require('./helper');
 
-const jsFileList = glob.sync(helper.buildPath + '/styles/**/theme/js/*.js').concat(glob.sync(helper.buildPath + '/adm/style/js/*.js'));
+const jsFileList = glob
+	.sync(helper.buildPath + '/styles/**/theme/js/*.js')
+	.concat(glob.sync(helper.buildPath + '/adm/style/js/*.js'));
 
-jsFileList.forEach(function(j) {
+jsFileList.forEach((j) => {
 	if (j.endsWith('.min.js')) {
 		return;
 	}
@@ -16,7 +17,7 @@ jsFileList.forEach(function(j) {
 	const minFileName = j.replace('.js', '.min.js');
 	const isMinified = fs.existsSync(minFileName);
 
-	if (isMinified){
+	if (isMinified) {
 		return;
 	}
 
@@ -25,12 +26,12 @@ jsFileList.forEach(function(j) {
 		toplevel: true,
 		output: {
 			quote_style: 1,
-			shebang: false
+			shebang: false,
 		},
 		mangle: {
-			toplevel: true
-		}
+			toplevel: true,
+		},
 	});
 
-	fs.writeFileSync(minFileName, result.code, {mode: 0o644});
+	fs.writeFileSync(minFileName, result.code, { mode: 0o644 });
 });

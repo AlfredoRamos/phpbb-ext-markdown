@@ -1,0 +1,27 @@
+/**
+ * Markdown extension for phpBB.
+ * @author Alfredo Ramos <alfredo.ramos@proton.me>
+ * @copyright 2019 Alfredo Ramos
+ * @license GPL-2.0-only
+ */
+h6.markdown,
+h5.markdown,
+h4.markdown,
+h3.markdown,
+h2.markdown,
+h1.markdown {
+	color: currentcolor;
+}
+
+table.markdown,
+table.markdown th,
+table.markdown td {
+	border-color: #105289;
+}
+table.markdown tr:nth-child(2n) {
+	background-color: #eef8fb;
+}
+table.markdown thead {
+	background-color: #105289;
+	color: #fff;
+}

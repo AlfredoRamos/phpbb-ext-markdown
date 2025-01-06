@@ -1,5 +1,7 @@
+@use '../abstracts/variables';
+
 // Reset template
-.#{$class} {
+.#{variables.$class} {
 	// Paragraphs
 	@extend %paragraph-font-size;
 	@extend %paragraph-margin-bottom-last-child;
@@ -14,7 +16,7 @@
 		@extend %paragraph-margin-bottom;
 
 		// Nested lists
-		.#{$class} {
+		.#{variables.$class} {
 			margin-top: 0;
 		}
 	}
@@ -23,10 +25,9 @@
 // Headings
 %heading {
 	font-weight: bold;
-	line-height: 1em;
+	line-height: 1;
 	text-transform: none;
 	border: none;
-	color: currentColor;
 	float: none !important;
 	margin: 1em 0 !important;
 	padding: 0;
@@ -41,7 +42,7 @@
 }
 
 @for $i from 1 through 6 {
-	h#{$i}.#{$class} {
+	h#{$i}.#{variables.$class} {
 		@extend %heading;
 
 		// Reset heading font sizes
@@ -70,16 +71,8 @@
 	&,
 	th,
 	td {
-		border: 1px solid $table1;
-	}
-
-	tr:nth-child(2n) {
-		background-color: $table2;
-	}
-
-	thead {
-		background-color: $table1;
-		color: $table3;
+		border-width: 1px;
+		border-style: solid;
 	}
 
 	th,
@@ -89,7 +82,7 @@
 }
 
 table {
-	&.#{$class} {
+	&.#{variables.$class} {
 		@extend %table;
 	}
 }
