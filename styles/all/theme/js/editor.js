@@ -5,7 +5,7 @@
  * @license GPL-2.0-only
  */
 
-(function () {
+(() => {
 	'use strict';
 
 	/**
@@ -18,7 +18,7 @@
 	 *
 	 * @return {bool}
 	 */
-	const inCodeBlock = function (textarea) {
+	const inCodeBlock = (textarea) => {
 		const start = textarea.selectionStart;
 		const end = textarea.selectionEnd;
 		const value = textarea.value.slice(start, end);
@@ -39,15 +39,15 @@
 	};
 
 	// Enable tabulations in Markdown code
-	document.body.addEventListener('keydown', function (e) {
+	document.body.addEventListener('keydown', (e) => {
 		// Event already handled
 		if (e.defaultPrevented) {
 			return;
 		}
 
 		// Helpers
-		let field = e.target;
-		let selector = 'textarea[name="message"], textarea[name="signature"]';
+		const field = e.target;
+		const selector = 'textarea[name="message"], textarea[name="signature"]';
 
 		// Match post, private message and signature
 		// Triggered only on Tab key press
@@ -64,11 +64,11 @@
 		e.preventDefault();
 
 		// Get caret position
-		let start = field.selectionStart;
-		let end = field.selectionEnd;
+		const start = field.selectionStart;
+		const end = field.selectionEnd;
 
 		// Get previous value
-		let value = field.value;
+		const value = field.value;
 
 		// Add Tab character at caret position
 		field.value = value.substring(0, start) + '\t' + value.substring(end);

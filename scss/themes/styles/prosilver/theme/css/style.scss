@@ -5,8 +5,8 @@
  * @license GPL-2.0-only
  */
 
-@import 'abstracts/variables';
-@import 'base/reset';
+@use '../../../../../abstracts/variables';
+@use '../../../../../components/reset';
 
 // Content
 .content,

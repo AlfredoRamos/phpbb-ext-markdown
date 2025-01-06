@@ -1,0 +1,22 @@
+/**
+ * Markdown extension for phpBB.
+ * @author Alfredo Ramos <alfredo.ramos@proton.me>
+ * @copyright 2019 Alfredo Ramos
+ * @license GPL-2.0-only
+ */
+
+.markdown {
+	& > li[data-task-id] {
+		list-style-type: none;
+	}
+
+	.faq dd &-code {
+		margin: 1em 0;
+	}
+
+	@media (width <= 700px) {
+		&-status {
+			display: none;
+		}
+	}
+}
