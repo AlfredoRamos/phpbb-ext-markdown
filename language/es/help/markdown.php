@@ -10,14 +10,16 @@
 /**
  * @ignore
  */
-if (!defined('IN_PHPBB')) {
+if (!defined('IN_PHPBB'))
+{
 	exit;
 }
 
 /**
  * @ignore
  */
-if (empty($lang) || !is_array($lang)) {
+if (empty($lang) || !is_array($lang))
+{
 	$lang = [];
 }
 
@@ -46,7 +48,7 @@ $lang = array_merge($lang, [
 	'HELP_MARKDOWN_QUOTE_QUESTION' => 'Citando texto en respuestas',
 	'HELP_MARKDOWN_QUOTE_ANSWER' => 'Para citar texto, agregue <code>&gt;</code> y opcionalmente un espacio antes de la línea de texto, ej.<pre class="markdown-code"><code class="markdown" data-lang="markdown">&gt; Texto citado</code></pre> se convertirá <blockquote class="uncited"><div><p>Texto citado</p></div></blockquote>',
 	'HELP_MARKDOWN_CODE_QUESTION' => 'Mostrando código',
-	'HELP_MARKDOWN_CODE_ANSWER' => 'Para mostrar código, enciérrelo entre un par de <code>```</code> o <code>~~~</code>, o alternativamente agregue 4 espacios en blanco antes de cada línea. También puede especificar el lenguaje en el primer marcador, ej.<pre class="markdown-code"><code class="markdown" data-lang="markdown">```ruby<br>puts "Hola #{usuario}!"<br>```</code></pre> se convertirá <div class="codebox"><p>Código: <a href="#" onclick="selectCode(this); return false;">Seleccionar todo</a></p><pre><code>puts "Hello #{user}!"</code></pre></div>',
+	'HELP_MARKDOWN_CODE_ANSWER' => 'Para mostrar código, enciérrelo entre un par de <code>```</code> o <code>~~~</code>, o alternativamente agregue 4 espacios en blanco antes de cada línea. También puede especificar el lenguaje en el primer marcador, ej.<pre class="markdown-code"><code class="markdown" data-lang="markdown">```ruby<br>puts "Hola #{usuario}!"<br>```</code></pre> se convertirá <div class="codebox"><p>Código: <a href="#" onclick="selectCode(this); return false;">Seleccionar todo</a></p><pre><code>puts "Hola #{usuario}!"</code></pre></div>',
 	'HELP_MARKDOWN_CODE_INLINE_QUESTION' => 'Mostrando código en línea',
 	'HELP_MARKDOWN_CODE_INLINE_ANSWER' => 'Para mostrar código en línea, enciérrelo entre un par de <code>`</code> o <code>``</code>, ej.<pre class="markdown-code"><code class="markdown" data-lang="markdown">tag `&lt;div&gt;`</code></pre> o <pre class="markdown-code"><code class="markdown" data-lang="markdown">tag ``&lt;div&gt;``</code></pre> se convertirá<br><br>tag <code>&lt;div&gt;</code>',
 
