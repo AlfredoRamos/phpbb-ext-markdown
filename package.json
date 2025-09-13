@@ -1,4 +1,6 @@
 {
+	"private": true,
+	"type": "module",
 	"browserslist": [
 		">= 1%",
 		"last 1 major version",

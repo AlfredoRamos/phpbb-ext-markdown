@@ -25,7 +25,7 @@ class helper
 	 *
 	 * @return void
 	 */
-	public function __construct($root_path, $php_ext)
+	public function __construct(string $root_path, string $php_ext)
 	{
 		$this->root_path = $root_path;
 		$this->php_ext = $php_ext;
@@ -39,9 +39,10 @@ class helper
 	 *
 	 * @return array
 	 */
-	public function acp_configuration($display_vars = [], $mode = '')
+	public function acp_configuration(array $display_vars = [], string $mode = ''): array
 	{
-		if (empty($display_vars) || empty($display_vars['vars']) || empty($mode)) {
+		if (empty($display_vars) || empty($display_vars['vars']) || empty($mode))
+		{
 			return [];
 		}
 
@@ -52,11 +53,13 @@ class helper
 			'explain' => false
 		];
 
-		if (!function_exists('phpbb_insert_config_array')) {
+		if (!function_exists('phpbb_insert_config_array'))
+		{
 			include($this->root_path . 'includes/functions_acp.' . $this->php_ext);
 		}
 
-		switch ($mode) {
+		switch ($mode)
+		{
 			case 'features':
 				$display_vars['vars'] = phpbb_insert_config_array(
 					$display_vars['vars'],

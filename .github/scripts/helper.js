@@ -1,37 +1,37 @@
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
+import { realpathSync, readFileSync, existsSync, mkdirSync } from 'fs';
+import { join, extname, basename, dirname } from 'path';
 
-const rootPath = fs.realpathSync(__dirname + '../../../');
-const schema = JSON.parse(
-	fs.readFileSync(rootPath + '/composer.json').toString()
-);
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = dirname(__filename);
+
+const rootPath = realpathSync(__dirname + '../../../');
+const schema = JSON.parse(readFileSync(rootPath + '/composer.json').toString());
 const ext = schema.name.split('/');
 const namespace = '@' + ext[0] + '_' + ext[1];
-const buildPath = path.join(rootPath, 'build', 'package', ext[0], ext[1]);
+const buildPath = join(rootPath, 'build', 'package', ext[0], ext[1]);
 
-if (!fs.existsSync(buildPath)) {
-	fs.mkdirSync(buildPath, { recursive: true, mode: 0o755 });
+if (!existsSync(buildPath)) {
+	mkdirSync(buildPath, { recursive: true, mode: 0o755 });
 }
 
-exports.buildPath = buildPath;
-exports.replaceAssetFile = (file, html) => {
-	const fileExt = path.extname(file);
+const replaceAssetFile = (file, html) => {
+	const fileExt = extname(file);
 
 	if (file.endsWith('.min' + fileExt)) {
 		return html;
 	}
 
-	const isMinified = fs.existsSync(file.replace(fileExt, '.min' + fileExt));
+	const isMinified = existsSync(file.replace(fileExt, '.min' + fileExt));
 
 	if (!isMinified) {
 		return html;
 	}
 
-	const filePath = path.basename(path.dirname(file));
-	const fileName = path.basename(file);
-	const twigNamespace = path.join(namespace, filePath, fileName);
+	const filePath = basename(dirname(file));
+	const fileName = basename(file);
+	const twigNamespace = join(namespace, filePath, fileName);
 
 	if (!html.includes(twigNamespace)) {
 		return html;
@@ -44,3 +44,5 @@ exports.replaceAssetFile = (file, html) => {
 
 	return html;
 };
+
+export { buildPath, replaceAssetFile };

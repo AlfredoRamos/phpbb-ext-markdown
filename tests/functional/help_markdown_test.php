@@ -41,15 +41,18 @@ class help_markdown_test extends \phpbb_functional_test_case
 
 		$this->assertSame(9, $elements['blocks']->count());
 
-		$items = $elements['blocks']->each(function ($node) {
+		$items = $elements['blocks']->each(function ($node)
+		{
 			return [
 				'title' => $node->filter('dt > strong'),
 				'links' => $node->filter('dd > a')
 			];
 		});
 
-		foreach ($items as $key => $value) {
-			switch ($key) {
+		foreach ($items as $key => $value)
+		{
+			switch ($key)
+			{
 				case 0: // Introduction
 					$this->assertSame(
 						$this->lang('HELP_MARKDOWN_BLOCK_INTRO'),

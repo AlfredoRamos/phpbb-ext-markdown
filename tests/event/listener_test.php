@@ -65,7 +65,8 @@ class listener_test extends \phpbb_test_case
 				$this->template,
 				$this->routing_helper,
 				$this->language,
-				$this->helper
+				$this->helper,
+				'phpbb_posts'
 			)
 		);
 	}

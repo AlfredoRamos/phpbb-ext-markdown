@@ -45,6 +45,9 @@ class listener implements EventSubscriberInterface
 	/** @var helper */
 	protected $helper;
 
+	/** @var array */
+	protected $tables = [];
+
 	/** @var bool */
 	private $markdown_enabled;
 
@@ -59,10 +62,11 @@ class listener implements EventSubscriberInterface
 	 * @param routing_helper	$routing_helper
 	 * @param language			$language
 	 * @param helper			$helper
+	 * @param string			$posts_table
 	 *
 	 * @return void
 	 */
-	public function __construct(auth $auth, config $config, user $user, request $request, template $template, routing_helper $routing_helper, language $language, helper $helper)
+	public function __construct(auth $auth, config $config, user $user, request $request, template $template, routing_helper $routing_helper, language $language, helper $helper, string $posts_table)
 	{
 		$this->auth = $auth;
 		$this->config = $config;
@@ -74,6 +78,14 @@ class listener implements EventSubscriberInterface
 		$this->helper = $helper;
 		$this->markdown_enabled = !empty($this->config['allow_markdown']) &&
 			!empty($this->user->data['user_allow_markdown']);
+
+		// Assign tables
+		if (empty($this->tables))
+		{
+			$this->tables = [
+				'posts' => $posts_table
+			];
+		}
 	}
 
 	/**
@@ -136,7 +148,8 @@ class listener implements EventSubscriberInterface
 			'signature'
 		];
 
-		if (!in_array($event['mode'], $modes, true)) {
+		if (!in_array($event['mode'], $modes, true))
+		{
 			return;
 		}
 
@@ -204,7 +217,8 @@ class listener implements EventSubscriberInterface
 		$configurator = $event['configurator'];
 
 		// Check if plugins should be disabled
-		if (!$this->markdown_enabled) {
+		if (!$this->markdown_enabled)
+		{
 			unset(
 				$configurator->Litedown,
 				$configurator->PipeTables,
@@ -229,11 +243,13 @@ class listener implements EventSubscriberInterface
 		];
 
 		// Add CSS class
-		foreach ($tags as $tag) {
+		foreach ($tags as $tag)
+		{
 			$tag = trim($tag);
 
 			// Tag must exist
-			if (!isset($configurator->tags[$tag])) {
+			if (!isset($configurator->tags[$tag]))
+			{
 				continue;
 			}
 
@@ -243,7 +259,8 @@ class listener implements EventSubscriberInterface
 			$xpath = new \DOMXPath($dom);
 
 			// XPath expression
-			switch ($tag) {
+			switch ($tag)
+			{
 				case 'LIST':
 					$exp = '//ul | //ol';
 					break;
@@ -261,7 +278,8 @@ class listener implements EventSubscriberInterface
 					break;
 			}
 
-			foreach ($xpath->query($exp) as $node) {
+			foreach ($xpath->query($exp) as $node)
+			{
 				$node->setAttribute('class', trim(sprintf(
 					'%s markdown',
 					trim($node->getattribute('class'))
@@ -281,7 +299,8 @@ class listener implements EventSubscriberInterface
 	 */
 	public function enable_markdown($event)
 	{
-		if ($this->markdown_enabled) {
+		if ($this->markdown_enabled)
+		{
 			return;
 		}
 
@@ -303,7 +322,8 @@ class listener implements EventSubscriberInterface
 		if (($event['id'] !== 'ucp_prefs' && $event['mode'] !== 'post') &&
 			($event['id'] !== 'pm' && $event['mode'] !== 'compose') &&
 			($event['id'] !== 'ucp_profile' && $event['mode'] !== 'signature')
-		) {
+		)
+		{
 			return;
 		}
 
@@ -329,11 +349,14 @@ class listener implements EventSubscriberInterface
 		$allowed = !empty($this->config['allow_markdown']) &&
 			!empty($this->user->data['user_allow_markdown']);
 
-		if ($event['id'] === 'pm' && $event['mode'] === 'compose') {
+		if ($event['id'] === 'pm' && $event['mode'] === 'compose')
+		{
 			$allowed = $allowed &&
 				!empty($this->config['allow_pm_markdown']) &&
 				!empty($this->auth->acl_get('u_pm_markdown'));
-		} else if ($event['id'] === 'ucp_profile' && $event['mode'] === 'signature') {
+		}
+		else if ($event['id'] === 'ucp_profile' && $event['mode'] === 'signature')
+		{
 			$allowed = $allowed &&
 				!empty($this->config['allow_sig_markdown']) &&
 				!empty($this->auth->acl_get('u_sig_markdown'));
@@ -342,7 +365,7 @@ class listener implements EventSubscriberInterface
 		$this->template->assign_vars([
 			'S_MARKDOWN_ENABLED' => $enabled,
 			'S_MARKDOWN_ALLOWED' => $allowed,
-			'MARKDOWN_STATUS' => $this->language->lang(
+			'L_MARKDOWN_STATUS' => $this->language->lang(
 				'MARKDOWN_STATUS_FORMAT',
 				$this->routing_helper->route('alfredoramos_markdown_help'),
 				$allowed ? $this->language->lang('MARKDOWN_IS_ON') : $this->language->lang('MARKDOWN_IS_OFF')
@@ -394,7 +417,8 @@ class listener implements EventSubscriberInterface
 	 */
 	public function default_post_data($event)
 	{
-		if (isset($event['post_data']['enable_markdown'])) {
+		if (isset($event['post_data']['enable_markdown']))
+		{
 			return;
 		}
 
@@ -451,7 +475,7 @@ class listener implements EventSubscriberInterface
 	public function save_post_data($event)
 	{
 		$sql_data = $event['sql_data'];
-		$sql_data[POSTS_TABLE]['sql'] = array_merge($sql_data[POSTS_TABLE]['sql'], [
+		$sql_data[$this->tables['posts']]['sql'] = array_merge($sql_data[$this->tables['posts']]['sql'], [
 			'enable_markdown' => (bool) $event['data']['enable_markdown']
 		]);
 		$event['sql_data'] = $sql_data;
@@ -474,7 +498,7 @@ class listener implements EventSubscriberInterface
 
 		$event['page_data'] = array_merge($event['page_data'], [
 			'S_MARKDOWN_ALLOWED' => $allowed,
-			'MARKDOWN_STATUS' => $this->language->lang(
+			'L_MARKDOWN_STATUS' => $this->language->lang(
 				'MARKDOWN_STATUS_FORMAT',
 				$this->routing_helper->route('alfredoramos_markdown_help'),
 				$allowed ? $this->language->lang('MARKDOWN_IS_ON') : $this->language->lang('MARKDOWN_IS_OFF')
@@ -514,7 +538,8 @@ class listener implements EventSubscriberInterface
 	 */
 	public function check_signature_permissions($event)
 	{
-		if (!in_array($event['mode'], ['sig', 'text_reparser.user_signature'], true)) {
+		if (!in_array($event['mode'], ['sig', 'text_reparser.user_signature'], true))
+		{
 			return;
 		}
 
