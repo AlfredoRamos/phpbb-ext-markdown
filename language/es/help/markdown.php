@@ -24,7 +24,7 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, [
-	'MARKDOWN_GUIDE' => 'Markdown guide',
+	'MARKDOWN_GUIDE' => 'Guía Markdown',
 
 	'HELP_MARKDOWN_BLOCK_INTRO' => 'Introducción',
 	'HELP_MARKDOWN_INTRO_MARKDOWN_QUESTION' => '¿Qué es Markdown?',
