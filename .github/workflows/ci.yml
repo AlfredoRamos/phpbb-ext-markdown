@@ -63,7 +63,7 @@ jobs:
         run: .github/setup-phpbb.sh $DB $PHP_VERSION $NOTESTS
 
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version-file: 'extension/.tool-versions'
           cache: 'npm'
@@ -189,7 +189,7 @@ jobs:
         run: .github/setup-phpbb.sh $DB $PHP_VERSION $NOTESTS
 
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version-file: 'extension/.tool-versions'
           cache: 'npm'
@@ -290,7 +290,7 @@ jobs:
         run: .github/setup-phpbb.sh $DB $PHP_VERSION $NOTESTS
 
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version-file: 'extension/.tool-versions'
           cache: 'npm'
@@ -330,7 +330,7 @@ jobs:
           path: extension
 
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version-file: 'extension/.tool-versions'
           cache: 'npm'
