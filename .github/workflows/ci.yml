@@ -24,6 +24,8 @@ jobs:
       fail-fast: false
       matrix:
         php-version: ['7.4']
+    # TODO: Remove once it is fixed upstreams
+    continue-on-error: true
     steps:
       - name: Checkout phpBB
         uses: actions/checkout@v5
@@ -81,6 +83,8 @@ jobs:
 
       - name: Setup EPV
         if: ${{ env.EPV == 1 }}
+        # TODO: Remove once it is fixed upstreams
+        continue-on-error: true
         working-directory: phpBB3/phpBB
         run: composer require -n --prefer-dist --no-progress phpbb/epv:dev-master
 
@@ -101,6 +105,8 @@ jobs:
 
       - name: Run EPV
         if: ${{ env.EPV == 1 }}
+        # TODO: Remove once it is fixed upstreams
+        continue-on-error: true
         working-directory: phpBB3
         run: phpBB/vendor/bin/EPV.php run --dir="phpBB/ext/$EXTNAME"
 
