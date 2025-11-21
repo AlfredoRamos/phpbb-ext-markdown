@@ -28,14 +28,14 @@ jobs:
     continue-on-error: true
     steps:
       - name: Checkout phpBB
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: phpbb/phpbb
           ref: ${{ env.PHPBB_BRANCH }}
           path: phpBB3
 
       - name: Checkout extension
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           path: extension
 
@@ -158,14 +158,14 @@ jobs:
             db-version: '10.11'
     steps:
       - name: Checkout phpBB
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: phpbb/phpbb
           ref: ${{ env.PHPBB_BRANCH }}
           path: phpBB3
 
       - name: Checkout extension
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           path: extension
 
@@ -259,14 +259,14 @@ jobs:
             db-version: '17-alpine'
     steps:
       - name: Checkout phpBB
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: phpbb/phpbb
           ref: ${{ env.PHPBB_BRANCH }}
           path: phpBB3
 
       - name: Checkout extension
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           path: extension
 
@@ -331,7 +331,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout extension
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           path: extension
 
