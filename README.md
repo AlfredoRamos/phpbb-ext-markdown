@@ -27,7 +27,7 @@ It uses the plugins [Litedown](https://s9etextformatter.readthedocs.io/Plugins/L
 
 ### Requirements
 
-- PHP 7.4.0 or greater
+- PHP 8.1 or greater
 - phpBB 3.3 or greater
 
 ### Support
@@ -39,11 +39,7 @@ It uses the plugins [Litedown](https://s9etextformatter.readthedocs.io/Plugins/L
 
 ### Donate
 
-If you like or found my work useful and want to show some appreciation, you can consider supporting its development by giving a donation.
-
-|    [![Donate with PayPal](https://alfredoramos.mx/images/paypal.svg)](https://alfredoramos.mx/donate/)     |    [![Donate with Stripe](https://alfredoramos.mx/images/stripe.svg)](https://alfredoramos.mx/donate/)     |
-| :--------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: |
-| [![Donate with PayPal](https://alfredoramos.mx/images/donate_paypal.svg)](https://alfredoramos.mx/donate/) | [![Donate with Stripe](https://alfredoramos.mx/images/donate_stripe.svg)](https://alfredoramos.mx/donate/) |
+If you like or found my work useful and want to show some appreciation, you can consider supporting its development by [**giving a donation**](https://alfredoramos.mx/donate/).
 
 ### Installation
 
@@ -55,22 +51,7 @@ If you like or found my work useful and want to show some appreciation, you can 
 
 ### Preview
 
-[![Board features](https://i.imgur.com/PSGGuM3b.png)](https://i.imgur.com/PSGGuM3.png)
-[![Post settings](https://i.imgur.com/qYZ7JBCb.png)](https://i.imgur.com/qYZ7JBC.png)
-[![Private message settings](https://i.imgur.com/np1PqN6b.png)](https://i.imgur.com/np1PqN6.png)
-[![Signature settings](https://i.imgur.com/aEKJxWRb.png)](https://i.imgur.com/aEKJxWR.png)
-[![Post group permissions](https://i.imgur.com/eiJJvbMb.png)](https://i.imgur.com/eiJJvbM.png)
-[![Profile group permissions](https://i.imgur.com/spT9zXYb.png)](https://i.imgur.com/spT9zXY.png)
-[![Private messages group permissions](https://i.imgur.com/YXcNxXKb.png)](https://i.imgur.com/YXcNxXK.png)
-[![Forum permissions](https://i.imgur.com/5GIQpMVb.png)](https://i.imgur.com/5GIQpMV.png)
-[![User posting defaults](https://i.imgur.com/zWhjOfVb.png)](https://i.imgur.com/zWhjOfV.png)
-[![Markdown post](https://i.imgur.com/kba871fb.png)](https://i.imgur.com/kba871f.png)
-[![Markdown private message](https://i.imgur.com/HGvlwhIb.png)](https://i.imgur.com/HGvlwhI.png)
-[![Markdown signature](https://i.imgur.com/svBmgYXb.png)](https://i.imgur.com/svBmgYX.png)
-[![Posting editor option](https://i.imgur.com/1Z7CDDrb.png)](https://i.imgur.com/1Z7CDDr.png)
-[![Task list](https://i.imgur.com/slz1Z9Yb.png)](https://i.imgur.com/slz1Z9Y.png)
-
-*(Click to view in full size)*
+See the [full blog post](https://alfredoramos.mx/markdown-extension-for-phpbb/) for the screenshots gallery.
 
 ### Configuration
 
