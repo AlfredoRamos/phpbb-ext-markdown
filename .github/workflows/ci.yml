@@ -144,6 +144,9 @@ jobs:
           - php-version: '8.4'
             db-type: 'mariadb'
             db-version: '10.11'
+          - php-version: '8.5'
+            db-type: 'mariadb'
+            db-version: '10.11'
     steps:
       - name: Checkout phpBB
         uses: actions/checkout@v6
@@ -243,6 +246,9 @@ jobs:
             db-type: 'postgres'
             db-version: '17-alpine'
           - php-version: '8.4'
+            db-type: 'postgres'
+            db-version: '18-alpine'
+          - php-version: '8.5'
             db-type: 'postgres'
             db-version: '18-alpine'
     steps:
