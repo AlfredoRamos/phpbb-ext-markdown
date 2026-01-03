@@ -1,6 +1,12 @@
 'use strict';
 
-import { realpathSync, readFileSync, existsSync, mkdirSync } from 'fs';
+import {
+	realpathSync,
+	readFileSync,
+	existsSync,
+	mkdirSync,
+	unlinkSync,
+} from 'fs';
 import { join, extname, basename, dirname } from 'path';
 
 const __filename = new URL(import.meta.url).pathname;
@@ -45,4 +51,32 @@ const replaceAssetFile = (file, html) => {
 	return html;
 };
 
-export { buildPath, replaceAssetFile };
+const unminifiedAssetFile = (file) => {
+	if (!existsSync(file)) {
+		return null;
+	}
+
+	const fileExt = extname(file);
+
+	if (!file.endsWith('.min' + fileExt)) {
+		return null;
+	}
+
+	const unminifiedFile = file.replace('.min' + fileExt, fileExt);
+
+	if (existsSync(unminifiedFile)) {
+		return unminifiedFile;
+	}
+
+	return null;
+};
+
+const deleteAssetFile = (file) => {
+	if (!existsSync(file)) {
+		return;
+	}
+
+	unlinkSync(file);
+};
+
+export { buildPath, replaceAssetFile, unminifiedAssetFile, deleteAssetFile };

@@ -4,24 +4,37 @@
  * @copyright 2019 Alfredo Ramos
  * @license GPL-2.0-only
  */
-h6.markdown,
-h5.markdown,
-h4.markdown,
-h3.markdown,
-h2.markdown,
-h1.markdown {
-	color: currentcolor;
-}
+@reference "tailwindcss";
 
-table.markdown,
-table.markdown th,
-table.markdown td {
-	border-color: #105289;
-}
-table.markdown tr:nth-child(2n) {
-	background-color: #eef8fb;
-}
-table.markdown thead {
-	background-color: #105289;
-	color: #fff;
+@layer utilities {
+	h6.markdown,
+	h5.markdown,
+	h4.markdown,
+	h3.markdown,
+	h2.markdown,
+	h1.markdown {
+		@apply text-current!;
+	}
+
+	table.markdown thead {
+		@apply bg-sky-800 text-white;
+	}
+
+	table.markdown thead tr {
+		@apply bg-transparent!;
+	}
+
+	table.markdown tr {
+		@apply bg-slate-200;
+	}
+
+	table.markdown tr:nth-child(2n) {
+		@apply bg-slate-100;
+	}
+
+	table.markdown,
+	table.markdown th,
+	table.markdown td {
+		@apply border-sky-800;
+	}
 }

@@ -4,105 +4,105 @@
  * @copyright 2019 Alfredo Ramos
  * @license GPL-2.0-only
  */
-.markdown:last-child {
-	margin-bottom: 0;
-}
-.markdown li .markdown {
-	margin-top: 0;
-}
+@reference "tailwindcss";
 
-h6.markdown,
-h5.markdown,
-h4.markdown,
-h3.markdown,
-h2.markdown,
-h1.markdown {
-	font-weight: bold;
-	line-height: 1;
-	text-transform: none;
-	border: none;
-	float: none !important;
-	margin: 1em 0 !important;
-	padding: 0;
-}
-h6.markdown:first-child,
-h5.markdown:first-child,
-h4.markdown:first-child,
-h3.markdown:first-child,
-h2.markdown:first-child,
-h1.markdown:first-child {
-	margin-top: 0 !important;
-}
-h6.markdown:last-child,
-h5.markdown:last-child,
-h4.markdown:last-child,
-h3.markdown:last-child,
-h2.markdown:last-child,
-h1.markdown:last-child {
-	margin-bottom: 0 !important;
-}
+@layer utilities {
+	.markdown:last-child {
+		@apply mb-0;
+	}
 
-h1.markdown {
-	font-size: 2em;
-}
+	.markdown li .markdown {
+		@apply mt-0;
+	}
 
-h2.markdown {
-	font-size: 1.5em;
-}
+	h6.markdown,
+	h5.markdown,
+	h4.markdown,
+	h3.markdown,
+	h2.markdown,
+	h1.markdown {
+		@apply font-bold! leading-none normal-case float-none! mx-0! my-2! p-0!;
+		border: none !important;
+	}
 
-h3.markdown {
-	font-size: 1.17em;
-}
+	h6.markdown:first-child,
+	h5.markdown:first-child,
+	h4.markdown:first-child,
+	h3.markdown:first-child,
+	h2.markdown:first-child,
+	h1.markdown:first-child {
+		@apply mt-0!;
+	}
 
-h4.markdown {
-	font-size: 1em;
-}
+	h6.markdown:last-child,
+	h5.markdown:last-child,
+	h4.markdown:last-child,
+	h3.markdown:last-child,
+	h2.markdown:last-child,
+	h1.markdown:last-child {
+		@apply mb-0!;
+	}
 
-h5.markdown {
-	font-size: 0.83em;
-}
+	h1.markdown {
+		@apply text-4xl!;
+	}
 
-h6.markdown {
-	font-size: 0.67em;
-}
+	h2.markdown {
+		@apply text-3xl!;
+	}
 
-table.markdown {
-	margin-top: 1em;
-	margin-bottom: 1em;
-}
-table.markdown,
-table.markdown th,
-table.markdown td {
-	border-width: 1px;
-	border-style: solid;
-}
-table.markdown th,
-table.markdown td {
-	padding: 5px 10px;
-}
+	h3.markdown {
+		@apply text-2xl!;
+	}
 
-.content p,
-.polls p,
-.poll-title p,
-.forums .list-inner p,
-.markdown p {
-	font-size: 1em;
-}
+	h4.markdown {
+		@apply text-xl!;
+	}
 
-.polls p,
-.forums .list-inner p {
-	display: inline-block;
-}
+	h5.markdown {
+		@apply text-lg!;
+	}
 
-.polls p,
-.poll-title p,
-.forums .list-inner p,
-.markdown li p {
-	margin-bottom: 0;
-}
+	h6.markdown {
+		@apply text-base!;
+	}
 
-.content p:last-child,
-.signature p:last-child,
-.markdown p:last-child {
-	margin-bottom: 0;
+	table.markdown,
+	details.markdown {
+		@apply mx-0 my-4;
+	}
+
+	table.markdown,
+	table.markdown th,
+	table.markdown td {
+		@apply border border-solid;
+	}
+
+	table.markdown th,
+	table.markdown td {
+		@apply px-2! py-1!;
+	}
+
+	.content p,
+	.polls p,
+	.poll-title p,
+	.forums .list-inner p,
+	.markdown p {
+		font-size: inherit !important;
+	}
+
+	.polls p,
+	.forums .list-inner p {
+		@apply inline-block;
+	}
+
+	.polls p,
+	.poll-title p,
+	.forums .list-inner p,
+	.markdown li p,
+	.content p:last-child,
+	.signature p:last-child,
+	.markdown p:last-child {
+		@apply mb-0!;
+	}
 }

@@ -27,5 +27,6 @@ $lang = array_merge($lang, [
 	'MARKDOWN_STATUS_FORMAT' => '<a href="%1$s">Markdown</a> is <em>%2$s</em>',
 	'MARKDOWN_IS_ON' => 'ON',
 	'MARKDOWN_IS_OFF' => 'OFF',
-	'DISABLE_MARKDOWN' => 'Disable Markdown'
+	'DISABLE_MARKDOWN' => 'Disable Markdown',
+	'CREDIT_LINE' => '<a href="%1$s" rel="external noreferrer noopener" target="_blank">Markdown</a> extension © <a href="%2$s" rel="external noreferrer noopener" target="_blank">Alfredo Ramos</a>'
 ]);
