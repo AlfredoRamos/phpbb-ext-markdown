@@ -1,5 +1,4 @@
 * text=auto
-scss/ export-ignore
 tests/ export-ignore
 .github/ export-ignore
 .vscode/ export-ignore
@@ -15,4 +14,3 @@ postcss.config.js export-ignore
 .stylelintrc.json export-ignore
 .tool-versions export-ignore
 *.md export-ignore
-*.scss export-ignore

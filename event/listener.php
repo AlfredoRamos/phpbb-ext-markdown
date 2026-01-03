@@ -97,6 +97,7 @@ class listener implements EventSubscriberInterface
 	{
 		return [
 			'core.user_setup' => 'load_language',
+			'core.page_header_after' => 'global_template_variables',
 			'core.acp_board_config_edit_add' => 'acp_markdown_configuration',
 			'core.permissions' => 'acp_markdown_permissions',
 			'core.text_formatter_s9e_configure_after' => 'configure_markdown',
@@ -129,6 +130,24 @@ class listener implements EventSubscriberInterface
 			'lang_set'	=> 'posting'
 		];
 		$event['lang_set_ext'] = $lang_set_ext;
+	}
+
+	/**
+	 * Set global template variables.
+	 *
+	 * @param object $event
+	 *
+	 * @return void
+	 */
+	public function global_template_variables($event)
+	{
+		$this->template->assign_vars([
+			'MARKDOWN_CREDIT_LINE' => $this->language->lang(
+				'CREDIT_LINE',
+				$this->helper::EXTENSION_URL,
+				$this->helper::VENDOR_URL,
+			)
+		]);
 	}
 
 	/**

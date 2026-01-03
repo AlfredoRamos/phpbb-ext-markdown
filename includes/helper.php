@@ -17,6 +17,12 @@ class helper
 	/** @var string */
 	protected $php_ext;
 
+	/** @var string */
+	public const VENDOR_URL = 'https://alfredoramos.mx';
+
+	/** @var string */
+	public const EXTENSION_URL = 'https://www.phpbb.com/customise/db/extension/markdown/';
+
 	/**
 	 * Helper constructor.
 	 *

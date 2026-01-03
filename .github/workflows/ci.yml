@@ -340,6 +340,6 @@ jobs:
         working-directory: extension
         run: npm ci
 
-      - name: Test SCSS
+      - name: Test CSS
         working-directory: extension
-        run: npm run lint-scss
+        run: npm run lint-css

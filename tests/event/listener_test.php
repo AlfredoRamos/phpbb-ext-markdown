@@ -76,6 +76,7 @@ class listener_test extends \phpbb_test_case
 		$this->assertSame(
 			[
 				'core.user_setup',
+				'core.page_header_after',
 				'core.acp_board_config_edit_add',
 				'core.permissions',
 				'core.text_formatter_s9e_configure_after',

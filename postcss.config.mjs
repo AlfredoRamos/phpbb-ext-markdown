@@ -1,15 +1,10 @@
-import postcssImport from 'postcss-import';
+import tailwind from '@tailwindcss/postcss';
 import cssnano from 'cssnano';
 import autoprefixer from 'autoprefixer';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 export default {
 	plugins: [
-		postcssImport({ path: join(__dirname, 'scss') }),
+		tailwind(),
 		autoprefixer(),
 		cssnano({
 			preset: [

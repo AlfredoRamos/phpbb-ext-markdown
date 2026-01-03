@@ -1,8 +1,6 @@
 {
-	"extends": "stylelint-config-standard-scss",
 	"plugins": [
-		"stylelint-order",
-		"stylelint-scss"
+		"stylelint-order"
 	],
 	"ignoreFiles": [
 		"**/*.min.css"

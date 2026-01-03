@@ -4,14 +4,21 @@
  * @copyright 2019 Alfredo Ramos
  * @license GPL-2.0-only
  */
-.markdown > li[data-task-id] {
-	list-style-type: none;
-}
-.faq dd .markdown-code {
-	margin: 1em 0;
-}
-@media (width <= 700px) {
-	.markdown-status {
-		display: none;
+@reference "tailwindcss";
+
+@layer utilities {
+	.markdown > li[data-task-id] {
+		@apply list-none!;
+	}
+
+	.faq dd .markdown-code {
+		@apply mx-0! my-4!;
+	}
+
+	/* Not using "@apply hidden md:block" to mimic prosilver breakpoints */
+	@media (width <= 700px) {
+		.markdown-status {
+			@apply hidden;
+		}
 	}
 }
