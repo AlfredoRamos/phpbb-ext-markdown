@@ -7,7 +7,7 @@ import { join } from 'path';
 import { buildPath } from './helper.js';
 
 const jsFileList = sync(join(buildPath, 'styles/**/theme/js/*.js')).concat(
-	sync(join(buildPath, 'adm/style/js/*.js'))
+	sync(join(buildPath, 'adm/style/js/*.js')),
 );
 
 jsFileList.forEach((j) => {

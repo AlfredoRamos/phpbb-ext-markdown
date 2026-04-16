@@ -27,8 +27,8 @@
 		"composer/installers": "^2.2.0"
 	},
 	"require-dev": {
-		"phing/phing": "^2.16.0",
-		"pear/archive_tar": "^1.4.0"
+		"phing/phing": "^2.17.4",
+		"pear/archive_tar": "^1.6.0"
 	},
 	"suggest": {
 		"s9e/highlighter": "To add code syntax highlighting"
