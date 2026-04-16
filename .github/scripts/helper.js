@@ -45,7 +45,7 @@ const replaceAssetFile = (file, html) => {
 
 	html = html.replace(
 		twigNamespace,
-		twigNamespace.replace(fileExt, '.min' + fileExt)
+		twigNamespace.replace(fileExt, '.min' + fileExt),
 	);
 
 	return html;
