@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "Markdown extension for phpBB",
 	"homepage": "https://github.com/AlfredoRamos/phpbb-ext-markdown",
-	"version": "1.5.0",
-	"time": "2025-09-12",
+	"version": "2.0.0-dev",
+	"time": "2025-09-30",
 	"keywords": [
 		"phpbb",
 		"extension",
@@ -23,7 +23,7 @@
 		}
 	],
 	"require": {
-		"php": "^8.1.0",
+		"php": "^8.2.0",
 		"composer/installers": "^2.2.0"
 	},
 	"require-dev": {
@@ -36,7 +36,7 @@
 	"extra": {
 		"display-name": "Markdown",
 		"soft-require": {
-			"phpbb/phpbb": "~3.3.2"
+			"phpbb/phpbb": "~4.0.0"
 		},
 		"version-check": {
 			"host": "alfredoramos.mx",
