@@ -31,7 +31,7 @@
 		"postcss": "^8.5.8",
 		"postcss-cli": "^12.0.0",
 		"postcss-import": "^17.0.0",
-		"stylelint": "^17.4.0",
+		"stylelint": "^18.0.0",
 		"stylelint-order": "^8.1.1",
 		"tailwindcss": "^4.2.1",
 		"uglify-js": "^3.19.3"
