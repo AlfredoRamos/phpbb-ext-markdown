@@ -275,8 +275,8 @@ EOT;
 		));
 
 		$expected = <<<EOT
-<p>This is a Reddit-style <span class="spoiler markdown" onclick="removeAttribute('style')" style="background:#444;color:transparent">spoiler</span>.<br>
-This is a Discord-style <span class="spoiler markdown" onclick="removeAttribute('style')" style="background:#444;color:transparent">spoiler</span>.</p>
+<p>This is a Reddit-style <span class="spoiler markdown" onclick="this.removeAttribute('style')" style="background:#444;color:transparent">spoiler</span>.<br>
+This is a Discord-style <span class="spoiler markdown" onclick="this.removeAttribute('style')" style="background:#444;color:transparent">spoiler</span>.</p>
 EOT;
 
 		$result = $crawler->filter(sprintf(
